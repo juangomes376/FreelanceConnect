@@ -1,0 +1,128 @@
+<header class="sticky top-0 z-50 w-full border-b border-slate-800/60 bg-slate-950/80 backdrop-blur-md">
+    <input id="mobile-menu-toggle" type="checkbox" class="peer hidden" aria-label="Toggle mobile menu">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between">
+        <div class="flex items-center gap-4 md:gap-8">
+            <a href="{{ path('app_home') }}" class="flex items-center gap-2">
+                <span class="text-xl font-bold tracking-tight text-white">Freelance<span class="text-cyan-400">Connect</span></span>
+            </a>
+
+            <nav class="hidden md:flex gap-6">
+                <a href="{{ path('app_event_index') }}" class="text-sm font-medium text-slate-300 hover:text-cyan-300 transition-colors">Événements</a>
+            </nav>
+        </div>
+        <div class="flex items-center gap-4">
+
+            <!-- Sélecteur de langue Custom GTranslate -->
+            <details class="relative group">
+                <summary class="list-none flex items-center gap-1 rounded-full bg-slate-800/60 p-1.5 px-3 text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-white transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-950 marker:hidden [&::-webkit-details-marker]:hidden">
+                    <img id="current-lang-flag" src="https://flagcdn.com/w20/fr.png" srcset="https://flagcdn.com/w40/fr.png 2x" width="20" alt="Français" class="rounded-[2px]">
+                    <svg class="h-4 w-4 text-slate-400 group-open:rotate-180 transition-transform ml-1" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </summary>
+                
+                <div class="absolute right-0 mt-2 w-40 origin-top-right rounded-md bg-slate-900 border border-slate-700/60 shadow-xl ring-1 ring-black ring-opacity-5 focus:outline-none z-50 overflow-hidden">
+                    <div class="py-1">
+                        <a href="#" onclick="doGTranslate('fr|fr'); updateFlag('fr'); return false;" class="flex items-center gap-3 px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">
+                            <img src="https://flagcdn.com/w20/fr.png" srcset="https://flagcdn.com/w40/fr.png 2x" width="20" alt="Français" class="rounded-[2px]"> Français
+                        </a>
+                        <a href="#" onclick="doGTranslate('fr|en'); updateFlag('gb'); return false;" class="flex items-center gap-3 px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">
+                            <img src="https://flagcdn.com/w20/gb.png" srcset="https://flagcdn.com/w40/gb.png 2x" width="20" alt="English" class="rounded-[2px]"> English
+                        </a>
+                        <a href="#" onclick="doGTranslate('fr|it'); updateFlag('it'); return false;" class="flex items-center gap-3 px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">
+                            <img src="https://flagcdn.com/w20/it.png" srcset="https://flagcdn.com/w40/it.png 2x" width="20" alt="Italiano" class="rounded-[2px]"> Italiano
+                        </a>
+                    </div>
+                </div>
+            </details>
+
+            {% if app.user %}
+                <details class="relative group md:block">
+                    <summary class="list-none flex items-center gap-2 rounded-full bg-slate-800/60 p-1 pr-3 text-sm font-medium text-white hover:bg-slate-800 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-950 marker:hidden [&::-webkit-details-marker]:hidden">
+                        <span class="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-500/20 text-cyan-300">
+                            {{ app.user.prenom|default('U')|first|upper }}
+                        </span>
+                        <span class=" sm:inline-block text-slate-300">{{ app.user.prenom|default('Profil') }}</span>
+                        <svg class="h-4 w-4 text-slate-400 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </summary>
+                    
+                    <div class="absolute right-0 mt-2 w-56 origin-top-right rounded-md bg-slate-900 border border-slate-700/60 shadow-xl ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
+                        <div class="py-1">
+                            <div class="px-4 py-3 border-b border-slate-800/60">
+                                <p class="text-sm font-medium text-white">{{ app.user.prenom|default('Utilisateur') }} {% if app.user.nom is defined %}{{ app.user.nom }}{% endif %}</p>
+                                <p class="text-xs text-slate-400 truncate mt-0.5">{{ app.user.userIdentifier }}</p>
+                            </div>
+                            <a href="{{ path('app_profile') }}" class="flex px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">Mon profil</a>
+                            <a href="{{ path('app_logout') }}" class="flex px-4 py-2.5 text-sm font-medium text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-colors border-t border-slate-800/60">Déconnexion</a>
+                        </div>
+                    </div>
+                </details>
+            {% else %}
+                <a href="{{ path('app_login') }}" class="hidden md:inline-block text-sm font-medium text-slate-300 hover:text-cyan-300 transition-colors px-3 py-2">Connexion</a>
+                <a href="{{ path('app_register') }}" class="hidden md:inline-flex items-center justify-center rounded-md bg-cyan-400/10 px-4 py-2 text-sm font-semibold text-cyan-400 border border-cyan-400/20 hover:bg-cyan-400 hover:text-slate-950 transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2 focus:ring-offset-slate-950">Inscription</a>
+            {% endif %}
+            
+            <label for="mobile-menu-toggle" class="md:hidden inline-flex items-center justify-center rounded-md border border-slate-700 bg-slate-800/60 p-2 text-slate-200 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-cyan-400 cursor-pointer" aria-label="Ouvrir le menu mobile">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </label>
+        </div>
+    </div>
+
+    <div class="md:hidden hidden peer-checked:block border-t border-slate-800/60 bg-slate-950/95 backdrop-blur-xl">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 space-y-2">
+        <a href="{{ path('app_home') }}" class="block rounded-md px-3 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-white">Accueil</a>
+        <a href="{{ path('app_event_index') }}" class="block rounded-md px-3 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-white">Événements</a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('app_event_new') }}" class="block rounded-md px-3 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-white">Nouvel événement</a>
+        {% endif %}
+        {% if app.user %}
+        {% else %}
+            <a href="{{ path('app_login') }}" class="block rounded-md px-3 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800 hover:text-white">Connexion</a>
+            <a href="{{ path('app_register') }}" class="block rounded-md bg-cyan-400/10 px-3 py-2 text-sm font-semibold text-cyan-400 border border-cyan-400/20 hover:bg-cyan-400 hover:text-slate-950 transition-colors">Inscription</a>
+        {% endif %}
+    </div>
+</div>
+</header>
+
+<div id="google_translate_element2" style="display:none;"></div>
+<style>
+    body { top: 0px !important; }
+    .goog-te-banner-frame.skiptranslate { display: none !important; }
+    .skiptranslate iframe { display: none !important; }
+    #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+    .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
+</style>
+<script type="text/javascript">
+    function googleTranslateElementInit2() {
+        new google.translate.TranslateElement({pageLanguage: 'fr', autoDisplay: false}, 'google_translate_element2');
+    }
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+<script type="text/javascript">
+    function GTranslateGetCurrentLang(){var keyValue=document['cookie'].match('(^|;) ?googtrans=([^;]*)(;|$)');return keyValue?keyValue[2].split('/')[2]:null}
+    function GTranslateFireEvent(element,event){try{if(document.createEventObject){var evt=document.createEventObject();element.fireEvent('on'+event,evt)}else{var evt=document.createEvent("HTMLEvents");evt.initEvent(event,true,true);element.dispatchEvent(evt)}}catch(e){}}
+    function doGTranslate(lang_pair){if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var teCombo;var sel=document.getElementsByTagName('select');for(var i=0;i<sel.length;i++)if(sel[i].className.indexOf('goog-te-combo')!=-1){teCombo=sel[i];break;}if(document.getElementById('google_translate_element2')==null||document.getElementById('google_translate_element2').innerHTML.length==0||teCombo.length==0||teCombo.innerHTML.length==0){setTimeout(function(){doGTranslate(lang_pair)},500)}else{teCombo.value=lang;GTranslateFireEvent(teCombo,'change');GTranslateFireEvent(teCombo,'change')}}
+    
+    window.updateFlag = function(flagCode) {
+        var el = document.getElementById('current-lang-flag');
+        if(el) {
+            el.src = "https://flagcdn.com/w20/" + flagCode + ".png";
+            el.srcset = "https://flagcdn.com/w40/" + flagCode + ".png 2x";
+        }
+        var details = document.querySelector('details');
+        if(details) details.removeAttribute('open');
+    };
+    
+    document.addEventListener("DOMContentLoaded", () => {
+        const lang = GTranslateGetCurrentLang();
+        if (lang === 'en') updateFlag('gb');
+        else if (lang === 'it') updateFlag('it');
+        else updateFlag('fr');
+
+        // Mobile menu toggle is handled via CSS checkbox .peer system now.
+    });
+</script>
