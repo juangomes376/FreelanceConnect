@@ -5,15 +5,15 @@
 - PHP >= 8.4
 - Composer
 - Node.js + npm/yarn (pour Tailwind et pipeline de CSS)
-- Bases de données configurée (SQLite/MySQL/PostgreSQL)
+- Bases de données configurée (MySQL)
 
 ## Installation et exécution
 
 1. Cloner le dépôt
 
 ```bash
-git clone <url-du-depot> securevent
-cd securevent/web
+git clone https://github.com/juangomes376/FrealanceConnect FrealanceConnect
+cd FrealanceConnect/web
 ```
 
 2. Installer les dépendances PHP
