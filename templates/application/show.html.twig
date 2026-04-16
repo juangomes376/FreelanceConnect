@@ -1,46 +1,81 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Application{% endblock %}
+{% block title %}Candidatura SPEC #{{ application.id }}{% endblock %}
 
 {% block body %}
-    <h1>Application</h1>
+<main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono text-[var(--color-drac-fg)]">
+    <div class="max-w-4xl mx-auto space-y-8">
+        
+        <div class="flex items-center justify-between border-b border-[var(--color-drac-curr)] pb-6">
+            <div>
+                <h1 class="text-3xl font-bold text-[var(--color-drac-green)] tracking-tighter uppercase">
+                    <span class="text-[var(--color-drac-comment)]">SPEC_ID:</span> #{{ application.id }}
+                </h1>
+                <p class="text-[var(--color-drac-pink)] uppercase tracking-widest text-xs mt-1">Status: Analise_De_Candidato</p>
+            </div>
+            
+            <div class="flex gap-4">
+                <a href="{{ path('app_application_edit', {'id': application.id}) }}" class="px-4 py-2 border border-[var(--color-drac-purple)]/30 text-[var(--color-drac-purple)] text-xs rounded hover:bg-[var(--color-drac-purple)]/10 transition-colors uppercase">Edit_Spec</a>
+                <a href="{{ path('app_application_index') }}" class="px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-colors uppercase">Exit_Buffer</a>
+            </div>
+        </div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ application.id }}</td>
-            </tr>
-            <tr>
-                <th>CoverLetter</th>
-                <td>{{ application.coverLetter }}</td>
-            </tr>
-            <tr>
-                <th>CvFilename</th>
-                <td>{{ application.cvFilename }}</td>
-            </tr>
-            <tr>
-                <th>PortfolioLinks</th>
-                <td>{{ application.portfolioLinks }}</td>
-            </tr>
-            <tr>
-                <th>HoursWorked</th>
-                <td>{{ application.hoursWorked }}</td>
-            </tr>
-            <tr>
-                <th>AdvanceRequestedPercent</th>
-                <td>{{ application.advanceRequestedPercent }}</td>
-            </tr>
-            <tr>
-                <th>IsAdvanceAccepted</th>
-                <td>{{ application.isAdvanceAccepted ? 'Yes' : 'No' }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 space-y-6">
+                <div class="bg-[var(--color-drac-surface)]/60 border border-[var(--color-drac-curr)] rounded-2xl p-8 backdrop-blur-sm shadow-xl neon-border-green relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-20">
+                        <span class="text-[var(--color-drac-green)] text-[10px]">CANDIDACY_DATA_STREAM</span>
+                    </div>
+                    
+                    <h2 class="text-xs uppercase text-[var(--color-drac-cyan)] tracking-[0.3em] mb-6">Carta_De_Apresentacao</h2>
+                    <div class="bg-[var(--color-drac-bg)]/50 p-6 border-l-2 border-[var(--color-drac-green)] rounded-r-lg text-sm leading-relaxed opacity-90 italic">
+                        "{{ application.coverLetter }}"
+                    </div>
 
-    <a href="{{ path('app_application_index') }}">back to list</a>
+                    <h2 class="text-xs uppercase text-[var(--color-drac-cyan)] tracking-[0.3em] mt-10 mb-6">Recursos_Adicionais</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="p-4 bg-[var(--color-drac-curr)]/30 rounded-xl border border-[var(--color-drac-curr)]">
+                            <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold mb-1">CV_Source</p>
+                            <p class="text-xs text-[var(--color-drac-purple)] truncate">{{ application.cvFilename|default('binary_not_found') }}</p>
+                        </div>
+                        <div class="p-4 bg-[var(--color-drac-curr)]/30 rounded-xl border border-[var(--color-drac-curr)]">
+                            <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold mb-1">Portfolio_Links</p>
+                            <p class="text-xs text-[var(--color-drac-cyan)] truncate">{{ application.portfolioLinks|default('no_links_provided') }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <a href="{{ path('app_application_edit', {'id': application.id}) }}">edit</a>
+            <div class="space-y-6">
+                <div class="bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] rounded-2xl p-6 space-y-6">
+                    <div>
+                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase tracking-wider mb-1 font-bold">Horas_Estimadas</p>
+                        <p class="text-2xl text-[var(--color-drac-yellow)] font-bold">{{ application.hoursWorked }}h</p>
+                    </div>
+                    
+                    <div>
+                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase tracking-wider mb-1 font-bold">Solicitacao_Adiantamento</p>
+                        <p class="text-xl text-[var(--color-drac-orange)]">{{ application.advanceRequestedPercent }}%</p>
+                    </div>
 
-    {{ include('application/_delete_form.html.twig') }}
+                    <div class="pt-6 border-t border-[var(--color-drac-curr)]">
+                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase tracking-wider mb-2 font-bold">Status_Financeiro</p>
+                        <div class="flex items-center justify-between text-xs">
+                            <span>Adiantamento Aceito</span>
+                            <span class="{{ application.isAdvanceAccepted ? 'text-[var(--color-drac-green)]' : 'text-[var(--color-drac-red)]' }} font-bold">
+                                {{ application.isAdvanceAccepted ? 'TRUE' : 'FALSE' }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 border border-[var(--color-drac-red)]/20 rounded-2xl bg-[var(--color-drac-red)]/5">
+                    <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocolo_De_Remocao</h4>
+                    {{ include('application/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
 {% endblock %}

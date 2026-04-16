@@ -1,13 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Address{% endblock %}
+{% block title %}Editar GeoNode - Terminal{% endblock %}
 
 {% block body %}
-    <h1>Edit Address</h1>
+<main class="flex-grow flex items-center justify-center p-6 bg-[var(--color-drac-bg)] font-mono">
+    <div class="w-full max-w-2xl bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] p-10 rounded-2xl shadow-2xl relative neon-border-cyan">
+        <div class="mb-10 flex items-center justify-between border-b border-[var(--color-drac-curr)] pb-6">
+            <h1 class="text-2xl font-bold text-[var(--color-drac-cyan)] uppercase tracking-tighter">
+                <span class="text-[var(--color-drac-comment)]">CMD:</span> Patch_Loc_Data
+            </h1>
+            <a href="{{ path('app_address_index') }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-fg)] text-xs uppercase tracking-widest">Abort_Command</a>
+        </div>
 
-    {{ include('address/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('address/_form.html.twig', {'button_label': 'Rebase_Coordinates'}) }}
 
-    <a href="{{ path('app_address_index') }}">back to list</a>
-
-    {{ include('address/_delete_form.html.twig') }}
+        <div class="mt-10 pt-8 border-t border-[var(--color-drac-curr)]">
+            {{ include('address/_delete_form.html.twig') }}
+        </div>
+    </div>
+</main>
 {% endblock %}

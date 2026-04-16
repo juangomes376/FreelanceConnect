@@ -1,49 +1,76 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}Registro de Identidades{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+<main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono">
+    <div class="max-w-7xl mx-auto space-y-8">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+                <h1 class="text-3xl font-bold text-[var(--color-drac-cyan)] tracking-tight uppercase">
+                    <span class="text-[var(--color-drac-pink)]">#</span> identity_registry
+                </h1>
+                <p class="text-sm text-[var(--color-drac-comment)] mt-1">Consultando base de usuários autenticados...</p>
+            </div>
+            
+            <a href="{{ path('app_user_new') }}" class="inline-flex items-center px-6 py-3 bg-[var(--color-drac-cyan)]/10 border border-[var(--color-drac-cyan)]/30 text-[var(--color-drac-cyan)] rounded-xl text-sm hover:bg-[var(--color-drac-cyan)] hover:text-[var(--color-drac-bg)] transition-all shadow-lg hover:shadow-[var(--color-drac-cyan)]/20 uppercase tracking-widest">
+                <span class="mr-2">+</span> Inserir_Node
+            </a>
+        </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Password</th>
-                <th>FirstName</th>
-                <th>LastName</th>
-                <th>Siret</th>
-                <th>CreatedAt</th>
-                <th>IsVerified</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
-                <td>{{ user.firstName }}</td>
-                <td>{{ user.lastName }}</td>
-                <td>{{ user.siret }}</td>
-                <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="10">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_user_new') }}">Create new</a>
+        <div class="bg-[var(--color-drac-surface)]/40 border border-[var(--color-drac-curr)] rounded-2xl overflow-hidden backdrop-blur-sm shadow-2xl">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-[var(--color-drac-curr)]/50 text-[var(--color-drac-pink)] uppercase tracking-wider">
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">ID</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Identidade</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] hidden lg:table-cell">Permissoes</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] hidden md:table-cell">Siret</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Status</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-right">Acoes</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-[var(--color-drac-fg)] divide-y divide-[var(--color-drac-curr)]">
+                    {% for user in users %}
+                        <tr class="hover:bg-[var(--color-drac-cyan)]/5 transition-colors group">
+                            <td class="px-6 py-4 text-[var(--color-drac-comment)] font-bold">#{{ user.id }}</td>
+                            <td class="px-6 py-4">
+                                <div class="flex flex-col">
+                                    <span class="font-bold text-[var(--color-drac-fg)]">{{ user.firstName }} {{ user.lastName }}</span>
+                                    <span class="text-xs text-[var(--color-drac-comment)]">{{ user.email }}</span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 hidden lg:table-cell">
+                                <code class="text-[var(--color-drac-yellow)] text-xs">{{ user.roles|json_encode }}</code>
+                            </td>
+                            <td class="px-6 py-4 hidden md:table-cell text-[var(--color-drac-comment)]">
+                                {{ user.siret|default('N/A') }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {% if user.isVerified %}
+                                    <span class="px-2 py-0.5 rounded bg-[var(--color-drac-green)]/10 text-[var(--color-drac-green)] text-[10px] border border-[var(--color-drac-green)]/20 font-bold">VERIFIED</span>
+                                {% else %}
+                                    <span class="px-2 py-0.5 rounded bg-[var(--color-drac-red)]/10 text-[var(--color-drac-red)] text-[10px] border border-[var(--color-drac-red)]/20 font-bold">UNVERIFIED</span>
+                                {% endif %}
+                            </td>
+                            <td class="px-6 py-4 text-right space-x-3">
+                                <a href="{{ path('app_user_show', {'id': user.id}) }}" class="text-[var(--color-drac-cyan)] hover:text-[var(--color-drac-purple)] transition-colors underline decoration-[var(--color-drac-cyan)]/20 uppercase text-xs">Access</a>
+                                <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">Mod</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6" class="px-6 py-20 text-center text-[var(--color-drac-comment)] italic">
+                                <p class="text-lg">NULL_IDENTITIES_FOUND</p>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
 {% endblock %}

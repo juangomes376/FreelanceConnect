@@ -1,51 +1,73 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Invoice index{% endblock %}
+{% block title %}Terminal Financeiro - Faturas{% endblock %}
 
 {% block body %}
-    <h1>Invoice index</h1>
+<main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono text-[var(--color-drac-fg)]">
+    <div class="max-w-7xl mx-auto space-y-8">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[var(--color-drac-curr)] pb-6">
+            <div>
+                <h1 class="text-3xl font-bold text-[var(--color-drac-yellow)] tracking-tight uppercase">
+                    <span class="text-[var(--color-drac-green)]">$</span> financial_ledger
+                </h1>
+                <p class="text-sm text-[var(--color-drac-comment)] mt-1">Auditando registros de faturamento e transações...</p>
+            </div>
+            
+            <a href="{{ path('app_invoice_new') }}" class="inline-flex items-center px-6 py-3 bg-[var(--color-drac-yellow)]/10 border border-[var(--color-drac-yellow)]/30 text-[var(--color-drac-yellow)] rounded-xl text-sm hover:bg-[var(--color-drac-yellow)] hover:text-[var(--color-drac-bg)] transition-all shadow-lg hover:shadow-[var(--color-drac-yellow)]/20 uppercase tracking-widest">
+                <span class="mr-2">+</span> Gerar_Invoice
+            </a>
+        </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>InvoiceNumber</th>
-                <th>SenderSiret</th>
-                <th>AmountHT</th>
-                <th>TvaRate</th>
-                <th>AmountTVA</th>
-                <th>AmountTTC</th>
-                <th>Label</th>
-                <th>Type</th>
-                <th>CreatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for invoice in invoices %}
-            <tr>
-                <td>{{ invoice.id }}</td>
-                <td>{{ invoice.invoiceNumber }}</td>
-                <td>{{ invoice.senderSiret }}</td>
-                <td>{{ invoice.amountHT }}</td>
-                <td>{{ invoice.tvaRate }}</td>
-                <td>{{ invoice.amountTVA }}</td>
-                <td>{{ invoice.amountTTC }}</td>
-                <td>{{ invoice.label }}</td>
-                <td>{{ invoice.type }}</td>
-                <td>{{ invoice.createdAt ? invoice.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_invoice_show', {'id': invoice.id}) }}">show</a>
-                    <a href="{{ path('app_invoice_edit', {'id': invoice.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="11">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_invoice_new') }}">Create new</a>
+        <div class="bg-[var(--color-drac-surface)]/40 border border-[var(--color-drac-curr)] rounded-2xl overflow-hidden backdrop-blur-sm shadow-2xl">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-[var(--color-drac-curr)]/50 text-[var(--color-drac-comment)] uppercase tracking-wider">
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">ID</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-[var(--color-drac-yellow)]">Fatura_ID</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] hidden lg:table-cell">Emissor_Siret</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-right">Montante_TTC</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] hidden md:table-cell">Label</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Type</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-right">Acoes</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-[var(--color-drac-curr)]">
+                    {% for invoice in invoices %}
+                        <tr class="hover:bg-[var(--color-drac-yellow)]/5 transition-colors group">
+                            <td class="px-6 py-4 text-[var(--color-drac-comment)] font-bold">#{{ invoice.id }}</td>
+                            <td class="px-6 py-4">
+                                <span class="font-mono text-[var(--color-drac-yellow)]">{{ invoice.invoiceNumber }}</span>
+                            </td>
+                            <td class="px-6 py-4 hidden lg:table-cell text-xs text-[var(--color-drac-comment)]">
+                                {{ invoice.senderSiret }}
+                            </td>
+                            <td class="px-6 py-4 text-right font-bold text-[var(--color-drac-green)]">
+                                ${{ invoice.amountTTC }}
+                            </td>
+                            <td class="px-6 py-4 hidden md:table-cell max-w-xs truncate text-xs opacity-70">
+                                {{ invoice.label }}
+                            </td>
+                            <td class="px-6 py-4">
+                                <span class="px-2 py-0.5 rounded bg-[var(--color-drac-purple)]/10 text-[var(--color-drac-purple)] text-[10px] border border-[var(--color-drac-purple)]/20 font-bold uppercase">{{ invoice.type }}</span>
+                            </td>
+                            <td class="px-6 py-4 text-right space-x-3">
+                                <a href="{{ path('app_invoice_show', {'id': invoice.id}) }}" class="text-[var(--color-drac-yellow)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-yellow)]/20 uppercase text-xs">view</a>
+                                <a href="{{ path('app_invoice_edit', {'id': invoice.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">mod</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="7" class="px-6 py-20 text-center text-[var(--color-drac-comment)] italic">
+                                <p class="text-lg">ZERO_BALANCE: No invoices archival found.</p>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
 {% endblock %}

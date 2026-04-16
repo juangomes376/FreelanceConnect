@@ -1,5 +1,83 @@
 @import "tailwindcss";
 
+@theme {
+  /* Cyberpunk Dracula - Fundo preto profundo com toque de roxo */
+  --color-drac-bg:      #050508;
+  --color-drac-surface: #0a0a0f;
+  --color-drac-curr:    #1a1b26;
+  --color-drac-border:  #252634;
+  --color-drac-fg:      #f8f8f2;
+  --color-drac-comment: #6272a4;
+  --color-drac-cyan:    #8be9fd;
+  --color-drac-green:   #50fa7b;
+  --color-drac-orange:  #ffb86c;
+  --color-drac-pink:    #ff79c6;
+  --color-drac-purple:  #bd93f9;
+  --color-drac-red:     #ff5555;
+  --color-drac-yellow:  #f1fa8c;
+
+  /* Fonts */
+  --font-mono: 'Fira Code', 'Courier New', Courier, monospace;
+}
+
+*, *::before, *::after {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 body {
-    background-color: skyblue;
+  background-color: var(--color-drac-bg);
+  color: var(--color-drac-fg);
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Seleção de texto estilo Dracula */
+::selection {
+  background-color: var(--color-drac-purple);
+  color: var(--color-drac-bg);
+}
+
+/* Scrollbar customizado */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--color-drac-bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-drac-curr);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-drac-comment); }
+
+.glow-purple { box-shadow: 0 0 15px -2px rgba(189, 147, 249, 0.4); }
+.glow-cyan   { box-shadow: 0 0 15px -2px rgba(139, 233, 253, 0.4); }
+.glow-pink   { box-shadow: 0 0 15px -2px rgba(255, 121, 198, 0.4); }
+
+.neon-border-purple { border: 1px solid var(--color-drac-purple); box-shadow: 0 0 5px var(--color-drac-purple); }
+.neon-border-pink   { border: 1px solid var(--color-drac-pink);   box-shadow: 0 0 5px var(--color-drac-pink); }
+.neon-border-cyan   { border: 1px solid var(--color-drac-cyan);   box-shadow: 0 0 5px var(--color-drac-cyan); }
+
+header  #gt_float_wrapper{
+  position:relative;
+}
+
+header .gt_float_switcher {
+  background-color: #1d293d00;
+}
+
+header .gt_float_switcher .gt_options {
+  position:absolute;
+  left: 0;
+  background-color: #1d293d00;
+}
+
+header .gt_float_switcher .gt_options a{
+  color: #fff;
+}
+  
+header .gt_float_switcher .gt-selected {
+  background-color: #1D293D;
+  border: 1px solid;
+  border-radius: 50px;
+  border-color: gradient-to-r from-cyan-400 to-cyan-300;
+}
+
+header .gt_float_switcher .gt-selected .gt-lang-code{
+  color: #fff;
 }

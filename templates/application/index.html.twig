@@ -1,45 +1,71 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Application index{% endblock %}
+{% block title %}Terminal de Candidaturas{% endblock %}
 
 {% block body %}
-    <h1>Application index</h1>
+<main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono">
+    <div class="max-w-7xl mx-auto space-y-8">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+                <h1 class="text-3xl font-bold text-[var(--color-drac-green)] tracking-tight uppercase">
+                    <span class="text-[var(--color-drac-pink)]">&gt;</span> list_applications
+                </h1>
+                <p class="text-sm text-[var(--color-drac-comment)] mt-1">Sincronizando registros de candidaturas enviadas...</p>
+            </div>
+            
+            <a href="{{ path('app_application_new') }}" class="inline-flex items-center px-6 py-3 bg-[var(--color-drac-green)]/10 border border-[var(--color-drac-green)]/30 text-[var(--color-drac-green)] rounded-xl text-sm hover:bg-[var(--color-drac-green)] hover:text-[var(--color-drac-bg)] transition-all shadow-lg hover:shadow-[var(--color-drac-green)]/20 uppercase tracking-widest">
+                <span class="mr-2">+</span> Nova_Candidatura
+            </a>
+        </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>CoverLetter</th>
-                <th>CvFilename</th>
-                <th>PortfolioLinks</th>
-                <th>HoursWorked</th>
-                <th>AdvanceRequestedPercent</th>
-                <th>IsAdvanceAccepted</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for application in applications %}
-            <tr>
-                <td>{{ application.id }}</td>
-                <td>{{ application.coverLetter }}</td>
-                <td>{{ application.cvFilename }}</td>
-                <td>{{ application.portfolioLinks }}</td>
-                <td>{{ application.hoursWorked }}</td>
-                <td>{{ application.advanceRequestedPercent }}</td>
-                <td>{{ application.isAdvanceAccepted ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('app_application_show', {'id': application.id}) }}">show</a>
-                    <a href="{{ path('app_application_edit', {'id': application.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_application_new') }}">Create new</a>
+        <div class="bg-[var(--color-drac-surface)]/40 border border-[var(--color-drac-curr)] rounded-2xl overflow-hidden backdrop-blur-sm shadow-2xl">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-[var(--color-drac-curr)]/50 text-[var(--color-drac-cyan)] uppercase tracking-wider">
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">ID</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Carta_Apresentacao</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] hidden lg:table-cell">Portfolio</th>
+                            <th class="px-6 py-4 border-b border(--color-drac-curr) hidden md:table-cell text-center">Horas</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-center">Adiantamento</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-right">Acoes</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-[var(--color-drac-fg)] divide-y divide-[var(--color-drac-curr)]">
+                    {% for application in applications %}
+                        <tr class="hover:bg-[var(--color-drac-green)]/5 transition-colors group">
+                            <td class="px-6 py-4 text-[var(--color-drac-comment)] font-bold">#{{ application.id }}</td>
+                            <td class="px-6 py-4">
+                                <div class="max-w-xs truncate text-[var(--color-drac-fg)] opacity-80 italic">"{{ application.coverLetter|slice(0, 50) }}..."</div>
+                            </td>
+                            <td class="px-6 py-4 hidden lg:table-cell">
+                                <span class="text-[var(--color-drac-purple)] underline decoration-[var(--color-drac-purple)]/20 text-xs">{{ application.portfolioLinks|slice(0, 30) }}...</span>
+                            </td>
+                            <td class="px-6 py-4 hidden md:table-cell text-center font-bold text-[var(--color-drac-yellow)]">
+                                {{ application.hoursWorked }}h
+                            </td>
+                            <td class="px-6 py-4 text-center">
+                                <span class="px-2 py-1 rounded bg-[var(--color-drac-orange)]/10 text-[var(--color-drac-orange)] text-[10px] border border-[var(--color-drac-orange)]/20 font-bold">
+                                    {{ application.advanceRequestedPercent }}%
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 text-right space-x-3">
+                                <a href="{{ path('app_application_show', {'id': application.id}) }}" class="text-[var(--color-drac-green)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-green)]/20 uppercase text-xs">spec</a>
+                                <a href="{{ path('app_application_edit', {'id': application.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">patch</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6" class="px-6 py-20 text-center text-[var(--color-drac-comment)] italic">
+                                <p class="text-lg">ENTRY_NOT_FOUND: No applications in queue.</p>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
 {% endblock %}

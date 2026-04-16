@@ -1,11 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New ApplicationStatus{% endblock %}
+{% block title %}Novo Estado de Candidatura - Terminal{% endblock %}
 
 {% block body %}
-    <h1>Create new ApplicationStatus</h1>
+<main class="flex-grow flex items-center justify-center p-6 bg-[var(--color-drac-bg)] font-mono text-[var(--color-drac-fg)]">
+    <div class="w-full max-w-xl bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] p-10 rounded-2xl shadow-2xl relative neon-border-pink">
+        <div class="mb-10 flex items-center justify-between border-b border-[var(--color-drac-curr)] pb-6">
+            <h1 class="text-2xl font-bold text-[var(--color-drac-pink)] uppercase tracking-tighter">
+                <span class="text-[var(--color-drac-comment)]">CMD:</span> New_State_Matrix
+            </h1>
+            <a href="{{ path('app_application_status_index') }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-fg)] text-xs uppercase tracking-widest">Abort_Command</a>
+        </div>
 
-    {{ include('application_status/_form.html.twig') }}
-
-    <a href="{{ path('app_application_status_index') }}">back to list</a>
+        {{ include('application_status/_form.html.twig', {'button_label': 'Initialize_State'}) }}
+    </div>
+</main>
 {% endblock %}

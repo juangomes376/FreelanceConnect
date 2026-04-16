@@ -1,31 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Cadastro - FreelanceConnect{% endblock %}
 
 {% block body %}
-<main class="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100 flex items-center justify-center py-10 sm:py-20 px-4 sm:px-6">
+<main class="min-h-screen bg-[var(--color-drac-bg)] text-[var(--color-drac-fg)] flex items-center justify-center py-10 sm:py-20 px-4 sm:px-6 relative overflow-hidden">
+    {# Deconaçoes Cyberpunk #}
+    <div class="absolute top-1/4 left-0 -ml-20 w-96 h-96 bg-[var(--color-drac-cyan)]/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-0 -mr-20 w-96 h-96 bg-[var(--color-drac-purple)]/5 rounded-full blur-3xl"></div>
 
-    <div class="w-full max-w-md bg-slate-900/40 border border-slate-800/70 rounded-2xl p-6 sm:p-10 shadow-md">
-        <h1 class="text-3xl font-extrabold text-white mb-6">Créer un compte</h1>
+    <div class="w-full max-w-lg bg-[var(--color-drac-surface)]/60 border border-[var(--color-drac-curr)] rounded-2xl p-8 sm:p-10 shadow-2xl backdrop-blur-xl relative z-10 neon-border-cyan">
+        <div class="mb-10 text-center">
+            <h1 class="text-3xl font-bold text-[var(--color-drac-cyan)] font-mono uppercase tracking-tighter">
+                <span class="text-[var(--color-drac-pink)]">#</span> Criar_Identidade
+            </h1>
+            <p class="text-xs text-[var(--color-drac-comment)] font-mono mt-2">Initialize registration protocol...</p>
+        </div>
 
         {{ form_start(registrationForm, {'attr': {'class': 'space-y-6'}}) }}
 
-        <div class="space-y-4">
+        <div class="space-y-5">
             {% for child in registrationForm %}
-                <div>
-                    {{ form_label(child, null, {'label_attr': {'class': 'block text-sm font-semibold text-white mb-1'}}) }}
-                    {{ form_widget(child, {'attr': {'class': 'w-full rounded-md border border-slate-700 bg-slate-800/50 px-4 py-2 text-slate-100 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-cyan-400'}}) }}
-                    {{ form_errors(child, {'attr': {'class': 'text-red-500 text-xs mt-1'}}) }}
+                {% if child.vars.name != '_token' %}
+                <div class="group">
+                    {{ form_label(child, null, {'label_attr': {'class': 'block text-xs font-mono text-[var(--color-drac-cyan)] mb-2 uppercase tracking-widest transition-colors group-focus-within:text-[var(--color-drac-pink)]'}}) }}
+                    {{ form_widget(child, {'attr': {'class': 'w-full rounded-lg border border-[var(--color-drac-curr)] bg-[var(--color-drac-bg)]/80 px-4 py-3 text-[var(--color-drac-fg)] font-mono focus:outline-none focus:ring-2 focus:ring-[var(--color-drac-cyan)] focus:border-[var(--color-drac-cyan)] transition-all placeholder-[var(--color-drac-comment)]'}}) }}
+                    {{ form_errors(child, {'attr': {'class': 'text-[var(--color-drac-red)] text-xs mt-2 font-mono'}}) }}
                 </div>
+                {% endif %}
             {% endfor %}
         </div>
 
         <button type="submit" 
-            class="w-full rounded-md bg-cyan-400 px-6 py-3 mt-4 font-semibold text-slate-950 shadow hover:bg-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2 focus:ring-offset-slate-950">
-            S’inscrire
+            class="w-full rounded-lg bg-[var(--color-drac-cyan)] px-6 py-4 mt-8 font-bold text-[var(--color-drac-bg)] shadow-lg hover:bg-[var(--color-drac-green)] hover:shadow-[var(--color-drac-green)]/30 focus:outline-none transition-all font-mono uppercase tracking-widest">
+            Confirmar Registro
         </button>
 
         {{ form_end(registrationForm) }}
+
+        <p class="text-xs text-center text-[var(--color-drac-comment)] mt-8 pt-6 border-t border-[var(--color-drac-curr)] font-mono">
+            Já possui autorização? 
+            <a href="{{ path('app_login') }}" class="text-[var(--color-drac-purple)] hover:text-[var(--color-drac-pink)] transition-colors">Acessar Terminal</a>
+        </p>
     </div>
 
 </main>

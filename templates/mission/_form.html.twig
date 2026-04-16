@@ -1,4 +1,8 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {'attr': {'class': 'space-y-6'}}) }}
+    <div class="space-y-4">
+        {{ form_widget(form) }}
+    </div>
+    <button type="submit" class="mt-6 w-full py-3 bg-[var(--color-drac-purple)] text-[var(--color-drac-bg)] font-bold font-mono rounded-lg hover:bg-[var(--color-drac-pink)] hover:shadow-[var(--color-drac-pink)]/40 transition-all uppercase tracking-widest text-sm">
+        {{ button_label|default('Sincronizar_Dados') }}
+    </button>
 {{ form_end(form) }}

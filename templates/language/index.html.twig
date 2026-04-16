@@ -1,35 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Language index{% endblock %}
+{% block title %}Terminal de Linguagens{% endblock %}
 
 {% block body %}
-    <h1>Language index</h1>
+<main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono text-[var(--color-drac-fg)]">
+    <div class="max-w-7xl mx-auto space-y-8">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[var(--color-drac-curr)] pb-6">
+            <div>
+                <h1 class="text-3xl font-bold text-[var(--color-drac-green)] tracking-tight uppercase">
+                    <span class="text-[var(--color-drac-pink)]">&gt;</span> linguistics_registry
+                </h1>
+                <p class="text-sm text-[var(--color-drac-comment)] mt-1">Sincronizando bibliotecas de linguagens suportadas...</p>
+            </div>
+            
+            <a href="{{ path('app_language_new') }}" class="inline-flex items-center px-6 py-3 bg-[var(--color-drac-green)]/10 border border-[var(--color-drac-green)]/30 text-[var(--color-drac-green)] rounded-xl text-sm hover:bg-[var(--color-drac-green)] hover:text-[var(--color-drac-bg)] transition-all shadow-lg hover:shadow-[var(--color-drac-green)]/20 uppercase tracking-widest">
+                <span class="mr-2">+</span> Import_Lib
+            </a>
+        </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for language in languages %}
-            <tr>
-                <td>{{ language.id }}</td>
-                <td>{{ language.name }}</td>
-                <td>
-                    <a href="{{ path('app_language_show', {'id': language.id}) }}">show</a>
-                    <a href="{{ path('app_language_edit', {'id': language.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_language_new') }}">Create new</a>
+        <div class="bg-[var(--color-drac-surface)]/40 border border-[var(--color-drac-curr)] rounded-2xl overflow-hidden backdrop-blur-sm shadow-2xl max-w-4xl mx-auto">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-[var(--color-drac-curr)]/50 text-[var(--color-drac-pink)] uppercase tracking-wider">
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">ID</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Language_Name</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-right">Acoes</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-[var(--color-drac-curr)]">
+                    {% for language in languages %}
+                        <tr class="hover:bg-[var(--color-drac-green)]/5 transition-colors group">
+                            <td class="px-6 py-4 text-[var(--color-drac-comment)] font-bold">#{{ language.id }}</td>
+                            <td class="px-6 py-4">
+                                <span class="font-bold text-[var(--color-drac-green)] uppercase text-xs">{{ language.name }}</span>
+                            </td>
+                            <td class="px-6 py-4 text-right space-x-3">
+                                <a href="{{ path('app_language_show', {'id': language.id}) }}" class="text-[var(--color-drac-green)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-green)]/20 uppercase text-xs">read</a>
+                                <a href="{{ path('app_language_edit', {'id': language.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-purple)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">mod</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3" class="px-6 py-20 text-center text-[var(--color-drac-comment)] italic">
+                                <p class="text-lg">NULL_LIBS: No languages registered.</p>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
 {% endblock %}

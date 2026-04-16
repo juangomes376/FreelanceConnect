@@ -1,26 +1,45 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ApplicationStatus{% endblock %}
+{% block title %}Detalhes do Status #{{ application_status.id }}{% endblock %}
 
 {% block body %}
-    <h1>ApplicationStatus</h1>
+<main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono text-[var(--color-drac-fg)]">
+    <div class="max-w-4xl mx-auto space-y-8">
+        
+        <div class="flex items-center justify-between border-b border-[var(--color-drac-curr)] pb-6">
+            <div>
+                <h1 class="text-3xl font-bold text-[var(--color-drac-pink)] tracking-tighter uppercase">
+                    <span class="text-[var(--color-drac-comment)]">STATE_ID:</span> #{{ application_status.id }}
+                </h1>
+                <p class="text-[var(--color-drac-cyan)] uppercase tracking-widest text-xs mt-1">Status: Registrado_No_Sistema</p>
+            </div>
+            
+            <div class="flex gap-4">
+                <a href="{{ path('app_application_status_edit', {'id': application_status.id}) }}" class="px-4 py-2 border border-[var(--color-drac-pink)]/30 text-[var(--color-drac-pink)] text-xs rounded hover:bg-[var(--color-drac-pink)]/10 transition-colors uppercase">Mod_State</a>
+                <a href="{{ path('app_application_status_index') }}" class="px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-colors uppercase">Return_Index</a>
+            </div>
+        </div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ application_status.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ application_status.name }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="bg-[var(--color-drac-surface)]/60 border border-[var(--color-drac-curr)] rounded-2xl p-8 backdrop-blur-sm shadow-xl neon-border-pink relative overflow-hidden max-w-xl mx-auto">
+            <div class="absolute top-0 right-0 p-4 opacity-10">
+                <span class="text-[var(--color-drac-pink)] text-[10px]">STATE_SPEC_V1</span>
+            </div>
+            
+            <h2 class="text-xs uppercase text-[var(--color-drac-cyan)] tracking-[0.3em] mb-6 border-b border-[var(--color-drac-curr)] pb-2">Definicao_Do_Estado</h2>
+            
+            <div class="space-y-6 text-center py-10">
+                <div>
+                    <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-4">Rotulo_Display</p>
+                    <p class="text-4xl font-black text-[var(--color-drac-fg)] uppercase tracking-tighter glow-purple">{{ application_status.name }}</p>
+                </div>
+            </div>
 
-    <a href="{{ path('app_application_status_index') }}">back to list</a>
+            <div class="mt-10 pt-6 border-t border-[var(--color-drac-red)]/20">
+                <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocolo_De_Purga_Estado</h4>
+                {{ include('application_status/_delete_form.html.twig') }}
+            </div>
+        </div>
 
-    <a href="{{ path('app_application_status_edit', {'id': application_status.id}) }}">edit</a>
-
-    {{ include('application_status/_delete_form.html.twig') }}
+    </div>
+</main>
 {% endblock %}

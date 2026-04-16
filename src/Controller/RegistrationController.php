@@ -35,6 +35,14 @@ class RegistrationController extends AbstractController
 
             // encode the plain password
             $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
+            $user->setRoles(['ROLE_USER']);
+            $user->setIsVerified(false);
+            $user->setCreatedAt(new \DateTimeImmutable());
+            $user->setFirstName($form->get('firstName')->getData());
+            $user->setLastName($form->get('lastName')->getData());
+            if ($form->get('siret')->getData()) {
+                $user->setSiret($form->get('siret')->getData());
+            }
 
             $entityManager->persist($user);
             $entityManager->flush();

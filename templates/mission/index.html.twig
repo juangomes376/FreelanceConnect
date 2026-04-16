@@ -1,45 +1,92 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mission index{% endblock %}
+{% block title %}Terminal de Missões{% endblock %}
 
 {% block body %}
-    <h1>Mission index</h1>
+<main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)]">
+    <div class="max-w-7xl mx-auto space-y-8">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+                <h1 class="text-3xl font-bold text-[var(--color-drac-fg)] font-mono tracking-tight uppercase">
+                    <span class="text-[var(--color-drac-green)]">$</span> ls_missions
+                </h1>
+                <p class="text-sm text-[var(--color-drac-comment)] font-mono mt-1">Explorando banco de dados de contratos disponíveis...</p>
+            </div>
+            
+            <a href="{{ path('app_mission_new') }}" class="inline-flex items-center px-6 py-3 bg-[var(--color-drac-green)]/10 border border-[var(--color-drac-green)]/30 text-[var(--color-drac-green)] rounded-xl font-mono text-sm hover:bg-[var(--color-drac-green)] hover:text-[var(--color-drac-bg)] transition-all shadow-lg hover:shadow-[var(--color-drac-green)]/20 uppercase tracking-widest">
+                <span class="mr-2">+</span> Nova_Missao
+            </a>
+        </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Budget</th>
-                <th>Deadline</th>
-                <th>IsValidatedByAdmin</th>
-                <th>NeedsRevalidation</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for mission in missions %}
-            <tr>
-                <td>{{ mission.id }}</td>
-                <td>{{ mission.title }}</td>
-                <td>{{ mission.description }}</td>
-                <td>{{ mission.budget }}</td>
-                <td>{{ mission.deadline ? mission.deadline|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ mission.isValidatedByAdmin ? 'Yes' : 'No' }}</td>
-                <td>{{ mission.needsRevalidation ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('app_mission_show', {'id': mission.id}) }}">show</a>
-                    <a href="{{ path('app_mission_edit', {'id': mission.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        {# Dashboard Stats / Info bar #}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] p-6 rounded-2xl glow-purple">
+                <p class="text-xs font-mono text-[var(--color-drac-comment)] uppercase">Status_Sincronismo</p>
+                <p class="text-xl font-mono text-[var(--color-drac-purple)] mt-2">ONLINE</p>
+            </div>
+            <div class="bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] p-6 rounded-2xl">
+                <p class="text-xs font-mono text-[var(--color-drac-comment)] uppercase">Total_Registros</p>
+                <p class="text-xl font-mono text-[var(--color-drac-cyan)] mt-2">{{ missions|length }} entradas</p>
+            </div>
+            <div class="bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] p-6 rounded-2xl">
+                <p class="text-xs font-mono text-[var(--color-drac-comment)] uppercase">Latencia_Rede</p>
+                <p class="text-xl font-mono text-[var(--color-drac-green)] mt-2">12ms</p>
+            </div>
+        </div>
 
-    <a href="{{ path('app_mission_new') }}">Create new</a>
+        {# Main Table Container #}
+        <div class="bg-[var(--color-drac-surface)]/40 border border-[var(--color-drac-curr)] rounded-2xl overflow-hidden backdrop-blur-sm shadow-2xl">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse font-mono text-sm">
+                    <thead>
+                        <tr class="bg-[var(--color-drac-curr)]/50 text-[var(--color-drac-cyan)] uppercase tracking-wider">
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">ID</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Titulo</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] hidden lg:table-cell">Orcamento</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] hidden md:table-cell">Prazo</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Status</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-right">Acoes</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-[var(--color-drac-fg)] divide-y divide-[var(--color-drac-curr)]">
+                    {% for mission in missions %}
+                        <tr class="hover:bg-[var(--color-drac-purple)]/5 transition-colors group">
+                            <td class="px-6 py-4 text-[var(--color-drac-comment)]">#{{ mission.id }}</td>
+                            <td class="px-6 py-4">
+                                <span class="font-bold text-[var(--color-drac-purple)] underline decoration-[var(--color-drac-purple)]/30 hover:decoration-[var(--color-drac-purple)] transition-all">{{ mission.title }}</span>
+                            </td>
+                            <td class="px-6 py-4 hidden lg:table-cell text-[var(--color-drac-green)] font-bold">
+                                ${{ mission.budget }}
+                            </td>
+                            <td class="px-6 py-4 hidden md:table-cell text-[var(--color-drac-comment)]">
+                                {{ mission.deadline ? mission.deadline|date('d/m/Y') : '--/--/----' }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {% if mission.isValidatedByAdmin %}
+                                    <span class="inline-flex items-center px-2 py-1 rounded bg-[var(--color-drac-green)]/10 text-[var(--color-drac-green)] text-xs border border-[var(--color-drac-green)]/20">VALIDATED</span>
+                                {% else %}
+                                    <span class="inline-flex items-center px-2 py-1 rounded bg-[var(--color-drac-orange)]/10 text-[var(--color-drac-orange)] text-xs border border-[var(--color-drac-orange)]/20">PENDING</span>
+                                {% endif %}
+                            </td>
+                            <td class="px-6 py-4 text-right space-x-3">
+                                <a href="{{ path('app_mission_show', {'id': mission.id}) }}" class="text-[var(--color-drac-cyan)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-cyan)]/20">view</a>
+                                <a href="{{ path('app_mission_edit', {'id': mission.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-purple)] transition-colors underline decoration-[var(--color-drac-comment)]/20">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6" class="px-6 py-20 text-center text-[var(--color-drac-comment)] italic font-mono">
+                                <p class="text-lg">NULL_POINTER_EXCEPTION: No missions found.</p>
+                                <p class="text-xs mt-2 uppercase tracking-widest">Database query returned empty set.</p>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</main>
 {% endblock %}

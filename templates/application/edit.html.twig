@@ -1,13 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Application{% endblock %}
+{% block title %}Editar Candidatura - Terminal{% endblock %}
 
 {% block body %}
-    <h1>Edit Application</h1>
+<main class="flex-grow flex items-center justify-center p-6 bg-[var(--color-drac-bg)] font-mono">
+    <div class="w-full max-w-2xl bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] p-10 rounded-2xl shadow-2xl relative neon-border-purple">
+        <div class="mb-10 flex items-center justify-between border-b border-[var(--color-drac-curr)] pb-6">
+            <h1 class="text-2xl font-bold text-[var(--color-drac-purple)] uppercase tracking-tighter">
+                <span class="text-[var(--color-drac-comment)]">CMD:</span> Patch_Application
+            </h1>
+            <a href="{{ path('app_application_index') }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-fg)] text-xs uppercase tracking-widest">Abort_Command</a>
+        </div>
 
-    {{ include('application/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('application/_form.html.twig', {'button_label': 'Sync_Candidacy_Buffer'}) }}
 
-    <a href="{{ path('app_application_index') }}">back to list</a>
-
-    {{ include('application/_delete_form.html.twig') }}
+        <div class="mt-10 pt-8 border-t border-[var(--color-drac-curr)]">
+            {{ include('application/_delete_form.html.twig') }}
+        </div>
+    </div>
+</main>
 {% endblock %}

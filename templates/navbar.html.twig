@@ -1,16 +1,16 @@
-<header class="sticky top-0 z-50 w-full border-b border-slate-800/60 bg-slate-950/80 backdrop-blur-md">
+<header class="sticky top-0 z-50 w-full border-b border-[var(--color-drac-curr)] bg-[var(--color-drac-bg)]/80 backdrop-blur-md">
     <input id="mobile-menu-toggle" type="checkbox" class="peer hidden" aria-label="Toggle mobile menu">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between">
         <div class="flex items-center gap-4 md:gap-8">
             <a href="" class="flex items-center gap-2">
-                <span class="text-xl font-bold tracking-tight text-white">Free<span class="text-cyan-400">Lance</span>Connect</span>
+                <span class="text-xl font-bold tracking-tight text-[var(--color-drac-purple)] font-mono">Free<span class="text-[var(--color-drac-cyan)]">Lance</span>Connect</span>
             </a>
 
-            <nav class="hidden md:flex gap-6">
-                <a href="" class="text-sm font-medium text-slate-300 hover:text-cyan-300 transition-colors">Accueil</a>
-                <a href="" class="text-sm font-medium text-slate-300 hover:text-cyan-300 transition-colors">Événements</a>
+            <nav class="hidden md:flex gap-6 font-mono">
+                <a href="" class="text-sm font-medium text-[var(--color-drac-fg)] hover:text-[var(--color-drac-pink)] transition-colors">Accueil</a>
+                <a href="" class="text-sm font-medium text-[var(--color-drac-fg)] hover:text-[var(--color-drac-pink)] transition-colors">Événements</a>
                 {% if is_granted('ROLE_ADMIN') %}
-                    <a href="" class="text-sm font-medium text-slate-300 hover:text-cyan-300 transition-colors">Nouvel événement</a>
+                    <a href="" class="text-sm font-medium text-[var(--color-drac-fg)] hover:text-[var(--color-drac-pink)] transition-colors">Nouvel événement</a>
                 {% endif %}
             </nav>
         </div>

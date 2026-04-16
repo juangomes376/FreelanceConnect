@@ -1,54 +1,80 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}Perfil de Identidade #{{ user.id }}{% endblock %}
 
 {% block body %}
-    <h1>User</h1>
+<main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono text-[var(--color-drac-fg)]">
+    <div class="max-w-4xl mx-auto space-y-8">
+        
+        <div class="flex items-center justify-between border-b border-[var(--color-drac-curr)] pb-6">
+            <div>
+                <h1 class="text-3xl font-bold text-[var(--color-drac-cyan)] tracking-tighter uppercase">
+                    <span class="text-[var(--color-drac-comment)]">IDENTITY_ID:</span> #{{ user.id }}
+                </h1>
+                <p class="text-[var(--color-drac-purple)] uppercase tracking-widest text-xs mt-1">Status: {{ user.isVerified ? 'VERIFIED_ENTRY' : 'UNVERIFIED_PENDING' }}</p>
+            </div>
+            
+            <div class="flex gap-4 text-xs">
+                <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="px-4 py-2 border border-[var(--color-drac-cyan)]/30 text-[var(--color-drac-cyan)] rounded hover:bg-[var(--color-drac-cyan)]/10 transition-all uppercase">Mod_Identity</a>
+                <a href="{{ path('app_user_index') }}" class="px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] rounded hover:bg-[var(--color-drac-comment)]/10 transition-all uppercase">Back_To_Registry</a>
+            </div>
+        </div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            <tr>
-                <th>FirstName</th>
-                <td>{{ user.firstName }}</td>
-            </tr>
-            <tr>
-                <th>LastName</th>
-                <td>{{ user.lastName }}</td>
-            </tr>
-            <tr>
-                <th>Siret</th>
-                <td>{{ user.siret }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>IsVerified</th>
-                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {# Photo/Primary Info #}
+            <div class="md:col-span-1 space-y-6">
+                <div class="bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] rounded-2xl p-6 text-center space-y-4 neon-border-cyan">
+                    <div class="w-32 h-32 mx-auto bg-[var(--color-drac-curr)] rounded-full flex items-center justify-center border-2 border-[var(--color-drac-cyan)]/20">
+                        <span class="text-4xl text-[var(--color-drac-cyan)] font-bold">{{ user.firstName|slice(0, 1) }}{{ user.lastName|slice(0, 1) }}</span>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold">{{ user.firstName }} {{ user.lastName }}</h2>
+                        <p class="text-xs text-[var(--color-drac-comment)]">{{ user.email }}</p>
+                    </div>
+                </div>
 
-    <a href="{{ path('app_user_index') }}">back to list</a>
+                <div class="bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] rounded-2xl p-6">
+                    <h3 class="text-xs uppercase text-[var(--color-drac-comment)] tracking-widest mb-4 font-bold">Permissions_Bitmask</h3>
+                    <div class="flex flex-wrap gap-2">
+                        {% for role in user.roles %}
+                            <span class="px-2 py-1 bg-[var(--color-drac-purple)]/10 border border-[var(--color-drac-purple)]/30 text-[var(--color-drac-purple)] text-[10px] rounded">{{ role }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
 
-    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+            {# Detailed Info #}
+            <div class="md:col-span-2 space-y-6">
+                <div class="bg-[var(--color-drac-surface)]/40 border border-[var(--color-drac-curr)] rounded-2xl p-8 backdrop-blur-sm relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-20">
+                        <span class="text-[var(--color-drac-cyan)] text-[10px]">SEC_PROTOCOL_ALPHA</span>
+                    </div>
 
-    {{ include('user/_delete_form.html.twig') }}
+                    <h3 class="text-xs uppercase text-[var(--color-drac-cyan)] tracking-[0.3em] mb-6 border-b border-[var(--color-drac-curr)] pb-2">Technical_Specifications</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8">
+                        <div>
+                            <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Siret_Entry</p>
+                            <p class="text-sm font-bold text-[var(--color-drac-fg)]">{{ user.siret|default('N/A') }}</p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Timestamp_Creation</p>
+                            <p class="text-sm font-bold text-[var(--color-drac-fg)]">{{ user.createdAt ? user.createdAt|date('d/m/Y H:i') : 'UNKNOWN' }}</p>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Encrypted_Hash (Password)</p>
+                            <p class="text-[10px] font-mono text-[var(--color-drac-comment)] bg-[var(--color-drac-bg)] p-3 rounded border border-[var(--color-drac-curr)] break-all opacity-50">{{ user.password|slice(0, 30) }}...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 border border-[var(--color-drac-red)]/20 rounded-2xl bg-[var(--color-drac-red)]/5">
+                    <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocolo_De_Purga_Identidade</h4>
+                    {{ include('user/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
 {% endblock %}

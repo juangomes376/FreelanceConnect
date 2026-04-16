@@ -1,58 +1,88 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Invoice{% endblock %}
+{% block title %}Detalhes da Fatura #{{ invoice.id }}{% endblock %}
 
 {% block body %}
-    <h1>Invoice</h1>
+<main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono text-[var(--color-drac-fg)]">
+    <div class="max-w-4xl mx-auto space-y-8">
+        
+        <div class="flex items-center justify-between border-b border-[var(--color-drac-curr)] pb-6">
+            <div>
+                <h1 class="text-3xl font-bold text-[var(--color-drac-yellow)] tracking-tighter uppercase">
+                    <span class="text-[var(--color-drac-comment)]">INV_ID:</span> #{{ invoice.id }}
+                </h1>
+                <p class="text-[var(--color-drac-green)] uppercase tracking-widest text-xs mt-1">Status: Processamento_Concluido</p>
+            </div>
+            
+            <div class="flex gap-4">
+                <a href="{{ path('app_invoice_edit', {'id': invoice.id}) }}" class="px-4 py-2 border border-[var(--color-drac-yellow)]/30 text-[var(--color-drac-yellow)] text-xs rounded hover:bg-[var(--color-drac-yellow)]/10 transition-colors uppercase">Edit_Ledger</a>
+                <a href="{{ path('app_invoice_index') }}" class="px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-colors uppercase">Close_Audit</a>
+            </div>
+        </div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ invoice.id }}</td>
-            </tr>
-            <tr>
-                <th>InvoiceNumber</th>
-                <td>{{ invoice.invoiceNumber }}</td>
-            </tr>
-            <tr>
-                <th>SenderSiret</th>
-                <td>{{ invoice.senderSiret }}</td>
-            </tr>
-            <tr>
-                <th>AmountHT</th>
-                <td>{{ invoice.amountHT }}</td>
-            </tr>
-            <tr>
-                <th>TvaRate</th>
-                <td>{{ invoice.tvaRate }}</td>
-            </tr>
-            <tr>
-                <th>AmountTVA</th>
-                <td>{{ invoice.amountTVA }}</td>
-            </tr>
-            <tr>
-                <th>AmountTTC</th>
-                <td>{{ invoice.amountTTC }}</td>
-            </tr>
-            <tr>
-                <th>Label</th>
-                <td>{{ invoice.label }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ invoice.type }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ invoice.createdAt ? invoice.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {# Main Details Card #}
+            <div class="bg-[var(--color-drac-surface)]/60 border border-[var(--color-drac-curr)] rounded-2xl p-8 backdrop-blur-sm shadow-xl neon-border-yellow relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 opacity-20">
+                    <span class="text-[var(--color-drac-yellow)] text-[10px]">FIN_ENTRY_V3</span>
+                </div>
+                
+                <h2 class="text-xs uppercase text-[var(--color-drac-cyan)] tracking-[0.3em] mb-6 border-b border-[var(--color-drac-curr)] pb-2">Informacoes_Gerais</h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Numero_Fatura</p>
+                        <p class="text-lg font-bold text-[var(--color-drac-yellow)]">{{ invoice.invoiceNumber }}</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Label_Referencia</p>
+                        <p class="text-sm italic opacity-80">"{{ invoice.label }}"</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Data_Criacao</p>
+                        <p class="text-sm text-[var(--color-drac-fg)]">{{ invoice.createdAt ? invoice.createdAt|date('d/m/Y H:i') : 'N/A' }}</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Tipo</p>
+                            <span class="px-2 py-0.5 rounded bg-[var(--color-drac-purple)]/20 text-[var(--color-drac-purple)] text-[10px] font-bold uppercase">{{ invoice.type }}</span>
+                        </div>
+                        <div>
+                            <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Siret_Emissor</p>
+                            <p class="text-xs opacity-70">{{ invoice.senderSiret }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <a href="{{ path('app_invoice_index') }}">back to list</a>
+            {# Financial Totals Card #}
+            <div class="space-y-6">
+                <div class="bg-[var(--color-drac-curr)]/30 border border-[var(--color-drac-curr)] rounded-2xl p-8 space-y-6 shadow-lg">
+                    <h2 class="text-xs uppercase text-[var(--color-drac-green)] tracking-[0.3em] mb-6 border-b border-[var(--color-drac-curr)] pb-2">Calculo_Financeiro</h2>
+                    
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-[var(--color-drac-comment)] uppercase">Base HT</span>
+                        <span class="text-lg font-bold text-[var(--color-drac-fg)]">${{ invoice.amountHT }}</span>
+                    </div>
+                    
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-[var(--color-drac-comment)] uppercase">Taxa TVA ({{ invoice.tvaRate }}%)</span>
+                        <span class="text-sm text-[var(--color-drac-pink)]">+${{ invoice.amountTVA }}</span>
+                    </div>
 
-    <a href="{{ path('app_invoice_edit', {'id': invoice.id}) }}">edit</a>
+                    <div class="pt-6 border-t border-[var(--color-drac-curr)] flex justify-between items-center">
+                        <span class="text-sm font-bold text-[var(--color-drac-fg)] uppercase">Total TTC</span>
+                        <span class="text-3xl font-black text-[var(--color-drac-green)] glow-green">${{ invoice.amountTTC }}</span>
+                    </div>
+                </div>
 
-    {{ include('invoice/_delete_form.html.twig') }}
+                <div class="p-4 border border-[var(--color-drac-red)]/20 rounded-2xl bg-[var(--color-drac-red)]/5">
+                    <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocolo_De_Estorno</h4>
+                    {{ include('invoice/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
 {% endblock %}

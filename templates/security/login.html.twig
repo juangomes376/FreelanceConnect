@@ -1,37 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion - SecureVent{% endblock %}
+{% block title %}Connexion - FreelanceConnect{% endblock %}
 
 {% block body %}
-<main class="flex flex-col items-center justify-center flex-grow p-4 sm:p-6 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-    <div class="w-full max-w-md p-6 sm:p-8 space-y-6 sm:space-y-8 bg-slate-900/40 border border-slate-800/70 rounded-2xl shadow-xl backdrop-blur-sm">
+<main class="flex flex-col items-center justify-center flex-grow p-4 sm:p-6 bg-[var(--color-drac-bg)] relative overflow-hidden">
+    {# Decorações de fundo Cyberpunk #}
+    <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-[var(--color-drac-purple)]/10 rounded-full blur-3xl opacity-50"></div>
+    <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-[var(--color-drac-pink)]/10 rounded-full blur-3xl opacity-50"></div>
+
+    <div class="w-full max-w-md p-8 pt-10 space-y-8 bg-[var(--color-drac-surface)]/60 border border-[var(--color-drac-curr)] rounded-2xl shadow-2xl backdrop-blur-xl relative z-10 neon-border-purple">
         <div class="text-center">
-            <h1 class="text-3xl font-extrabold tracking-tight text-white">Bon retour !</h1>
-            <p class="mt-2 text-sm text-slate-400">Connectez-vous pour accéder à votre espace</p>
+            <h1 class="text-3xl font-bold tracking-tight text-[var(--color-drac-purple)] font-mono">
+                <span class="text-[var(--color-drac-pink)]">&gt;</span> Login
+            </h1>
+            <p class="mt-2 text-sm text-[var(--color-drac-comment)] font-mono">Acesso restrito :: Terminal de desenvolvedor</p>
         </div>
 
         <form method="post" class="space-y-6">
             {% if error %}
-                <div class="p-4 text-sm text-red-200 bg-red-500/20 border border-red-500/30 rounded-lg">
-                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                <div class="p-4 text-sm text-[var(--color-drac-red)] bg-[var(--color-drac-red)]/10 border border-[var(--color-drac-red)]/30 rounded-lg font-mono">
+                    ERROR: {{ error.messageKey|trans(error.messageData, 'security') }}
                 </div>
             {% endif %}
 
             {% if app.user %}
-                <div class="p-4 text-sm text-cyan-200 bg-cyan-500/20 border border-cyan-500/30 rounded-lg mb-6">
-                    Vous êtes connecté en tant que <span class="font-semibold">{{ app.user.userIdentifier }}</span>. <a href="{{ logout_path() }}" class="font-medium underline hover:text-cyan-100">Déconnexion</a>
+                <div class="p-4 text-sm text-[var(--color-drac-cyan)] bg-[var(--color-drac-cyan)]/10 border border-[var(--color-drac-cyan)]/30 rounded-lg mb-6 font-mono">
+                    STATUS: Logado como <span class="font-bold">{{ app.user.userIdentifier }}</span>. <a href="{{ logout_path() }}" class="text-[var(--color-drac-pink)] underline hover:text-[var(--color-drac-purple)] transition-colors">Abortar sessao</a>
                 </div>
             {% endif %}
 
             <div class="space-y-5">
                 <div>
-                    <label for="inputEmail" class="block text-sm font-medium text-slate-300 mb-1">Adresse e-mail</label>
-                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="block w-full px-4 py-3 text-slate-200 bg-slate-950/60 border border-slate-700/60 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 focus:outline-none sm:text-sm transition-all placeholder-slate-500" placeholder="vous@exemple.com" autocomplete="email" required autofocus>
+                    <label for="inputEmail" class="block text-xs font-mono text-[var(--color-drac-cyan)] uppercase tracking-widest mb-2">E-mail</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="block w-full px-4 py-3 text-[var(--color-drac-fg)] bg-[var(--color-drac-bg)]/80 border border-[var(--color-drac-curr)] rounded-lg shadow-sm focus:ring-2 focus:ring-[var(--color-drac-purple)] focus:border-[var(--color-drac-purple)] focus:outline-none sm:text-sm transition-all placeholder-[var(--color-drac-comment)] font-mono" placeholder="dev@example.com" autocomplete="email" required autofocus>
                 </div>
 
                 <div>
-                    <label for="inputPassword" class="block text-sm font-medium text-slate-300 mb-1">Mot de passe</label>
-                    <input type="password" name="password" id="inputPassword" class="block w-full px-4 py-3 text-slate-200 bg-slate-950/60 border border-slate-700/60 rounded-lg shadow-sm focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 focus:outline-none sm:text-sm transition-all placeholder-slate-500" placeholder="••••••••" autocomplete="current-password" required>
+                    <label for="inputPassword" class="block text-xs font-mono text-[var(--color-drac-cyan)] uppercase tracking-widest mb-2">Password</label>
+                    <input type="password" name="password" id="inputPassword" class="block w-full px-4 py-3 text-[var(--color-drac-fg)] bg-[var(--color-drac-bg)]/80 border border-[var(--color-drac-curr)] rounded-lg shadow-sm focus:ring-2 focus:ring-[var(--color-drac-pink)] focus:border-[var(--color-drac-pink)] focus:outline-none sm:text-sm transition-all placeholder-[var(--color-drac-comment)] font-mono" placeholder="********" autocomplete="current-password" required>
                 </div>
             </div>
 
@@ -39,25 +45,20 @@
 
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                    <input id="remember_me" name="_remember_me" type="checkbox" class="w-4 h-4 text-cyan-500 bg-slate-900 border-slate-700 rounded focus:ring-cyan-500 focus:ring-offset-slate-950">
-                    <label for="remember_me" class="block ml-2 text-sm text-slate-400">
-                        Se souvenir de moi
+                    <input id="remember_me" name="_remember_me" type="checkbox" class="w-4 h-4 text-[var(--color-drac-purple)] bg-[var(--color-drac-bg)] border-[var(--color-drac-curr)] rounded focus:ring-[var(--color-drac-purple)]">
+                    <label for="remember_me" class="block ml-2 text-xs text-[var(--color-drac-comment)] font-mono">
+                        Manter sessao persistente
                     </label>
-                </div>
-                
-                <div class="text-sm">
-                    {# Si vous avez une route de réinitialisation : #}
-                    {# <a href="{{ path('app_forgot_password_request') }}" class="font-medium text-cyan-400 hover:text-cyan-300 transition-colors">Mot de passe oublié ?</a> #}
                 </div>
             </div>
 
-            <button type="submit" class="flex justify-center w-full px-4 py-3 text-sm font-bold text-slate-950 bg-cyan-400 rounded-lg shadow hover:bg-cyan-300 hover:shadow-cyan-400/20 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-950 focus:ring-cyan-400 transition-all">
-                Se connecter
+            <button type="submit" class="flex justify-center w-full px-4 py-3 text-sm font-bold text-[var(--color-drac-bg)] bg-[var(--color-drac-purple)] rounded-lg shadow-lg hover:bg-[var(--color-drac-pink)] hover:shadow-[var(--color-drac-pink)]/40 focus:outline-none transition-all font-mono uppercase tracking-widest">
+                Executar Login
             </button>
             
-            <p class="text-sm text-center text-slate-400 mt-6 pt-6 border-t border-slate-800">
-                Pas encore de compte ? 
-                <a href="{{ path('app_register') }}" class="font-medium text-cyan-400 hover:text-cyan-300 transition-colors">S'inscrire</a>
+            <p class="text-xs text-center text-[var(--color-drac-comment)] mt-6 pt-6 border-t border-[var(--color-drac-curr)] font-mono">
+                Novo por aqui? 
+                <a href="{{ path('app_register') }}" class="font-medium text-[var(--color-drac-cyan)] hover:text-[var(--color-drac-purple)] transition-colors">Criar Identidade</a>
             </p>
         </form>
     </div>
