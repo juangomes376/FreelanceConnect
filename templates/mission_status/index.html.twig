@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MissionStatus index{% endblock %}
+
+{% block body %}
+    <h1>MissionStatus index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mission_status in mission_statuses %}
+            <tr>
+                <td>{{ mission_status.id }}</td>
+                <td>{{ mission_status.name }}</td>
+                <td>
+                    <a href="{{ path('app_mission_status_show', {'id': mission_status.id}) }}">show</a>
+                    <a href="{{ path('app_mission_status_edit', {'id': mission_status.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_mission_status_new') }}">Create new</a>
+{% endblock %}

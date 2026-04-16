@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ApplicationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -31,6 +33,26 @@ class Application
 
     #[ORM\Column]
     private ?bool $isAdvanceAccepted = null;
+
+    #[ORM\ManyToOne(inversedBy: 'applications')]
+    private ?Mission $mission = null;
+
+    #[ORM\ManyToOne(inversedBy: 'applications')]
+    private ?User $freelancer = null;
+
+    /**
+     * @var Collection<int, Invoice>
+     */
+    #[ORM\OneToMany(targetEntity: Invoice::class, mappedBy: 'application')]
+    private Collection $invoices;
+
+    #[ORM\ManyToOne(inversedBy: 'applications')]
+    private ?ApplicationStatus $status = null;
+
+    public function __construct()
+    {
+        $this->invoices = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -105,6 +127,72 @@ class Application
     public function setIsAdvanceAccepted(bool $isAdvanceAccepted): static
     {
         $this->isAdvanceAccepted = $isAdvanceAccepted;
+
+        return $this;
+    }
+
+    public function getMission(): ?Mission
+    {
+        return $this->mission;
+    }
+
+    public function setMission(?Mission $mission): static
+    {
+        $this->mission = $mission;
+
+        return $this;
+    }
+
+    public function getFreelancer(): ?User
+    {
+        return $this->freelancer;
+    }
+
+    public function setFreelancer(?User $freelancer): static
+    {
+        $this->freelancer = $freelancer;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Invoice>
+     */
+    public function getInvoices(): Collection
+    {
+        return $this->invoices;
+    }
+
+    public function addInvoice(Invoice $invoice): static
+    {
+        if (!$this->invoices->contains($invoice)) {
+            $this->invoices->add($invoice);
+            $invoice->setApplication($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInvoice(Invoice $invoice): static
+    {
+        if ($this->invoices->removeElement($invoice)) {
+            // set the owning side to null (unless already changed)
+            if ($invoice->getApplication() === $this) {
+                $invoice->setApplication(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getStatus(): ?ApplicationStatus
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?ApplicationStatus $status): static
+    {
+        $this->status = $status;
 
         return $this;
     }

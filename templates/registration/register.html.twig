@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<main class="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100 flex items-center justify-center py-10 sm:py-20 px-4 sm:px-6">
+
+    <div class="w-full max-w-md bg-slate-900/40 border border-slate-800/70 rounded-2xl p-6 sm:p-10 shadow-md">
+        <h1 class="text-3xl font-extrabold text-white mb-6">Créer un compte</h1>
+
+        {{ form_start(registrationForm, {'attr': {'class': 'space-y-6'}}) }}
+
+        <div class="space-y-4">
+            {% for child in registrationForm %}
+                <div>
+                    {{ form_label(child, null, {'label_attr': {'class': 'block text-sm font-semibold text-white mb-1'}}) }}
+                    {{ form_widget(child, {'attr': {'class': 'w-full rounded-md border border-slate-700 bg-slate-800/50 px-4 py-2 text-slate-100 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:border-cyan-400'}}) }}
+                    {{ form_errors(child, {'attr': {'class': 'text-red-500 text-xs mt-1'}}) }}
+                </div>
+            {% endfor %}
+        </div>
+
+        <button type="submit" 
+            class="w-full rounded-md bg-cyan-400 px-6 py-3 mt-4 font-semibold text-slate-950 shadow hover:bg-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2 focus:ring-offset-slate-950">
+            S’inscrire
+        </button>
+
+        {{ form_end(registrationForm) }}
+    </div>
+
+</main>
+{% endblock %}

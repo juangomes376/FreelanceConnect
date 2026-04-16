@@ -1,0 +1,57 @@
+<header class="sticky top-0 z-50 w-full border-b border-slate-800/60 bg-slate-950/80 backdrop-blur-md">
+    <input id="mobile-menu-toggle" type="checkbox" class="peer hidden" aria-label="Toggle mobile menu">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between">
+        <div class="flex items-center gap-4 md:gap-8">
+            <a href="" class="flex items-center gap-2">
+                <span class="text-xl font-bold tracking-tight text-white">Free<span class="text-cyan-400">Lance</span>Connect</span>
+            </a>
+
+            <nav class="hidden md:flex gap-6">
+                <a href="" class="text-sm font-medium text-slate-300 hover:text-cyan-300 transition-colors">Accueil</a>
+                <a href="" class="text-sm font-medium text-slate-300 hover:text-cyan-300 transition-colors">Événements</a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="" class="text-sm font-medium text-slate-300 hover:text-cyan-300 transition-colors">Nouvel événement</a>
+                {% endif %}
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div id="google_translate_element2" style="display:none;"></div>
+<style>
+    body { top: 0px !important; }
+    .goog-te-banner-frame.skiptranslate { display: none !important; }
+    .skiptranslate iframe { display: none !important; }
+    #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+    .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
+</style>
+<script type="text/javascript">
+    function googleTranslateElementInit2() {
+        new google.translate.TranslateElement({pageLanguage: 'fr', autoDisplay: false}, 'google_translate_element2');
+    }
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+<script type="text/javascript">
+    function GTranslateGetCurrentLang(){var keyValue=document['cookie'].match('(^|;) ?googtrans=([^;]*)(;|$)');return keyValue?keyValue[2].split('/')[2]:null}
+    function GTranslateFireEvent(element,event){try{if(document.createEventObject){var evt=document.createEventObject();element.fireEvent('on'+event,evt)}else{var evt=document.createEvent("HTMLEvents");evt.initEvent(event,true,true);element.dispatchEvent(evt)}}catch(e){}}
+    function doGTranslate(lang_pair){if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var teCombo;var sel=document.getElementsByTagName('select');for(var i=0;i<sel.length;i++)if(sel[i].className.indexOf('goog-te-combo')!=-1){teCombo=sel[i];break;}if(document.getElementById('google_translate_element2')==null||document.getElementById('google_translate_element2').innerHTML.length==0||teCombo.length==0||teCombo.innerHTML.length==0){setTimeout(function(){doGTranslate(lang_pair)},500)}else{teCombo.value=lang;GTranslateFireEvent(teCombo,'change');GTranslateFireEvent(teCombo,'change')}}
+    
+    window.updateFlag = function(flagCode) {
+        var el = document.getElementById('current-lang-flag');
+        if(el) {
+            el.src = "https://flagcdn.com/w20/" + flagCode + ".png";
+            el.srcset = "https://flagcdn.com/w40/" + flagCode + ".png 2x";
+        }
+        var details = document.querySelector('details');
+        if(details) details.removeAttribute('open');
+    };
+    
+    document.addEventListener("DOMContentLoaded", () => {
+        const lang = GTranslateGetCurrentLang();
+        if (lang === 'en') updateFlag('gb');
+        else if (lang === 'it') updateFlag('it');
+        else updateFlag('fr');
+
+        // Mobile menu toggle is handled via CSS checkbox .peer system now.
+    });
+</script>

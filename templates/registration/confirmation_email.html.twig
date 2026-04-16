@@ -1,0 +1,20 @@
+<div class="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100 flex items-center justify-center p-6">
+    <div class="max-w-xl bg-slate-900/40 border border-slate-800/70 rounded-2xl p-8 shadow-md text-center">
+        <h1 class="text-2xl font-extrabold text-white mb-6">Salut ! Veuillez confirmer votre email !</h1>
+
+        <p class="text-slate-200 mb-6">
+            Confirmez votre adresse email en cliquant sur le lien ci-dessous :
+        </p>
+
+        <a href="{{ signedUrl|raw }}" 
+           class="inline-block rounded-md bg-cyan-400 px-6 py-3 font-semibold text-slate-950 shadow hover:bg-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2 focus:ring-offset-slate-950 mb-6">
+            Confirmer mon email
+        </a>
+
+        <p class="text-xs text-slate-400 mb-4">
+            Ce lien expirera dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+        </p>
+
+        <p class="text-slate-200">Cordialement !</p>
+    </div>
+</div>

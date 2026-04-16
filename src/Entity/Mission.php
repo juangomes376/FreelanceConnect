@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MissionRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -31,6 +33,29 @@ class Mission
 
     #[ORM\Column]
     private ?bool $needsRevalidation = null;
+
+    #[ORM\ManyToOne(inversedBy: 'missions')]
+    private ?Category $category = null;
+
+    #[ORM\ManyToOne(inversedBy: 'missions')]
+    private ?User $client = null;
+
+    #[ORM\ManyToOne(inversedBy: 'missions')]
+    private ?User $freelance = null;
+
+    /**
+     * @var Collection<int, Application>
+     */
+    #[ORM\OneToMany(targetEntity: Application::class, mappedBy: 'mission')]
+    private Collection $applications;
+
+    #[ORM\ManyToOne(inversedBy: 'missions')]
+    private ?MissionStatus $status = null;
+
+    public function __construct()
+    {
+        $this->applications = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -105,6 +130,84 @@ class Mission
     public function setNeedsRevalidation(bool $needsRevalidation): static
     {
         $this->needsRevalidation = $needsRevalidation;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getClient(): ?User
+    {
+        return $this->client;
+    }
+
+    public function setClient(?User $client): static
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    public function getFreelance(): ?User
+    {
+        return $this->freelance;
+    }
+
+    public function setFreelance(?User $freelance): static
+    {
+        $this->freelance = $freelance;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Application>
+     */
+    public function getApplications(): Collection
+    {
+        return $this->applications;
+    }
+
+    public function addApplication(Application $application): static
+    {
+        if (!$this->applications->contains($application)) {
+            $this->applications->add($application);
+            $application->setMission($this);
+        }
+
+        return $this;
+    }
+
+    public function removeApplication(Application $application): static
+    {
+        if ($this->applications->removeElement($application)) {
+            // set the owning side to null (unless already changed)
+            if ($application->getMission() === $this) {
+                $application->setMission(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getStatus(): ?MissionStatus
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?MissionStatus $status): static
+    {
+        $this->status = $status;
 
         return $this;
     }

@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FreelanceConnect | Plateforme{% endblock %}
+
+{% block body %}
+<main class="relative isolate overflow-hidden bg-slate-950 text-slate-100">
+    <div class="absolute inset-x-0 top-0 -z-10 overflow-hidden blur-3xl">
+        <div class="relative left-1/2 h-80 w-[72rem] -translate-x-1/2 rotate-[30deg] bg-cyan-500/20 opacity-60 blur-3xl"></div>
+    </div>
+
+    <section class="mx-auto flex min-h-[calc(100vh-160px)] max-w-7xl flex-col justify-center px-4 py-16 sm:px-6 lg:px-8">
+        <div class="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div class="space-y-8">
+                <div class="inline-flex rounded-full bg-slate-800/80 px-4 py-1 text-sm font-semibold uppercase tracking-[0.24em] text-cyan-300 ring-1 ring-cyan-400/20">
+                    Projet Symfony</div>
+
+                <div class="space-y-6">
+                    <h1 class="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+                        FreelanceConnect
+                    </h1>
+                    <p class="max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
+                        Une plateforme hybride Web + API pour mettre en relation, en toute sécurité, les clients et les freelances.
+                        L'architecture est optimisée pour la robustesse backend, la sécurité des données et la qualité du code.
+                    </p>
+                </div>
+
+                <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+                    <a href="{{ path('app_login') }}" class="inline-flex w-full items-center justify-center rounded-2xl bg-cyan-500 px-6 py-3 text-base font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 transition hover:bg-cyan-400 sm:w-auto">
+                        Connexion
+                    </a>
+                    <a href="#objectifs" class="inline-flex w-full items-center justify-center rounded-2xl border border-slate-700 bg-slate-900/80 px-6 py-3 text-base font-semibold text-slate-200 transition hover:border-cyan-400 hover:text-white sm:w-auto">
+                        En savoir plus
+                    </a>
+                </div>
+            </div>
+
+            <div class="rounded-[2rem] border border-slate-800/80 bg-slate-900/70 p-8 shadow-2xl shadow-slate-950/40 backdrop-blur-xl">
+                <div class="space-y-6">
+                    <div class="rounded-3xl border border-cyan-500/10 bg-slate-950/90 p-6">
+                        <p class="text-sm uppercase tracking-[0.24em] text-cyan-300">Contexte</p>
+                        <p class="mt-3 text-slate-300">Projet réalisé en mode delivery rapide sur 30 heures, avec priorité sur:</p>
+                        <ul class="mt-4 space-y-3 text-slate-400">
+                            <li class="flex gap-3"><span class="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-cyan-400"></span>Architecture backend solide</li>
+                            <li class="flex gap-3"><span class="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-cyan-400"></span>Sécurité et intégrité des données</li>
+                            <li class="flex gap-3"><span class="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-cyan-400"></span>Qualité du code et maintenabilité</li>
+                        </ul>
+                    </div>
+                    <div class="rounded-3xl border border-slate-800/90 bg-slate-900/80 p-6 text-slate-300">
+                        <p class="text-sm uppercase tracking-[0.24em] text-slate-400">Objectifs métier</p>
+                        <p class="mt-3 leading-7">FreelanceConnect facilite la mise en relation sécurisée entre donneurs d'ordre et freelances, avec un focus sur un service fiable, simple et adapté aux besoins des deux profils.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="objectifs" class="border-t border-slate-800/70 bg-slate-950/95 px-4 py-16 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-6xl">
+            <div class="max-w-3xl space-y-4 text-slate-100">
+                <p class="text-sm font-semibold uppercase tracking-[0.28em] text-cyan-300">Spécifications fonctionnelles</p>
+                <h2 class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">Focus sur la sécurité et la fiabilité</h2>
+                <p class="text-slate-400 leading-7">La plateforme est pensée pour offrir une expérience claire sans sacrifier la robustesse technique. Les pages principales restent simples et efficaces pour respecter le temps de développement.</p>
+            </div>
+
+            <div class="mt-12 grid gap-6 lg:grid-cols-3">
+                <article class="rounded-3xl border border-slate-800/70 bg-slate-900/80 p-8 shadow-xl shadow-slate-950/20">
+                    <h3 class="text-xl font-semibold text-white">Clients</h3>
+                    <p class="mt-4 text-slate-400 leading-7">Publier des missions, sélectionner des freelances et suivre les projets en toute confiance.</p>
+                </article>
+                <article class="rounded-3xl border border-slate-800/70 bg-slate-900/80 p-8 shadow-xl shadow-slate-950/20">
+                    <h3 class="text-xl font-semibold text-white">Freelances</h3>
+                    <p class="mt-4 text-slate-400 leading-7">Recevoir des offres pertinentes, gérer ses candidatures et sécuriser ses prestations.</p>
+                </article>
+                <article class="rounded-3xl border border-slate-800/70 bg-slate-900/80 p-8 shadow-xl shadow-slate-950/20">
+                    <h3 class="text-xl font-semibold text-white">API / Backend</h3>
+                    <p class="mt-4 text-slate-400 leading-7">Architecture prête pour intégration API, avec un backend robuste et sécurisé.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

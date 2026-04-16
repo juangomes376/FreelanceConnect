@@ -13,31 +13,34 @@ class Address
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    #[ORM\Column(length: 100)]
+    private ?string $alias = null;
 
     #[ORM\Column(length: 255)]
     private ?string $street = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 50)]
     private ?string $zipCode = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 70)]
     private ?string $city = null;
+
+    #[ORM\ManyToOne(inversedBy: 'addresses')]
+    private ?User $user = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getAlias(): ?string
     {
-        return $this->name;
+        return $this->alias;
     }
 
-    public function setName(string $name): static
+    public function setAlias(string $alias): static
     {
-        $this->name = $name;
+        $this->alias = $alias;
 
         return $this;
     }
@@ -74,6 +77,18 @@ class Address
     public function setCity(string $city): static
     {
         $this->city = $city;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

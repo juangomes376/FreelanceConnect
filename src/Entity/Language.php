@@ -13,7 +13,7 @@ class Language
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(length: 30)]
     private ?string $name = null;
 
     public function getId(): ?int
