@@ -11,9 +11,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+#[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
 #[Route('/mission/status')]
 final class MissionStatusController extends AbstractController
 {
+    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route(name: 'app_mission_status_index', methods: ['GET'])]
     public function index(MissionStatusRepository $missionStatusRepository): Response
     {
@@ -22,6 +24,7 @@ final class MissionStatusController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/new', name: 'app_mission_status_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -42,6 +45,7 @@ final class MissionStatusController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/{id}', name: 'app_mission_status_show', methods: ['GET'])]
     public function show(MissionStatus $missionStatus): Response
     {
@@ -50,6 +54,7 @@ final class MissionStatusController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/{id}/edit', name: 'app_mission_status_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, MissionStatus $missionStatus, EntityManagerInterface $entityManager): Response
     {
@@ -68,6 +73,7 @@ final class MissionStatusController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/{id}', name: 'app_mission_status_delete', methods: ['POST'])]
     public function delete(Request $request, MissionStatus $missionStatus, EntityManagerInterface $entityManager): Response
     {

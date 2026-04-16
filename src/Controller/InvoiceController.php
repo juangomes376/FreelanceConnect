@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+#[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
 #[Route('/invoice')]
 final class InvoiceController extends AbstractController
 {
@@ -22,6 +23,7 @@ final class InvoiceController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/new', name: 'app_invoice_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -42,6 +44,7 @@ final class InvoiceController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/{id}', name: 'app_invoice_show', methods: ['GET'])]
     public function show(Invoice $invoice): Response
     {
@@ -50,6 +53,7 @@ final class InvoiceController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/{id}/edit', name: 'app_invoice_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Invoice $invoice, EntityManagerInterface $entityManager): Response
     {
@@ -68,6 +72,7 @@ final class InvoiceController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/{id}', name: 'app_invoice_delete', methods: ['POST'])]
     public function delete(Request $request, Invoice $invoice, EntityManagerInterface $entityManager): Response
     {

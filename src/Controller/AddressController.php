@@ -11,9 +11,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+#[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
 #[Route('/address')]
 final class AddressController extends AbstractController
 {
+    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route(name: 'app_address_index', methods: ['GET'])]
     public function index(AddressRepository $addressRepository): Response
     {
@@ -22,6 +24,7 @@ final class AddressController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/new', name: 'app_address_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -42,6 +45,7 @@ final class AddressController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/{id}', name: 'app_address_show', methods: ['GET'])]
     public function show(Address $address): Response
     {
@@ -50,6 +54,7 @@ final class AddressController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/{id}/edit', name: 'app_address_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Address $address, EntityManagerInterface $entityManager): Response
     {
@@ -68,6 +73,7 @@ final class AddressController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/{id}', name: 'app_address_delete', methods: ['POST'])]
     public function delete(Request $request, Address $address, EntityManagerInterface $entityManager): Response
     {

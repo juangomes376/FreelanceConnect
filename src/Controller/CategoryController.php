@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+#[isGranted('ROLE_ADMIN', message: 'Vous devez être connecté pour accéder à cette page.')]
 #[Route('/category')]
 final class CategoryController extends AbstractController
 {
@@ -22,6 +23,7 @@ final class CategoryController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_ADMIN', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/new', name: 'app_category_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -42,6 +44,7 @@ final class CategoryController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/{id}', name: 'app_category_show', methods: ['GET'])]
     public function show(Category $category): Response
     {
@@ -50,6 +53,7 @@ final class CategoryController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_ADMIN', message: 'Vous devez être connecté pour accéder à cette page.')] 
     #[Route('/{id}/edit', name: 'app_category_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Category $category, EntityManagerInterface $entityManager): Response
     {
@@ -68,6 +72,7 @@ final class CategoryController extends AbstractController
         ]);
     }
 
+    #[isGranted('ROLE_ADMIN', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/{id}', name: 'app_category_delete', methods: ['POST'])]
     public function delete(Request $request, Category $category, EntityManagerInterface $entityManager): Response
     {
