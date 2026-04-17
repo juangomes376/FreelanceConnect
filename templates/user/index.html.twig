@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Registro de Identidades{% endblock %}
+{% block title %}Registre des identités{% endblock %}
 
 {% block body %}
 <main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono">
@@ -57,7 +57,7 @@
                             </td>
                             <td class="px-6 py-4 text-right space-x-3">
                                 <a href="{{ path('app_user_show', {'id': user.id}) }}" class="text-[var(--color-drac-cyan)] hover:text-[var(--color-drac-purple)] transition-colors underline decoration-[var(--color-drac-cyan)]/20 uppercase text-xs">Access</a>
-                                <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">Mod</a>
+                                <a href="{{ path('app_user_modifier', {'id': user.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">Modifier</a>
                             </td>
                         </tr>
                     {% else %}

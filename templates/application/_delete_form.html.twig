@@ -1,4 +1,4 @@
-<form method="post" action="{{ path('app_application_delete', {'id': application.id}) }}" onsubmit="return confirm('ALERTA: A remoção da candidatura é permanente. Confirmar purga de arquivos?');">
+<form method="post" action="{{ path('app_application_delete', {'id': application.id}) }}" onsubmit="return confirm('ALERTE : la suppression de la candidature est permanente. Confirmer la purge des fichiers ?');">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ application.id) }}">
     <button class="w-full py-2 border border-[var(--color-drac-red)]/40 text-[var(--color-drac-red)] text-xs font-mono rounded hover:bg-[var(--color-drac-red)] hover:text-[var(--color-drac-bg)] transition-all uppercase tracking-widest">
         Executar_Purga

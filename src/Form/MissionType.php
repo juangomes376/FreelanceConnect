@@ -13,11 +13,14 @@ class MissionType extends AbstractType
     {
         $builder
             ->add('title')
+            // selectionner une catégorie parmi les catégories disponibles
+            ->add('category', null, [
+                'choice_label' => 'name',
+                'placeholder' => 'Sélectionnez une catégorie',
+            ])
             ->add('description')
             ->add('budget')
-            ->add('deadline')
-            ->add('isValidatedByAdmin')
-            ->add('needsRevalidation')
+            ->add('deadline',)
         ;
     }
 

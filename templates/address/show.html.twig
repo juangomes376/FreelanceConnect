@@ -11,11 +11,11 @@
                 <h1 class="text-3xl font-bold text-[var(--color-drac-purple)] tracking-tighter uppercase">
                     <span class="text-[var(--color-drac-comment)]">COORD_ID:</span> #{{ address.id }}
                 </h1>
-                <p class="text-[var(--color-drac-cyan)] uppercase tracking-widest text-xs mt-1">Status: Geodecodificacao_Ativa</p>
+                <p class="text-[var(--color-drac-cyan)] uppercase tracking-widest text-xs mt-1">Statut : Geodecodification_Active</p>
             </div>
             
             <div class="flex gap-4">
-                <a href="{{ path('app_address_edit', {'id': address.id}) }}" class="px-4 py-2 border border-[var(--color-drac-purple)]/30 text-[var(--color-drac-purple)] text-xs rounded hover:bg-[var(--color-drac-purple)]/10 transition-all uppercase">Mod_Loc</a>
+                <a href="{{ path('app_address_modifier', {'id': address.id}) }}" class="px-4 py-2 border border-[var(--color-drac-purple)]/30 text-[var(--color-drac-purple)] text-xs rounded hover:bg-[var(--color-drac-purple)]/10 transition-all uppercase">Modifier_Loc</a>
                 <a href="{{ path('app_address_index') }}" class="px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-all uppercase">Registry_Exit</a>
             </div>
         </div>
@@ -29,13 +29,13 @@
             
             <div class="space-y-6">
                 <div>
-                    <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Alias_Sistema</p>
+                    <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Alias_Système</p>
                     <p class="text-xl font-bold text-[var(--color-drac-pink)] uppercase tracking-tight">{{ address.alias }}</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-[var(--color-drac-curr)]">
                     <div class="col-span-1 md:col-span-2">
-                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Logradouro_Data</p>
+                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Adresse_Date</p>
                         <p class="text-sm bg-[var(--color-drac-bg)]/50 p-3 border-l-2 border-[var(--color-drac-purple)] rounded-r opacity-90 font-bold tracking-tight">{{ address.street }}</p>
                     </div>
                     <div>
@@ -43,14 +43,14 @@
                         <p class="text-lg font-bold text-[var(--color-drac-green)]">{{ address.zipCode }}</p>
                     </div>
                     <div>
-                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Cidade_Node</p>
+                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Noeud_Ville</p>
                         <p class="text-lg font-bold text-[var(--color-drac-fg)] uppercase">{{ address.city }}</p>
                     </div>
                 </div>
             </div>
 
             <div class="mt-8 pt-6 border-t border-[var(--color-drac-red)]/20">
-                <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocolo_De_Purga_Geo</h4>
+                <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocole_De_Purge_Geo</h4>
                 {{ include('address/_delete_form.html.twig') }}
             </div>
         </div>

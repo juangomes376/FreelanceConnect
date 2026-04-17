@@ -11,6 +11,10 @@ security:
                 class: App\Entity\User
                 property: email
         # used to reload user from session & other features (e.g. switch_user)
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_FREELANCER: ROLE_USER
+        
 
     firewalls:
         dev:
@@ -21,7 +25,10 @@ security:
             lazy: true
             provider: app_user_provider
             logout:
+                target: app_login
                 path: app_logout
+                invalidate_session: true
+                delete_cookies: ['REMEMBERME']
                 # where to redirect after logout
                 # target: app_any_route
 
@@ -43,9 +50,14 @@ security:
 
     # Note: Only the *first* matching rule is applied
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
-        # - { path: ^/api, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/api, roles: ROLE_USER }
+        - { path: ^/mission/status, roles: ROLE_ADMIN }
+        # - { path: ^/mission, roles: ROLE_USER }
+        - { path: ^/application, roles: ROLE_USER }
+        - { path: ^/invoice, roles: ROLE_USER }
+
 
 when@test:
     security:

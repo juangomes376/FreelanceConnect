@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Detalhes da Fatura #{{ invoice.id }}{% endblock %}
+{% block title %}Détails de la facture #{{ invoice.id }}{% endblock %}
 
 {% block body %}
 <main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono text-[var(--color-drac-fg)]">
@@ -11,11 +11,11 @@
                 <h1 class="text-3xl font-bold text-[var(--color-drac-yellow)] tracking-tighter uppercase">
                     <span class="text-[var(--color-drac-comment)]">INV_ID:</span> #{{ invoice.id }}
                 </h1>
-                <p class="text-[var(--color-drac-green)] uppercase tracking-widest text-xs mt-1">Status: Processamento_Concluido</p>
+                <p class="text-[var(--color-drac-green)] uppercase tracking-widest text-xs mt-1">Statut : Traitement_Terminé</p>
             </div>
             
             <div class="flex gap-4">
-                <a href="{{ path('app_invoice_edit', {'id': invoice.id}) }}" class="px-4 py-2 border border-[var(--color-drac-yellow)]/30 text-[var(--color-drac-yellow)] text-xs rounded hover:bg-[var(--color-drac-yellow)]/10 transition-colors uppercase">Edit_Ledger</a>
+                <a href="{{ path('app_invoice_modifier', {'id': invoice.id}) }}" class="px-4 py-2 border border-[var(--color-drac-yellow)]/30 text-[var(--color-drac-yellow)] text-xs rounded hover:bg-[var(--color-drac-yellow)]/10 transition-colors uppercase">Edit_Ledger</a>
                 <a href="{{ path('app_invoice_index') }}" class="px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-colors uppercase">Close_Audit</a>
             </div>
         </div>
@@ -31,15 +31,15 @@
                 
                 <div class="space-y-6">
                     <div>
-                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Numero_Fatura</p>
+                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Numéro_Facture</p>
                         <p class="text-lg font-bold text-[var(--color-drac-yellow)]">{{ invoice.invoiceNumber }}</p>
                     </div>
                     <div>
-                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Label_Referencia</p>
+                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Label_Reference</p>
                         <p class="text-sm italic opacity-80">"{{ invoice.label }}"</p>
                     </div>
                     <div>
-                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Data_Criacao</p>
+                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Date_Creation</p>
                         <p class="text-sm text-[var(--color-drac-fg)]">{{ invoice.createdAt ? invoice.createdAt|date('d/m/Y H:i') : 'N/A' }}</p>
                     </div>
                     <div class="grid grid-cols-2 gap-4">

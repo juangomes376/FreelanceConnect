@@ -1,0 +1,56 @@
+templates/address/_delete_form.html.twig:1:<form method="post" action="{{ path('app_address_delete', {'id': address.id}) }}" onsubmit="return confirm('ALERTE : suppression du GeoNode demandée. Confirmer la purge des coordonnées ?');">
+templates/address/edit.html.twig:3:{% block title %}Modifierifier GeoNode - Console{% endblock %}
+templates/address/edit.html.twig:10:                <span class="text-[var(--color-drac-comment)]">CMD:</span> Patch_Loc_Data
+templates/address/new.html.twig:3:{% block title %}Nouvel enregistrement GeoNode - Console{% endblock %}
+templates/address/show.html.twig:46:                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Noeud_Ville</p>
+templates/application/edit.html.twig:3:{% block title %}Editar Candidatura - Terminal{% endblock %}
+templates/application/edit.html.twig:10:                <span class="text-[var(--color-drac-comment)]">CMD:</span> Patch_Application
+templates/application/index.html.twig:18:                <span class="mr-2">+</span> Nouvelle_Candidature
+templates/application/new.html.twig:3:{% block title %}Nova Candidatura - Terminal{% endblock %}
+templates/application/show.html.twig:18:                <a href="{{ path('app_application_modifier', {'id': application.id}) }}" class="px-4 py-2 border border-[var(--color-drac-purple)]/30 text-[var(--color-drac-purple)] text-xs rounded hover:bg-[var(--color-drac-purple)]/10 transition-colors uppercase">Edit_Spec</a>
+templates/application/show.html.twig:43:                            <p class="text-xs text-[var(--color-drac-cyan)] truncate">{{ application.portfolioLinks|default('no_links_provided') }}</p>
+templates/application_status/edit.html.twig:10:                <span class="text-[var(--color-drac-comment)]">CMD:</span> Patch_State_Node
+templates/application_status/index.html.twig:40:                                <a href="{{ path('app_application_statut_show', {'id': application_statut.id}) }}" class="text-[var(--color-drac-pink)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-pink)]/20 uppercase text-xs">read</a>
+templates/application_status/new.html.twig:3:{% block title %}Nouveau statut de candidature - Console{% endblock %}
+templates/application_status/show.html.twig:38:                <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocolo_De_Purga_Estado</h4>
+templates/base.html.twig:31:            <p>© {{ "now"|date("Y") }} FreelanceConnect. Tous droits réservés.</p>
+templates/category/edit.html.twig:3:{% block title %}Editar Nodo de Categoria - Terminal{% endblock %}
+templates/category/edit.html.twig:10:                <span class="text-[var(--color-drac-comment)]">CMD:</span> Patch_Category
+templates/category/index.html.twig:40:                                <a href="{{ path('app_category_show', {'id': category.id}) }}" class="text-[var(--color-drac-cyan)] hover:text-[var(--color-drac-green)] transition-colors underline decoration-[var(--color-drac-cyan)]/20 uppercase text-xs">read</a>
+templates/category/new.html.twig:3:{% block title %}Novo Nodo de Categoria - Terminal{% endblock %}
+templates/category/show.html.twig:32:                    <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Nom_De_Catégorie</p>
+templates/invoice/edit.html.twig:10:                <span class="text-[var(--color-drac-comment)]">CMD:</span> Patch_Financial_Node
+templates/invoice/new.html.twig:3:{% block title %}Nouvel enregistrement financier - Console{% endblock %}
+templates/invoice/show.html.twig:18:                <a href="{{ path('app_invoice_modifier', {'id': invoice.id}) }}" class="px-4 py-2 border border-[var(--color-drac-yellow)]/30 text-[var(--color-drac-yellow)] text-xs rounded hover:bg-[var(--color-drac-yellow)]/10 transition-colors uppercase">Edit_Ledger</a>
+templates/invoice/show.html.twig:80:                    <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocolo_De_Estorno</h4>
+templates/language/edit.html.twig:3:{% block title %}Editar Biblioteca - Terminal{% endblock %}
+templates/language/edit.html.twig:10:                <span class="text-[var(--color-drac-comment)]">CMD:</span> Patch_Lib
+templates/language/index.html.twig:40:                                <a href="{{ path('app_language_show', {'id': language.id}) }}" class="text-[var(--color-drac-green)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-green)]/20 uppercase text-xs">read</a>
+templates/language/new.html.twig:3:{% block title %}Nova Biblioteca de Linguagem - Terminal{% endblock %}
+templates/language/show.html.twig:18:                <a href="{{ path('app_language_modifier', {'id': language.id}) }}" class="px-4 py-2 border border-[var(--color-drac-green)]/30 text-[var(--color-drac-green)] text-xs rounded hover:bg-[var(--color-drac-green)]/10 transition-colors uppercase">Edit_Lib</a>
+templates/language/show.html.twig:32:                    <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Nom_De_Langue</p>
+templates/mission/edit.html.twig:10:                <span class="text-[var(--color-drac-comment)]">CMD:</span> Edit_Mission
+templates/mission/index.html.twig:18:                <span class="mr-2">+</span> Nouvelle_Mission
+templates/mission/index.html.twig:32:                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Status</th>
+templates/mission/new.html.twig:3:{% block title %}Nouvel enregistrement - Console{% endblock %}
+templates/mission/show.html.twig:18:                <a href="{{ path('app_mission_modifier', {'id': mission.id}) }}" class="px-4 py-2 border border-[var(--color-drac-purple)]/30 text-[var(--color-drac-purple)] text-xs rounded hover:bg-[var(--color-drac-purple)]/10 transition-colors uppercase">Edit_Entry</a>
+templates/mission/show.html.twig:53:                        <p class="text-lg text-[var(--color-drac-fg)]">{{ mission.deadline ? mission.deadline|date('d F Y') : 'NOT_SET' }}</p>
+templates/mission/show.html.twig:69:                                    {{ mission.needsRevalidation ? 'YES' : 'NO' }}
+templates/mission_status/edit.html.twig:10:                <span class="text-[var(--color-drac-comment)]">CMD:</span> Patch_Lifecycle_Node
+templates/mission_status/index.html.twig:14:                <p class="text-sm text-[var(--color-drac-comment)] mt-1">Sincronizando estados permitidos para fluxos de trabalho de missões...</p>
+templates/mission_status/index.html.twig:40:                                <a href="{{ path('app_mission_statut_show', {'id': mission_statut.id}) }}" class="text-[var(--color-drac-yellow)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-yellow)]/20 uppercase text-xs">read</a>
+templates/mission_status/new.html.twig:3:{% block title %}Nouveau statut de mission - Console{% endblock %}
+templates/mission_status/show.html.twig:32:                    <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-4">Nom_De_Statut</p>
+templates/navbar.html.twig:15:                    <a href="" class="text-sm font-medium text-[var(--color-drac-fg)] hover:text-[var(--color-drac-pink)] transition-colors">Nouvel événement</a>
+templates/registration/confirmation_email.html.twig:10:           class="inline-block rounded-md bg-cyan-400 px-6 py-3 font-semibold text-slate-950 shadow hover:bg-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2 focus:ring-offset-slate-950 mb-6">
+templates/registration/register.html.twig:26:                    {{ form_widget(child, {'attr': {'class': 'w-full rounded-lg border border-[var(--color-drac-curr)] bg-[var(--color-drac-bg)]/80 px-4 py-3 text-[var(--color-drac-fg)] font-mono focus:outline-none focus:ring-2 focus:ring-[var(--color-drac-cyan)] focus:border-[var(--color-drac-cyan)] transition-all placeholder-[var(--color-drac-comment)]'}}) }}
+templates/registration/register.html.twig:34:            class="w-full rounded-lg bg-[var(--color-drac-cyan)] px-6 py-4 mt-8 font-bold text-[var(--color-drac-bg)] shadow-lg hover:bg-[var(--color-drac-green)] hover:shadow-[var(--color-drac-green)]/30 focus:outline-none transition-all font-mono uppercase tracking-widest">
+templates/security/login.html.twig:35:                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="block w-full px-4 py-3 text-[var(--color-drac-fg)] bg-[var(--color-drac-bg)]/80 border border-[var(--color-drac-curr)] rounded-lg shadow-sm focus:ring-2 focus:ring-[var(--color-drac-purple)] focus:border-[var(--color-drac-purple)] focus:outline-none sm:text-sm transition-all placeholder-[var(--color-drac-comment)] font-mono" placeholder="dev@example.com" autocomplete="email" required autofocus>
+templates/security/login.html.twig:40:                    <input type="password" name="password" id="inputPassword" class="block w-full px-4 py-3 text-[var(--color-drac-fg)] bg-[var(--color-drac-bg)]/80 border border-[var(--color-drac-curr)] rounded-lg shadow-sm focus:ring-2 focus:ring-[var(--color-drac-pink)] focus:border-[var(--color-drac-pink)] focus:outline-none sm:text-sm transition-all placeholder-[var(--color-drac-comment)] font-mono" placeholder="********" autocomplete="current-password" required>
+templates/security/login.html.twig:55:            <button type="submit" class="flex justify-center w-full px-4 py-3 text-sm font-bold text-[var(--color-drac-bg)] bg-[var(--color-drac-purple)] rounded-lg shadow-lg hover:bg-[var(--color-drac-pink)] hover:shadow-[var(--color-drac-pink)]/40 focus:outline-none transition-all font-mono uppercase tracking-widest">
+templates/security/login.html.twig:60:                Nouveau ici ? 
+templates/user/edit.html.twig:10:                <span class="text-[var(--color-drac-comment)]">CMD:</span> Patch_Identity
+templates/user/index.html.twig:28:                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Identidade</th>
+templates/user/index.html.twig:31:                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Status</th>
+templates/user/new.html.twig:3:{% block title %}Nouvel enregistrement d'identité{% endblock %}
+templates/user/show.html.twig:72:                    <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocolo_De_Purga_Identidade</h4>

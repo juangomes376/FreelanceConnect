@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Detalhes da Missao #{{ mission.id }}{% endblock %}
+{% block title %}Détails de la mission #{{ mission.id }}{% endblock %}
 
 {% block body %}
 <main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono">
@@ -16,7 +16,7 @@
             
             <div class="flex gap-4">
                 <a href="{{ path('app_mission_edit', {'id': mission.id}) }}" class="px-4 py-2 border border-[var(--color-drac-purple)]/30 text-[var(--color-drac-purple)] text-xs rounded hover:bg-[var(--color-drac-purple)]/10 transition-colors uppercase">Edit_Entry</a>
-                <a href="{{ path('app_mission_index') }}" class="px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-colors uppercase">Close_Terminal</a>
+                <a href="{{ path('app_mission_index') }}" class="px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-colors uppercase">Fermer_Console</a>
             </div>
         </div>
 
@@ -44,18 +44,18 @@
             <div class="space-y-6">
                 <div class="bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] rounded-2xl p-6 space-y-6">
                     <div>
-                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase tracking-wider mb-1 font-bold">Orcamento_Alocado</p>
+                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase tracking-wider mb-1 font-bold">Budget_Allocaté</p>
                         <p class="text-2xl text-[var(--color-drac-green)] font-bold">${{ mission.budget }}</p>
                     </div>
                     
                     <div>
-                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase tracking-wider mb-1 font-bold">Prazo_Final</p>
+                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase tracking-wider mb-1 font-bold">Date_Limite</p>
                         <p class="text-lg text-[var(--color-drac-fg)]">{{ mission.deadline ? mission.deadline|date('d F Y') : 'NOT_SET' }}</p>
                         <p class="text-[10px] text-[var(--color-drac-comment)] mt-1 uppercase">{{ mission.deadline ? mission.deadline|date('H:i:s T') : '' }}</p>
                     </div>
 
                     <div class="pt-6 border-t border-[var(--color-drac-curr)]">
-                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase tracking-wider mb-2 font-bold">Status_Seguranca</p>
+                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase tracking-wider mb-2 font-bold">Statut_Sécurité</p>
                         <div class="space-y-2">
                             <div class="flex items-center justify-between text-xs">
                                 <span>Validated by Admin</span>
@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="p-4 border border-[var(--color-drac-red)]/20 rounded-2xl bg-[var(--color-drac-red)]/5">
-                    <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocolo_De_Exclusao</h4>
+                    <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocole_De_Suppression</h4>
                     {{ include('mission/_delete_form.html.twig') }}
                 </div>
             </div>

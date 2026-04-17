@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Detalhes do Status de Missão #{{ mission_status.id }}{% endblock %}
+{% block title %}Détails du statut de mission #{{ mission_statut.id }}{% endblock %}
 
 {% block body %}
 <main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono text-[var(--color-drac-fg)]">
@@ -9,14 +9,14 @@
         <div class="flex items-center justify-between border-b border-[var(--color-drac-curr)] pb-6">
             <div>
                 <h1 class="text-3xl font-bold text-[var(--color-drac-yellow)] tracking-tighter uppercase">
-                    <span class="text-[var(--color-drac-comment)]">STATE_ID:</span> #{{ mission_status.id }}
+                    <span class="text-[var(--color-drac-comment)]">STATE_ID:</span> #{{ mission_statut.id }}
                 </h1>
-                <p class="text-[var(--color-drac-cyan)] uppercase tracking-widest text-xs mt-1">Status: Nodo_Lifecycle_Auditado</p>
+                <p class="text-[var(--color-drac-cyan)] uppercase tracking-widest text-xs mt-1">Statut : Nœud_Cycle_de_Vie_Auditée</p>
             </div>
             
             <div class="flex gap-4">
-                <a href="{{ path('app_mission_status_edit', {'id': mission_status.id}) }}" class="px-4 py-2 border border-[var(--color-drac-yellow)]/30 text-[var(--color-drac-yellow)] text-xs rounded hover:bg-[var(--color-drac-yellow)]/10 transition-colors uppercase">Edit_Node</a>
-                <a href="{{ path('app_mission_status_index') }}" class="px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-colors uppercase">Registry_Back</a>
+                <a href="{{ path('app_mission_statut_modifier', {'id': mission_statut.id}) }}" class="px-4 py-2 border border-[var(--color-drac-yellow)]/30 text-[var(--color-drac-yellow)] text-xs rounded hover:bg-[var(--color-drac-yellow)]/10 transition-colors uppercase">Modifierifier_Nœud</a>
+                <a href="{{ path('app_mission_statut_index') }}" class="px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-colors uppercase">Retour_Enregistrement</a>
             </div>
         </div>
 
@@ -25,18 +25,18 @@
                 <span class="text-[var(--color-drac-yellow)] text-[10px]">MISSION_STATE_DESCRIPTOR</span>
             </div>
             
-            <h2 class="text-xs uppercase text-[var(--color-drac-green)] tracking-[0.3em] mb-6 border-b border-[var(--color-drac-curr)] pb-2">Status_Metadata</h2>
+            <h2 class="text-xs uppercase text-[var(--color-drac-green)] tracking-[0.3em] mb-6 border-b border-[var(--color-drac-curr)] pb-2">Statut_Métadonnées</h2>
             
             <div class="space-y-6 text-center py-10">
                 <div>
-                    <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-4">Nome_Do_Estado</p>
-                    <p class="text-4xl font-black text-[var(--color-drac-fg)] uppercase tracking-tighter glow-green">{{ mission_status.name }}</p>
+                    <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-4">Nom_De_Statut</p>
+                    <p class="text-4xl font-black text-[var(--color-drac-fg)] uppercase tracking-tighter glow-green">{{ mission_statut.name }}</p>
                 </div>
             </div>
 
             <div class="mt-10 pt-6 border-t border-[var(--color-drac-red)]/20">
-                <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocolo_De_Remocao_Logica</h4>
-                {{ include('mission_status/_delete_form.html.twig') }}
+                <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocole_De_Suppression_Logique</h4>
+                {{ include('mission_statut/_delete_form.html.twig') }}
             </div>
         </div>
 

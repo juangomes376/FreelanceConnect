@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Novo Registro - Terminal{% endblock %}
+{% block title %}Nouvel enregistrement - Console{% endblock %}
 
 {% block body %}
 <main class="flex-grow flex items-center justify-center p-6 bg-[var(--color-drac-bg)]">
@@ -9,7 +9,7 @@
             <h1 class="text-2xl font-bold text-[var(--color-drac-purple)] font-mono uppercase tracking-tighter">
                 <span class="text-[var(--color-drac-comment)]">CMD:</span> New_Mission
             </h1>
-            <a href="{{ path('app_mission_index') }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-fg)] font-mono text-xs uppercase tracking-widest">Abort_Command</a>
+            <a href="{{ path('app_mission_index') }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-fg)] font-mono text-xs uppercase tracking-widest">Annuler_Commande</a>
         </div>
 
         {{ include('mission/_form.html.twig') }}

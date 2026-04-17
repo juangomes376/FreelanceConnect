@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Status de Missão - Terminal{% endblock %}
+{% block title %}Statut de mission - Console{% endblock %}
 
 {% block body %}
 <main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono text-[var(--color-drac-fg)]">
@@ -14,8 +14,8 @@
                 <p class="text-sm text-[var(--color-drac-comment)] mt-1">Sincronizando estados permitidos para fluxos de trabalho de missões...</p>
             </div>
             
-            <a href="{{ path('app_mission_status_new') }}" class="inline-flex items-center px-6 py-3 bg-[var(--color-drac-yellow)]/10 border border-[var(--color-drac-yellow)]/30 text-[var(--color-drac-yellow)] rounded-xl text-sm hover:bg-[var(--color-drac-yellow)] hover:text-[var(--color-drac-bg)] transition-all uppercase tracking-widest">
-                <span class="mr-2">+</span> Spawn_Status_Node
+            <a href="{{ path('app_mission_statut_new') }}" class="inline-flex items-center px-6 py-3 bg-[var(--color-drac-yellow)]/10 border border-[var(--color-drac-yellow)]/30 text-[var(--color-drac-yellow)] rounded-xl text-sm hover:bg-[var(--color-drac-yellow)] hover:text-[var(--color-drac-bg)] transition-all uppercase tracking-widest">
+                <span class="mr-2">+</span> Créer_Nœud_Statut
             </a>
         </div>
 
@@ -30,15 +30,15 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-[var(--color-drac-curr)]">
-                    {% for mission_status in mission_statuses %}
+                    {% for mission_statut in mission_statutes %}
                         <tr class="hover:bg-[var(--color-drac-yellow)]/5 transition-colors group">
-                            <td class="px-6 py-4 text-[var(--color-drac-comment)] font-bold">#{{ mission_status.id }}</td>
+                            <td class="px-6 py-4 text-[var(--color-drac-comment)] font-bold">#{{ mission_statut.id }}</td>
                             <td class="px-6 py-4">
-                                <span class="px-3 py-1 rounded bg-[var(--color-drac-yellow)]/5 text-[var(--color-drac-yellow)] border border-[var(--color-drac-yellow)]/30 text-[10px] font-bold uppercase tracking-widest">{{ mission_status.name }}</span>
+                                <span class="px-3 py-1 rounded bg-[var(--color-drac-yellow)]/5 text-[var(--color-drac-yellow)] border border-[var(--color-drac-yellow)]/30 text-[10px] font-bold uppercase tracking-widest">{{ mission_statut.name }}</span>
                             </td>
                             <td class="px-6 py-4 text-right space-x-3">
-                                <a href="{{ path('app_mission_status_show', {'id': mission_status.id}) }}" class="text-[var(--color-drac-yellow)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-yellow)]/20 uppercase text-xs">read</a>
-                                <a href="{{ path('app_mission_status_edit', {'id': mission_status.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">mod</a>
+                                <a href="{{ path('app_mission_statut_show', {'id': mission_statut.id}) }}" class="text-[var(--color-drac-yellow)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-yellow)]/20 uppercase text-xs">read</a>
+                                <a href="{{ path('app_mission_statut_modifier', {'id': mission_statut.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">mod</a>
                             </td>
                         </tr>
                     {% else %}

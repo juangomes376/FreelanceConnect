@@ -11,11 +11,11 @@
                 <h1 class="text-3xl font-bold text-[var(--color-drac-green)] tracking-tighter uppercase">
                     <span class="text-[var(--color-drac-comment)]">LIB_ID:</span> #{{ language.id }}
                 </h1>
-                <p class="text-[var(--color-drac-cyan)] uppercase tracking-widest text-xs mt-1">Status: Biblioteca_Compilada</p>
+                <p class="text-[var(--color-drac-cyan)] uppercase tracking-widest text-xs mt-1">Statut : Bibliothèque_Compilée</p>
             </div>
             
             <div class="flex gap-4">
-                <a href="{{ path('app_language_edit', {'id': language.id}) }}" class="px-4 py-2 border border-[var(--color-drac-green)]/30 text-[var(--color-drac-green)] text-xs rounded hover:bg-[var(--color-drac-green)]/10 transition-colors uppercase">Edit_Lib</a>
+                <a href="{{ path('app_language_modifier', {'id': language.id}) }}" class="px-4 py-2 border border-[var(--color-drac-green)]/30 text-[var(--color-drac-green)] text-xs rounded hover:bg-[var(--color-drac-green)]/10 transition-colors uppercase">Edit_Lib</a>
                 <a href="{{ path('app_language_index') }}" class="px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-colors uppercase">Return_Registry</a>
             </div>
         </div>
@@ -25,17 +25,17 @@
                 <span class="text-[var(--color-drac-green)] text-[10px]">LINGUISTIC_CORE_V2</span>
             </div>
             
-            <h2 class="text-xs uppercase text-[var(--color-drac-pink)] tracking-[0.3em] mb-6 border-b border-[var(--color-drac-curr)] pb-2">Parametros_Da_Biblioteca</h2>
+            <h2 class="text-xs uppercase text-[var(--color-drac-pink)] tracking-[0.3em] mb-6 border-b border-[var(--color-drac-curr)] pb-2">Paramètres_De_La_Bibliothèque</h2>
             
             <div class="space-y-6">
                 <div>
-                    <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Nome_Da_Linguagem</p>
+                    <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Nom_De_Langue</p>
                     <p class="text-2xl font-bold text-[var(--color-drac-green)] uppercase tracking-tight">{{ language.name }}</p>
                 </div>
             </div>
 
             <div class="mt-10 pt-6 border-t border-[var(--color-drac-red)]/20">
-                <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocolo_De_Purga_Biblioteca</h4>
+                <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocole_De_Purge_Bibliothèque</h4>
                 {{ include('language/_delete_form.html.twig') }}
             </div>
         </div>

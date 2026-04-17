@@ -1,0 +1,860 @@
+">
+"{{ application.coverLetter }}"
+"{{ application.coverLetter|slice(0, 50) }}..."
+"{{ invoice.label }}"
+#
+#objectifs
+#{{ address.id }}
+#{{ application.id }}
+#{{ application_status.id }}
+#{{ category.id }}
+#{{ invoice.id }}
+#{{ language.id }}
+#{{ mission.id }}
+#{{ mission_status.id }}
+#{{ user.id }}
+$
+${{ invoice.amountHT }}
+${{ invoice.amountTTC }}
+${{ mission.budget }}
+&gt;
+&lt;
+) }}" class="inline-flex w-full items-center justify-center rounded-2xl bg-[var(--color-drac-cyan)] px-6 py-3 text-base font-semibold text-[var(--color-drac-bg)] shadow-lg shadow-[var(--color-drac-cyan)]/20 transition hover:bg-[var(--color-drac-green)] sm:w-auto font-mono">
+                        Connexion
+                    </a>
+                    <a href="#objectifs" class="inline-flex w-full items-center justify-center rounded-2xl border border-[var(--color-drac-comment)] bg-[var(--color-drac-curr)]/50 px-6 py-3 text-base font-semibold text-[var(--color-drac-fg)] transition hover:border-[var(--color-drac-pink)] hover:text-[var(--color-drac-pink)] sm:w-auto font-mono">
+                        En savoir plus
+                    </a>
+                </div>
+            </div>
+
+            <div class="rounded-[2rem] border border-[var(--color-drac-curr)] bg-[var(--color-drac-bg)]/50 p-8 shadow-2xl shadow-[var(--color-drac-bg)]/40 backdrop-blur-xl">
+                <div class="space-y-6">
+                    <div class="rounded-3xl border border-[var(--color-drac-purple)]/20 bg-[var(--color-drac-curr)]/40 p-6">
+                        <p class="text-sm uppercase tracking-[0.24em] text-[var(--color-drac-purple)] font-mono">Contexte</p>
+                        <p class="mt-3 text-[var(--color-drac-fg)]">Projet réalisé en mode delivery rapide sur 30 heures, avec priorité sur:</p>
+                        <ul class="mt-4 space-y-3 text-[var(--color-drac-comment)]">
+                            <li class="flex gap-3"><span class="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-[var(--color-drac-pink)]"></span>Architecture backend solide</li>
+                            <li class="flex gap-3"><span class="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-[var(--color-drac-pink)]"></span>Sécurité et intégrité des données</li>
+                            <li class="flex gap-3"><span class="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-[var(--color-drac-pink)]"></span>Qualité du code et maintenabilité</li>
+                        </ul>
+                    </div>
+                    <div class="rounded-3xl border border-[var(--color-drac-curr)]/90 bg-[var(--color-drac-curr)]/40 p-6 text-[var(--color-drac-fg)]">
+                        <p class="text-sm uppercase tracking-[0.24em] text-[var(--color-drac-cyan)] font-mono">Objectifs métier</p>
+                        <p class="mt-3 leading-7 text-[var(--color-drac-comment)]">FreelanceConnect facilite la mise en relation sécurisée entre donneurs d
++
++${{ invoice.amountTVA }}
+.
+>
+                <a href=
+>
+                <span class=
+>Accueil</a>
+                <a href=
+>Candidatures</a>
+                <a href=
+>Factures</a>
+                {# {% if is_granted('ROLE_ADMIN') %}
+                    <a href=
+>Free<span class=
+>Lance</span>Connect</span>
+            </a>
+
+            <nav class=
+>Missions</a>
+                <a href=
+@
+ALERTA FINANCEIRO: A exclusão da fatura é irreversível. Confirmar estorno permanente?
+ALERTA: A purga de identidade removerá todos os registros associados. Prosseguir?
+ALERTA: A remoção da candidatura é permanente. Confirmar purga de arquivos?
+ALERTA: Remocao de GeoNode solicitada. Confirmar purga de coordenadas?
+ALERTA: Remocao de biblioteca solicitada. Confirmar purga de arquivos binarios?
+ALERTA: Remocao de categoria solicitada. Confirmar purga de nodo do sistema?
+ALERTA: Remocao de estado de fluxo detectada. Confirmar purga do nodo?
+ALERTA: Remocao de nodo de ciclo de vida detectada. Confirmar purga definitiva?
+API / Backend
+ATENÇÃO: Operação de exclusão de dados é irreversível. Confirmar protocolo?
+Abort_Command
+Abortar sessao
+Access
+Accueil
+Acessar Terminal
+Acesso restrito :: Terminal de desenvolvedor
+Acoes
+Action
+Add_Category_Node
+Adiantamento
+Adiantamento Aceito
+Alias/Label
+Alias_Sistema
+Application
+Architecture backend solide
+Architecture prête pour intégration API, avec un backend robuste et sécurisé.
+Atributos_De_Contexto
+Auditando registros de faturamento e transações...
+Back_To_Registry
+Base HT
+CANDIDACY_DATA_STREAM
+CAT_ID:
+CLASSIFICATION_NODE_V1
+CMD:
+COORD_ID:
+CV_Source
+Calculo_Financeiro
+Candidatures
+Carta_Apresentacao
+Carta_De_Apresentacao
+Ce lien expirera dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+Cidade_Node
+City_Node
+Classificado: Alta Prioridade
+Clients
+Close_Audit
+Close_Terminal
+Commit_Classification_Patch
+Commit_Lib_Update
+Commit_Lifecycle_Node
+Commit_State_Change
+Confirmar Registro
+Confirmer mon email
+Confirmez votre adresse email en cliquant sur le lien ci-dessous :
+Connect
+Connexion
+Consultando base de usuários autenticados...
+Context_Label
+Contexte
+Cordialement !
+Create_Identity
+Criar Identidade
+Criar_Identidade
+Data_Criacao
+Database query returned empty set.
+Definicao_Do_Estado
+Deploy_Financial_Node
+Descricao_Protocolo
+E-mail
+ENCRYPT_V2.4
+ENTRY_NOT_FOUND: No applications in queue.
+ERROR: {{ error.messageKey|trans(error.messageData, 'security') }}
+Edit_Entry
+Edit_Ledger
+Edit_Lib
+Edit_Mission
+Edit_Node
+Edit_Spec
+Emissor_Siret
+En savoir plus
+Encrypted_Hash (Password)
+Enregistrer
+Executar Login
+Executar_Commit
+Executar_Purga
+Exit_Buffer
+Explorando banco de dados de contratos disponíveis...
+FALSE
+FILE_ID:
+FIN_ENTRY_V3
+Factures
+Fatura_ID
+Focus sur la sécurité et la fiabilité
+Free
+FreelanceConnect
+FreelanceConnect facilite la mise en relation sécurisée entre donneurs d'ordre et freelances, avec un focus sur un service fiable, simple et adapté aux besoins des deux profils.
+Freelances
+GEO_POSITION_LOCK
+Generate_Invoice
+Gerar_Invoice
+Gerenciando estados de fluxo de candidaturas...
+H:i:s T
+HALT: Mission state index is empty.
+Horas
+Horas_Estimadas
+ID
+IDENTITY_ID:
+INV_ID:
+Identidade
+Import_Lib
+Informacoes_Gerais
+Initialize registration protocol...
+Initialize_Candidacy
+Initialize_Category_Node
+Initialize_Lib_Buffer
+Initialize_Node
+Initialize_State
+Initialize_State_Node
+Initialize_Transaction
+Inject_Language_Package
+Inserir_Node
+Já possui autorização?
+LIB_ID:
+LINGUISTIC_CORE_V2
+La plateforme est pensée pour offrir une expérience claire sans sacrifier la robustesse technique. Les pages principales restent simples et efficaces pour respecter le temps de développement.
+Label
+Label_Referencia
+Lance
+Language_Name
+Login
+Logradouro_Data
+MISSION_STATE_DESCRIPTOR
+Manter sessao persistente
+Metadata_Localizacao
+Missions
+Mod
+Mod_Category
+Mod_Identity
+Mod_Loc
+Mod_State
+Montante_TTC
+N/A
+NOT_SET
+NULL_IDENTITIES_FOUND
+NULL_INDEX: No categories defined in registry.
+NULL_LIBS: No languages registered.
+NULL_POINTER_EXCEPTION: No missions found.
+Needs Revalidation
+New_Category
+New_Language_Pkg
+New_Lifecycle_State
+New_Mission
+New_State_Matrix
+Nome_Da_Categoria
+Nome_Da_Linguagem
+Nome_Do_Estado
+Nouvel événement
+Nova_Candidatura
+Nova_Missao
+Novo por aqui?
+Numero_Fatura
+OFF_GRID: No registered addresses found.
+Objectifs métier
+Objectivo_Principal
+Orcamento
+Orcamento_Alocado
+PENDING
+Parametros_Da_Biblioteca
+Password
+Patch_Application
+Patch_Category
+Patch_Financial_Node
+Patch_Identity
+Patch_Lib
+Patch_Lifecycle_Node
+Patch_Loc_Data
+Patch_State_Node
+Permissions_Bitmask
+Permissoes
+Portfolio
+Portfolio_Links
+Prazo
+Prazo_Final
+Prefixo_Postal
+Projet Symfony
+Projet réalisé en mode delivery rapide sur 30 heures, avec priorité sur:
+Protocolo_De_Delecao_Indice
+Protocolo_De_Estorno
+Protocolo_De_Exclusao
+Protocolo_De_Purga_Biblioteca
+Protocolo_De_Purga_Estado
+Protocolo_De_Purga_Geo
+Protocolo_De_Purga_Identidade
+Protocolo_De_Remocao
+Protocolo_De_Remocao_Logica
+Publier des missions, sélectionner des freelances et suivre les projets en toute confiance.
+Purge_Coords
+Purge_Flow_Node
+Purge_Library
+Purge_Lifecycle_Node
+Purge_Node
+Purge_Record
+Push_New_State
+Qualité du code et maintenabilité
+ROLE_ADMIN
+ROLE_FREELANCE
+Rebase_Coordinates
+Rebase_Lifecycle_Buffer
+Rebase_State_Flow
+Recevoir des offres pertinentes, gérer ses candidatures et sécuriser ses prestations.
+Recursos_Adicionais
+Reg_Loc_Node
+Register_Classification_Node
+Register_Loc
+Registry_Back
+Registry_Exit
+Return_Index
+Return_Registry
+Rotulo_Display
+SEC_PROTOCOL_ALPHA
+SPEC_ID:
+STATE_ID:
+STATE_SPEC_V1
+STATUS: Logado como
+Salut ! Veuillez confirmer votre email !
+Sincronizando banco de dados de localizações físicas...
+Sincronizando bibliotecas de linguagens suportadas...
+Sincronizando estados permitidos para fluxos de trabalho de missões...
+Sincronizando registros de candidaturas enviadas...
+Sincronizando índices de classificação de missões...
+Siret
+Siret_Emissor
+Siret_Entry
+Solicitacao_Adiantamento
+Spawn_Status_Node
+Spécifications fonctionnelles
+State_Descriptor
+State_Label
+Status
+Status: Analise_De_Candidato
+Status: Biblioteca_Compilada
+Status: Geodecodificacao_Ativa
+Status: Nodo_Ativo_No_Sistema
+Status: Nodo_Lifecycle_Auditado
+Status: Processamento_Concluido
+Status: Registrado_No_Sistema
+Status: {{ user.isVerified ? 'VERIFIED_ENTRY' : 'UNVERIFIED_PENDING' }}
+Status_Financeiro
+Status_Metadata
+Status_Seguranca
+Street_Data
+Sync_Candidacy_Buffer
+Sync_Changes
+Sync_Coordinates
+Sync_Financial_Buffer
+Sync_Identity_Buffer
+Sécurité et intégrité des données
+TRUE
+Taxa TVA ({{ invoice.tvaRate }}%)
+Technical_Specifications
+Timestamp_Creation
+Tipo
+Titulo
+Toggle mobile menu
+Total TTC
+Type
+UNKNOWN
+UNVERIFIED
+UNVERIFIED_PENDING
+UTF-8
+Une plateforme hybride Web + API pour mettre en relation, en toute sécurité, les clients et les freelances.
+                        L'architecture est optimisée pour la robustesse backend, la sécurité des données et la qualité du code.
+Unknown_Mission
+Update_Geo_Metadata
+Upload_Application
+VALIDATED
+VERIFIED
+VERIFIED_ENTRY
+VOID_STATE: Index empty.
+Validated by Admin
+VerifyEmailBundle
+Void_Transaction
+Y
+ZERO_BALANCE: No invoices archival found.
+Zip_Code
+[[
+]]
+_csrf_token
+_remember_me
+_token
+absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-[var(--color-drac-pink)]/10 rounded-full blur-3xl opacity-50
+absolute bottom-1/4 right-0 -mr-20 w-96 h-96 bg-[var(--color-drac-purple)]/5 rounded-full blur-3xl
+absolute inset-x-0 top-0 -z-10 overflow-hidden blur-3xl
+absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-[var(--color-drac-purple)]/10 rounded-full blur-3xl opacity-50
+absolute top-0 right-0 p-4
+absolute top-0 right-0 p-4 opacity-10
+absolute top-0 right-0 p-4 opacity-20
+absolute top-1/4 left-0 -ml-20 w-96 h-96 bg-[var(--color-drac-cyan)]/5 rounded-full blur-3xl
+acepte
+address/_delete_form.html.twig
+address/_form.html.twig
+app
+app_address_delete
+app_address_edit
+app_address_index
+app_address_new
+app_address_show
+app_application_delete
+app_application_edit
+app_application_index
+app_application_new
+app_application_new_mission
+app_application_show
+app_application_status_delete
+app_application_status_edit
+app_application_status_index
+app_application_status_new
+app_application_status_show
+app_category_delete
+app_category_edit
+app_category_index
+app_category_new
+app_category_show
+app_home
+app_invoice_delete
+app_invoice_edit
+app_invoice_index
+app_invoice_new
+app_invoice_show
+app_language_delete
+app_language_edit
+app_language_index
+app_language_new
+app_language_show
+app_login
+app_mission_delete
+app_mission_edit
+app_mission_index
+app_mission_new
+app_mission_show
+app_mission_status
+app_mission_status_delete
+app_mission_status_edit
+app_mission_status_index
+app_mission_status_new
+app_mission_status_show
+app_register
+app_user_delete
+app_user_edit
+app_user_index
+app_user_new
+app_user_show
+application/_delete_form.html.twig
+application/_form.html.twig
+application_state_matrix
+application_status/_delete_form.html.twig
+application_status/_form.html.twig
+architecture est optimisée pour la robustesse backend, la sécurité des données et la qualité du code.
+                    </p>
+                </div>
+
+                <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
+                    <a href="{{ path(
+attr
+authenticate
+base.html.twig
+bg-[var(--color-drac-bg)]/50 p-6 border-l-2 border-[var(--color-drac-green)] rounded-r-lg text-sm leading-relaxed opacity-90 italic
+bg-[var(--color-drac-curr)]/30 border border-[var(--color-drac-curr)] rounded-2xl p-8 space-y-6 shadow-lg
+bg-[var(--color-drac-curr)]/50 text-[var(--color-drac-comment)] uppercase tracking-wider
+bg-[var(--color-drac-curr)]/50 text-[var(--color-drac-cyan)] uppercase tracking-wider
+bg-[var(--color-drac-curr)]/50 text-[var(--color-drac-pink)] uppercase tracking-wider
+bg-[var(--color-drac-curr)]/50 text-[var(--color-drac-purple)] uppercase tracking-wider
+bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] rounded-2xl p-6
+bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] rounded-2xl p-6 space-y-6
+bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] rounded-2xl p-6 text-center space-y-4 neon-border-cyan
+bg-[var(--color-drac-surface)]/40 border border-[var(--color-drac-curr)] rounded-2xl overflow-hidden backdrop-blur-sm shadow-2xl
+bg-[var(--color-drac-surface)]/40 border border-[var(--color-drac-curr)] rounded-2xl overflow-hidden backdrop-blur-sm shadow-2xl max-w-4xl mx-auto
+bg-[var(--color-drac-surface)]/40 border border-[var(--color-drac-curr)] rounded-2xl p-8 backdrop-blur-sm relative overflow-hidden
+bg-[var(--color-drac-surface)]/60 border border-[var(--color-drac-curr)] rounded-2xl p-8 backdrop-blur-sm shadow-xl neon-border-cyan relative overflow-hidden max-w-xl mx-auto
+bg-[var(--color-drac-surface)]/60 border border-[var(--color-drac-curr)] rounded-2xl p-8 backdrop-blur-sm shadow-xl neon-border-green relative overflow-hidden
+bg-[var(--color-drac-surface)]/60 border border-[var(--color-drac-curr)] rounded-2xl p-8 backdrop-blur-sm shadow-xl neon-border-green relative overflow-hidden max-w-xl mx-auto
+bg-[var(--color-drac-surface)]/60 border border-[var(--color-drac-curr)] rounded-2xl p-8 backdrop-blur-sm shadow-xl neon-border-pink relative overflow-hidden max-w-xl mx-auto
+bg-[var(--color-drac-surface)]/60 border border-[var(--color-drac-curr)] rounded-2xl p-8 backdrop-blur-sm shadow-xl neon-border-purple relative overflow-hidden
+bg-[var(--color-drac-surface)]/60 border border-[var(--color-drac-curr)] rounded-2xl p-8 backdrop-blur-sm shadow-xl neon-border-purple relative overflow-hidden max-w-2xl
+bg-[var(--color-drac-surface)]/60 border border-[var(--color-drac-curr)] rounded-2xl p-8 backdrop-blur-sm shadow-xl neon-border-yellow relative overflow-hidden
+bg-[var(--color-drac-surface)]/60 border border-[var(--color-drac-curr)] rounded-2xl p-8 backdrop-blur-sm shadow-xl neon-border-yellow relative overflow-hidden max-w-xl mx-auto
+binary_not_found
+block ml-2 text-xs text-[var(--color-drac-comment)] font-mono
+block text-xs font-mono text-[var(--color-drac-cyan)] mb-2 uppercase tracking-widest transition-colors group-focus-within:text-[var(--color-drac-pink)]
+block text-xs font-mono text-[var(--color-drac-cyan)] uppercase tracking-widest mb-2
+block w-full px-4 py-3 text-[var(--color-drac-fg)] bg-[var(--color-drac-bg)]/80 border border-[var(--color-drac-curr)] rounded-lg shadow-sm focus:ring-2 focus:ring-[var(--color-drac-pink)] focus:border-[var(--color-drac-pink)] focus:outline-none sm:text-sm transition-all placeholder-[var(--color-drac-comment)] font-mono
+block w-full px-4 py-3 text-[var(--color-drac-fg)] bg-[var(--color-drac-bg)]/80 border border-[var(--color-drac-curr)] rounded-lg shadow-sm focus:ring-2 focus:ring-[var(--color-drac-purple)] focus:border-[var(--color-drac-purple)] focus:outline-none sm:text-sm transition-all placeholder-[var(--color-drac-comment)] font-mono
+border-t border-[var(--color-drac-curr)] bg-[var(--color-drac-bg)] px-4 py-16 sm:px-6 lg:px-8
+border-t border-[var(--color-drac-curr)] bg-[var(--color-drac-bg)]/80 py-10 backdrop-blur-lg relative z-10
+button_label
+category/_delete_form.html.twig
+category/_form.html.twig
+category_buffer
+checkbox
+class=
+col-span-1 md:col-span-2
+csrf-protection
+current-password
+d F Y
+d/m/Y
+d/m/Y H:i
+delete
+dev@example.com
+divide-y divide-[var(--color-drac-curr)]
+edit
+email
+financial_ledger
+flex flex-col
+flex flex-col gap-4 sm:flex-row sm:items-center
+flex flex-col items-center justify-center flex-grow p-4 sm:p-6 bg-[var(--color-drac-bg)] relative overflow-hidden
+flex flex-col sm:flex-row sm:items-center justify-between gap-4
+flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[var(--color-drac-curr)] pb-6
+flex flex-wrap gap-2
+flex gap-3
+flex gap-4
+flex gap-4 text-xs
+flex items-center
+flex items-center gap-4 md:gap-8
+flex items-center justify-between
+flex items-center justify-between border-b border-[var(--color-drac-curr)] pb-6
+flex items-center justify-between text-xs
+flex justify-between items-center
+flex justify-center w-full px-4 py-3 text-sm font-bold text-[var(--color-drac-bg)] bg-[var(--color-drac-purple)] rounded-lg shadow-lg hover:bg-[var(--color-drac-pink)] hover:shadow-[var(--color-drac-pink)]/40 focus:outline-none transition-all font-mono uppercase tracking-widest
+flex-grow flex flex-col
+flex-grow flex items-center justify-center p-6 bg-[var(--color-drac-bg)]
+flex-grow flex items-center justify-center p-6 bg-[var(--color-drac-bg)] font-mono
+flex-grow flex items-center justify-center p-6 bg-[var(--color-drac-bg)] font-mono text-[var(--color-drac-fg)]
+flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)]
+flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono
+flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono text-[var(--color-drac-fg)]
+font-bold text-[var(--color-drac-cyan)] uppercase text-xs
+font-bold text-[var(--color-drac-fg)]
+font-bold text-[var(--color-drac-green)] uppercase text-xs
+font-bold text-[var(--color-drac-pink)] uppercase text-xs
+font-bold text-[var(--color-drac-purple)] underline decoration-[var(--color-drac-purple)]/30 hover:decoration-[var(--color-drac-purple)] transition-all
+font-medium text-[var(--color-drac-cyan)] hover:text-[var(--color-drac-purple)] transition-colors
+font-mono text-[var(--color-drac-yellow)]
+geo_coordinates
+gps
+grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center
+grid grid-cols-1 lg:grid-cols-3 gap-8
+grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-[var(--color-drac-curr)]
+grid grid-cols-1 md:grid-cols-2 gap-8
+grid grid-cols-1 md:grid-cols-3 gap-8
+grid grid-cols-1 sm:grid-cols-2 gap-6
+grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8
+grid grid-cols-2 gap-4
+group
+hidden
+icon
+id
+identity_registry
+inline-block rounded-md bg-cyan-400 px-6 py-3 font-semibold text-slate-950 shadow hover:bg-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-300 focus:ring-offset-2 focus:ring-offset-slate-950 mb-6
+inline-block w-full
+inline-flex items-center px-2 py-1 rounded bg-[var(--color-drac-green)]/10 text-[var(--color-drac-green)] text-xs border border-[var(--color-drac-green)]/20
+inline-flex items-center px-2 py-1 rounded bg-[var(--color-drac-orange)]/10 text-[var(--color-drac-orange)] text-xs border border-[var(--color-drac-orange)]/20
+inline-flex items-center px-6 py-3 bg-[var(--color-drac-cyan)]/10 border border-[var(--color-drac-cyan)]/30 text-[var(--color-drac-cyan)] rounded-xl text-sm hover:bg-[var(--color-drac-cyan)] hover:text-[var(--color-drac-bg)] transition-all shadow-lg hover:shadow-[var(--color-drac-cyan)]/20 uppercase tracking-widest
+inline-flex items-center px-6 py-3 bg-[var(--color-drac-green)]/10 border border-[var(--color-drac-green)]/30 text-[var(--color-drac-green)] rounded-xl font-mono text-sm hover:bg-[var(--color-drac-green)] hover:text-[var(--color-drac-bg)] transition-all shadow-lg hover:shadow-[var(--color-drac-green)]/20 uppercase tracking-widest
+inline-flex items-center px-6 py-3 bg-[var(--color-drac-green)]/10 border border-[var(--color-drac-green)]/30 text-[var(--color-drac-green)] rounded-xl text-sm hover:bg-[var(--color-drac-green)] hover:text-[var(--color-drac-bg)] transition-all shadow-lg hover:shadow-[var(--color-drac-green)]/20 uppercase tracking-widest
+inline-flex items-center px-6 py-3 bg-[var(--color-drac-pink)]/10 border border-[var(--color-drac-pink)]/30 text-[var(--color-drac-pink)] rounded-xl text-sm hover:bg-[var(--color-drac-pink)] hover:text-[var(--color-drac-bg)] transition-all uppercase tracking-widest
+inline-flex items-center px-6 py-3 bg-[var(--color-drac-purple)]/10 border border-[var(--color-drac-purple)]/30 text-[var(--color-drac-purple)] rounded-xl text-sm hover:bg-[var(--color-drac-purple)] hover:text-[var(--color-drac-bg)] transition-all shadow-lg hover:shadow-[var(--color-drac-purple)]/20 uppercase tracking-widest
+inline-flex items-center px-6 py-3 bg-[var(--color-drac-yellow)]/10 border border-[var(--color-drac-yellow)]/30 text-[var(--color-drac-yellow)] rounded-xl text-sm hover:bg-[var(--color-drac-yellow)] hover:text-[var(--color-drac-bg)] transition-all shadow-lg hover:shadow-[var(--color-drac-yellow)]/20 uppercase tracking-widest
+inline-flex items-center px-6 py-3 bg-[var(--color-drac-yellow)]/10 border border-[var(--color-drac-yellow)]/30 text-[var(--color-drac-yellow)] rounded-xl text-sm hover:bg-[var(--color-drac-yellow)] hover:text-[var(--color-drac-bg)] transition-all uppercase tracking-widest
+inline-flex rounded-full bg-[var(--color-drac-curr)]/80 px-4 py-1 text-sm font-semibold uppercase tracking-[0.24em] text-[var(--color-drac-green)] ring-1 ring-[var(--color-drac-green)]/20 font-mono
+inline-flex w-full items-center justify-center rounded-2xl bg-[var(--color-drac-cyan)] px-6 py-3 text-base font-semibold text-[var(--color-drac-bg)] shadow-lg shadow-[var(--color-drac-cyan)]/20 transition hover:bg-[var(--color-drac-green)] sm:w-auto font-mono
+inline-flex w-full items-center justify-center rounded-2xl border border-[var(--color-drac-comment)] bg-[var(--color-drac-curr)]/50 px-6 py-3 text-base font-semibold text-[var(--color-drac-fg)] transition hover:border-[var(--color-drac-pink)] hover:text-[var(--color-drac-pink)] sm:w-auto font-mono
+inputEmail
+inputPassword
+invoice/_delete_form.html.twig
+invoice/_form.html.twig
+label_attr
+language/_delete_form.html.twig
+language/_form.html.twig
+linguistics_registry
+list_applications
+max-w-2xl text-lg leading-8 text-[var(--color-drac-fg)] opacity-90 sm:text-xl
+max-w-3xl space-y-4 text-[var(--color-drac-fg)]
+max-w-4xl mx-auto space-y-8
+max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between
+max-w-7xl mx-auto space-y-8
+max-w-xl bg-slate-900/40 border border-slate-800/70 rounded-2xl p-8 shadow-md text-center
+max-w-xs truncate text-[var(--color-drac-fg)] opacity-80 italic
+mb-10 flex items-center justify-between border-b border-[var(--color-drac-curr)] pb-6
+mb-10 text-center
+min-h-screen bg-[var(--color-drac-bg)] text-[var(--color-drac-fg)] flex items-center justify-center py-10 sm:py-20 px-4 sm:px-6 relative overflow-hidden
+min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100 flex items-center justify-center p-6
+min-h-screen flex flex-col font-sans antialiased
+mission/_delete_form.html.twig
+mission/_form.html.twig
+mission_lifecycle_states
+mission_status/_delete_form.html.twig
+mission_status/_form.html.twig
+missions
+mobile-menu-toggle
+mod
+mr-2
+mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-[var(--color-drac-pink)]
+mt-10 pt-6 border-t border-[var(--color-drac-red)]/20
+mt-10 pt-8 border-t border-[var(--color-drac-curr)]
+mt-12 grid gap-6 lg:grid-cols-3
+mt-2 text-sm text-[var(--color-drac-comment)] font-mono
+mt-3 leading-7 text-[var(--color-drac-comment)]
+mt-3 text-[var(--color-drac-fg)]
+mt-4 space-y-3 text-[var(--color-drac-comment)]
+mt-4 text-[var(--color-drac-comment)] leading-7
+mt-6 w-full py-3 bg-[var(--color-drac-purple)] text-[var(--color-drac-bg)] font-bold font-mono rounded-lg hover:bg-[var(--color-drac-pink)] hover:shadow-[var(--color-drac-pink)]/40 transition-all uppercase tracking-widest text-sm
+mt-6 w-full py-4 bg-[var(--color-drac-cyan)] text-[var(--color-drac-bg)] font-bold font-mono rounded-lg hover:bg-[var(--color-drac-green)] hover:shadow-[var(--color-drac-green)]/40 transition-all uppercase tracking-widest text-sm
+mt-6 w-full py-4 bg-[var(--color-drac-green)] text-[var(--color-drac-bg)] font-bold font-mono rounded-lg hover:bg-[var(--color-drac-cyan)] hover:shadow-[var(--color-drac-cyan)]/40 transition-all uppercase tracking-widest text-sm
+mt-8 pt-6 border-t border-[var(--color-drac-red)]/20
+mt-8 w-full py-4 bg-[var(--color-drac-cyan)] text-[var(--color-drac-bg)] font-bold font-mono rounded-lg hover:bg-[var(--color-drac-purple)] hover:shadow-[var(--color-drac-purple)]/40 transition-all uppercase tracking-widest text-sm
+mt-8 w-full py-4 bg-[var(--color-drac-green)] text-[var(--color-drac-bg)] font-bold font-mono rounded-lg hover:bg-[var(--color-drac-cyan)] hover:shadow-[var(--color-drac-cyan)]/40 transition-all uppercase tracking-widest text-sm
+mt-8 w-full py-4 bg-[var(--color-drac-pink)] text-[var(--color-drac-bg)] font-bold font-mono rounded-lg hover:bg-[var(--color-drac-cyan)] hover:shadow-[var(--color-drac-cyan)]/40 transition-all uppercase tracking-widest text-sm
+mt-8 w-full py-4 bg-[var(--color-drac-purple)] text-[var(--color-drac-bg)] font-bold font-mono rounded-lg hover:bg-[var(--color-drac-cyan)] hover:shadow-[var(--color-drac-cyan)]/40 transition-all uppercase tracking-widest
+mt-8 w-full py-4 bg-[var(--color-drac-yellow)] text-[var(--color-drac-bg)] font-bold font-mono rounded-lg hover:bg-[var(--color-drac-green)] hover:shadow-[var(--color-drac-green)]/40 transition-all uppercase tracking-widest
+mt-8 w-full py-4 bg-[var(--color-drac-yellow)] text-[var(--color-drac-bg)] font-bold font-mono rounded-lg hover:bg-[var(--color-drac-green)] hover:shadow-[var(--color-drac-green)]/40 transition-all uppercase tracking-widest text-sm
+mx-auto flex max-w-6xl flex-col gap-4 px-4 sm:px-6 text-sm text-[var(--color-drac-comment)] sm:flex-row sm:items-center sm:justify-between
+mx-auto flex min-h-[calc(100vh-160px)] max-w-7xl flex-col justify-center px-4 py-16 sm:px-6 lg:px-8
+mx-auto max-w-6xl
+navbar.html.twig
+no_links_provided
+now
+objectifs
+overflow-x-auto
+p-4 bg-[var(--color-drac-curr)]/30 rounded-xl border border-[var(--color-drac-curr)]
+p-4 border border-[var(--color-drac-red)]/20 rounded-2xl bg-[var(--color-drac-red)]/5
+p-4 text-sm text-[var(--color-drac-cyan)] bg-[var(--color-drac-cyan)]/10 border border-[var(--color-drac-cyan)]/30 rounded-lg mb-6 font-mono
+p-4 text-sm text-[var(--color-drac-red)] bg-[var(--color-drac-red)]/10 border border-[var(--color-drac-red)]/30 rounded-lg font-mono
+password
+patch
+peer hidden
+post
+preconnect
+pt-6 border-t border-[var(--color-drac-curr)]
+pt-6 border-t border-[var(--color-drac-curr)] flex justify-between items-center
+px-2 py-0.5 rounded bg-[var(--color-drac-green)]/10 text-[var(--color-drac-green)] text-[10px] border border-[var(--color-drac-green)]/20 font-bold
+px-2 py-0.5 rounded bg-[var(--color-drac-purple)]/10 text-[var(--color-drac-purple)] text-[10px] border border-[var(--color-drac-purple)]/20 font-bold uppercase
+px-2 py-0.5 rounded bg-[var(--color-drac-purple)]/20 text-[var(--color-drac-purple)] text-[10px] font-bold uppercase
+px-2 py-0.5 rounded bg-[var(--color-drac-red)]/10 text-[var(--color-drac-red)] text-[10px] border border-[var(--color-drac-red)]/20 font-bold
+px-2 py-1 bg-[var(--color-drac-purple)]/10 border border-[var(--color-drac-purple)]/30 text-[var(--color-drac-purple)] text-[10px] rounded
+px-2 py-1 rounded bg-[var(--color-drac-orange)]/10 text-[var(--color-drac-orange)] text-[10px] border border-[var(--color-drac-orange)]/20 font-bold
+px-3 py-1 rounded bg-[var(--color-drac-fg)]/5 text-[var(--color-drac-fg)] border border-[var(--color-drac-comment)]/30 text-[10px] font-bold uppercase tracking-widest
+px-3 py-1 rounded bg-[var(--color-drac-yellow)]/5 text-[var(--color-drac-yellow)] border border-[var(--color-drac-yellow)]/30 text-[10px] font-bold uppercase tracking-widest
+px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] rounded hover:bg-[var(--color-drac-comment)]/10 transition-all uppercase
+px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-all uppercase
+px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-colors uppercase
+px-4 py-2 border border-[var(--color-drac-cyan)]/30 text-[var(--color-drac-cyan)] rounded hover:bg-[var(--color-drac-cyan)]/10 transition-all uppercase
+px-4 py-2 border border-[var(--color-drac-cyan)]/30 text-[var(--color-drac-cyan)] text-xs rounded hover:bg-[var(--color-drac-cyan)]/10 transition-colors uppercase
+px-4 py-2 border border-[var(--color-drac-green)]/30 text-[var(--color-drac-green)] text-xs rounded hover:bg-[var(--color-drac-green)]/10 transition-colors uppercase
+px-4 py-2 border border-[var(--color-drac-pink)]/30 text-[var(--color-drac-pink)] text-xs rounded hover:bg-[var(--color-drac-pink)]/10 transition-colors uppercase
+px-4 py-2 border border-[var(--color-drac-purple)]/30 text-[var(--color-drac-purple)] text-xs rounded hover:bg-[var(--color-drac-purple)]/10 transition-all uppercase
+px-4 py-2 border border-[var(--color-drac-purple)]/30 text-[var(--color-drac-purple)] text-xs rounded hover:bg-[var(--color-drac-purple)]/10 transition-colors uppercase
+px-4 py-2 border border-[var(--color-drac-yellow)]/30 text-[var(--color-drac-yellow)] text-xs rounded hover:bg-[var(--color-drac-yellow)]/10 transition-colors uppercase
+px-6 py-20 text-center text-[var(--color-drac-comment)] italic
+px-6 py-20 text-center text-[var(--color-drac-comment)] italic font-mono
+px-6 py-4
+px-6 py-4 border-b border(--color-drac-curr) hidden md:table-cell text-center
+px-6 py-4 border-b border-[var(--color-drac-curr)]
+px-6 py-4 border-b border-[var(--color-drac-curr)] hidden lg:table-cell
+px-6 py-4 border-b border-[var(--color-drac-curr)] hidden md:table-cell
+px-6 py-4 border-b border-[var(--color-drac-curr)] text-[var(--color-drac-yellow)]
+px-6 py-4 border-b border-[var(--color-drac-curr)] text-center
+px-6 py-4 border-b border-[var(--color-drac-curr)] text-right
+px-6 py-4 hidden lg:table-cell
+px-6 py-4 hidden lg:table-cell text-[var(--color-drac-green)] font-bold
+px-6 py-4 hidden lg:table-cell text-xs text-[var(--color-drac-comment)]
+px-6 py-4 hidden md:table-cell max-w-xs truncate text-xs opacity-70
+px-6 py-4 hidden md:table-cell text-[var(--color-drac-comment)]
+px-6 py-4 hidden md:table-cell text-[var(--color-drac-green)] font-mono
+px-6 py-4 hidden md:table-cell text-center font-bold text-[var(--color-drac-yellow)]
+px-6 py-4 text-[var(--color-drac-comment)]
+px-6 py-4 text-[var(--color-drac-comment)] font-bold
+px-6 py-4 text-[var(--color-drac-fg)]
+px-6 py-4 text-center
+px-6 py-4 text-right font-bold text-[var(--color-drac-green)]
+px-6 py-4 text-right space-x-3
+px-6 py-4 truncate max-w-xs opacity-80
+read
+relative isolate overflow-hidden bg-[var(--color-drac-bg)] text-[var(--color-drac-fg)]
+relative left-1/2 h-80 w-[72rem] -translate-x-1/2 rotate-[30deg] bg-[var(--color-drac-purple)]/20 opacity-60 blur-3xl
+remember_me
+return confirm('ALERTA FINANCEIRO: A exclusão da fatura é irreversível. Confirmar estorno permanente?');
+return confirm('ALERTA: A purga de identidade removerá todos os registros associados. Prosseguir?');
+return confirm('ALERTA: A remoção da candidatura é permanente. Confirmar purga de arquivos?');
+return confirm('ALERTA: Remocao de GeoNode solicitada. Confirmar purga de coordenadas?');
+return confirm('ALERTA: Remocao de biblioteca solicitada. Confirmar purga de arquivos binarios?');
+return confirm('ALERTA: Remocao de categoria solicitada. Confirmar purga de nodo do sistema?');
+return confirm('ALERTA: Remocao de estado de fluxo detectada. Confirmar purga do nodo?');
+return confirm('ALERTA: Remocao de nodo de ciclo de vida detectada. Confirmar purga definitiva?');
+return confirm('ATENÇÃO: Operação de exclusão de dados é irreversível. Confirmar protocolo?');
+security
+sf
+space-y-2
+space-y-4
+space-y-4 font-mono
+space-y-4 font-mono text-sm
+space-y-4 font-mono text-sm leading-relaxed
+space-y-5
+space-y-6
+space-y-6 text-center py-10
+space-y-8
+spec
+status
+sticky top-0 z-50 w-full border-b border-[var(--color-drac-curr)] bg-[var(--color-drac-bg)]/80 backdrop-blur-md
+styles/app.css
+stylesheet
+submit
+text-2xl font-bold text-[var(--color-drac-cyan)] font-mono uppercase tracking-tighter
+text-2xl font-bold text-[var(--color-drac-cyan)] uppercase tracking-tighter
+text-2xl font-bold text-[var(--color-drac-fg)] mb-6
+text-2xl font-bold text-[var(--color-drac-fg)] uppercase tracking-tight
+text-2xl font-bold text-[var(--color-drac-green)] uppercase tracking-tight
+text-2xl font-bold text-[var(--color-drac-green)] uppercase tracking-tighter
+text-2xl font-bold text-[var(--color-drac-pink)] uppercase tracking-tighter
+text-2xl font-bold text-[var(--color-drac-purple)] font-mono uppercase tracking-tighter
+text-2xl font-bold text-[var(--color-drac-purple)] uppercase tracking-tighter
+text-2xl font-bold text-[var(--color-drac-yellow)] uppercase tracking-tighter
+text-2xl font-extrabold text-white mb-6
+text-2xl text-[var(--color-drac-green)] font-bold
+text-2xl text-[var(--color-drac-yellow)] font-bold
+text-3xl font-black text-[var(--color-drac-green)] glow-green
+text-3xl font-bold text-[var(--color-drac-cyan)] font-mono uppercase tracking-tighter
+text-3xl font-bold text-[var(--color-drac-cyan)] tracking-tight uppercase
+text-3xl font-bold text-[var(--color-drac-cyan)] tracking-tighter uppercase
+text-3xl font-bold text-[var(--color-drac-fg)] font-mono tracking-tight uppercase
+text-3xl font-bold text-[var(--color-drac-green)] tracking-tight uppercase
+text-3xl font-bold text-[var(--color-drac-green)] tracking-tighter uppercase
+text-3xl font-bold text-[var(--color-drac-pink)] tracking-tight uppercase
+text-3xl font-bold text-[var(--color-drac-pink)] tracking-tighter uppercase
+text-3xl font-bold text-[var(--color-drac-purple)] tracking-tight uppercase
+text-3xl font-bold text-[var(--color-drac-purple)] tracking-tighter uppercase
+text-3xl font-bold text-[var(--color-drac-yellow)] tracking-tight uppercase
+text-3xl font-bold text-[var(--color-drac-yellow)] tracking-tighter uppercase
+text-3xl font-bold tracking-tight text-[var(--color-drac-purple)] font-mono
+text-3xl font-semibold tracking-tight text-[var(--color-drac-purple)] sm:text-4xl font-mono
+text-4xl font-black text-[var(--color-drac-fg)] uppercase tracking-tighter glow-green
+text-4xl font-black text-[var(--color-drac-fg)] uppercase tracking-tighter glow-purple
+text-4xl font-semibold tracking-tight text-[var(--color-drac-purple)] sm:text-5xl lg:text-6xl font-mono
+text-4xl text-[var(--color-drac-cyan)] font-bold
+text-[10px] font-mono text-[var(--color-drac-comment)] bg-[var(--color-drac-bg)] p-3 rounded border border-[var(--color-drac-curr)] break-all opacity-50
+text-[10px] text-[var(--color-drac-comment)] mt-1 uppercase
+text-[10px] text-[var(--color-drac-comment)] uppercase font-bold mb-1
+text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1
+text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-4
+text-[10px] text-[var(--color-drac-comment)] uppercase tracking-wider mb-1 font-bold
+text-[10px] text-[var(--color-drac-comment)] uppercase tracking-wider mb-2 font-bold
+text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest
+text-[var(--color-drac-comment)]
+text-[var(--color-drac-comment)] hover:text-[var(--color-drac-fg)] font-mono text-xs uppercase tracking-widest
+text-[var(--color-drac-comment)] hover:text-[var(--color-drac-fg)] text-xs uppercase tracking-widest
+text-[var(--color-drac-comment)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs
+text-[var(--color-drac-comment)] hover:text-[var(--color-drac-purple)] transition-colors underline decoration-[var(--color-drac-comment)]/20
+text-[var(--color-drac-comment)] hover:text-[var(--color-drac-purple)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs
+text-[var(--color-drac-comment)] hover:text-[var(--color-drac-yellow)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs
+text-[var(--color-drac-comment)] leading-7
+text-[var(--color-drac-cyan)]
+text-[var(--color-drac-cyan)] hover:text-[var(--color-drac-green)] transition-colors underline decoration-[var(--color-drac-cyan)]/20 uppercase text-xs
+text-[var(--color-drac-cyan)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-cyan)]/20
+text-[var(--color-drac-cyan)] hover:text-[var(--color-drac-purple)] transition-colors underline decoration-[var(--color-drac-cyan)]/20 uppercase text-xs
+text-[var(--color-drac-cyan)] text-[10px]
+text-[var(--color-drac-cyan)] uppercase tracking-widest text-xs mt-1
+text-[var(--color-drac-fg)] divide-y divide-[var(--color-drac-curr)]
+text-[var(--color-drac-fg)] opacity-80 leading-relaxed text-sm bg-[var(--color-drac-bg)]/50 p-4 border-l-2 border-[var(--color-drac-purple)] rounded-r-lg
+text-[var(--color-drac-green)]
+text-[var(--color-drac-green)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-green)]/20 uppercase text-xs
+text-[var(--color-drac-green)] hover:text-[var(--color-drac-green)]/80 transition-colors underline decoration-[var(--color-drac-green)]/20
+text-[var(--color-drac-green)] text-[10px]
+text-[var(--color-drac-green)] text-[10px] opacity-30
+text-[var(--color-drac-green)] uppercase tracking-widest text-xs mt-1
+text-[var(--color-drac-pink)]
+text-[var(--color-drac-pink)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-pink)]/20 uppercase text-xs
+text-[var(--color-drac-pink)] text-[10px]
+text-[var(--color-drac-pink)] underline hover:text-[var(--color-drac-purple)] transition-colors
+text-[var(--color-drac-pink)] uppercase tracking-widest text-xs mt-1
+text-[var(--color-drac-purple)]
+text-[var(--color-drac-purple)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-purple)]/20 uppercase text-xs
+text-[var(--color-drac-purple)] hover:text-[var(--color-drac-pink)] transition-colors
+text-[var(--color-drac-purple)] text-[10px]
+text-[var(--color-drac-purple)] underline decoration-[var(--color-drac-purple)]/20 text-xs
+text-[var(--color-drac-purple)] uppercase tracking-widest text-xs mt-1
+text-[var(--color-drac-red)]
+text-[var(--color-drac-red)] text-xs mt-2 font-mono
+text-[var(--color-drac-yellow)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-yellow)]/20 uppercase text-xs
+text-[var(--color-drac-yellow)] text-[10px]
+text-[var(--color-drac-yellow)] text-xs
+text-lg font-bold text-[var(--color-drac-fg)]
+text-lg font-bold text-[var(--color-drac-fg)] uppercase
+text-lg font-bold text-[var(--color-drac-green)]
+text-lg font-bold text-[var(--color-drac-yellow)]
+text-lg text-[var(--color-drac-fg)]
+text-slate-200 mb-6
+text-sm bg-[var(--color-drac-bg)]/50 p-3 border-l-2 border-[var(--color-drac-purple)] rounded-r opacity-90 font-bold tracking-tight
+text-sm font-bold text-[var(--color-drac-fg)]
+text-sm font-bold text-[var(--color-drac-fg)] uppercase
+text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-drac-pink)] font-mono
+text-sm italic opacity-80
+text-sm text-[var(--color-drac-comment)] font-mono mt-1
+text-sm text-[var(--color-drac-comment)] mt-1
+text-sm text-[var(--color-drac-fg)]
+text-sm text-[var(--color-drac-pink)]
+text-sm uppercase tracking-[0.24em] text-[var(--color-drac-cyan)] font-mono
+text-sm uppercase tracking-[0.24em] text-[var(--color-drac-purple)] font-mono
+text-xl font-bold
+text-xl font-bold text-[var(--color-drac-pink)] uppercase tracking-tight
+text-xl font-semibold text-[var(--color-drac-cyan)] font-mono
+text-xl text-[var(--color-drac-orange)]
+text-xs mt-2 uppercase tracking-widest
+text-xs opacity-70
+text-xs text-[var(--color-drac-comment)]
+text-xs text-[var(--color-drac-comment)] font-mono mt-2
+text-xs text-[var(--color-drac-comment)] uppercase
+text-xs text-[var(--color-drac-cyan)] truncate
+text-xs text-[var(--color-drac-purple)] truncate
+text-xs text-center text-[var(--color-drac-comment)] mt-6 pt-6 border-t border-[var(--color-drac-curr)] font-mono
+text-xs text-center text-[var(--color-drac-comment)] mt-8 pt-6 border-t border-[var(--color-drac-curr)] font-mono
+text-xs text-slate-400 mb-4
+text-xs uppercase text-[var(--color-drac-comment)] tracking-widest mb-4 font-bold
+text-xs uppercase text-[var(--color-drac-cyan)] tracking-[0.3em] mb-4
+text-xs uppercase text-[var(--color-drac-cyan)] tracking-[0.3em] mb-6
+text-xs uppercase text-[var(--color-drac-cyan)] tracking-[0.3em] mb-6 border-b border-[var(--color-drac-curr)] pb-2
+text-xs uppercase text-[var(--color-drac-cyan)] tracking-[0.3em] mt-10 mb-6
+text-xs uppercase text-[var(--color-drac-cyan)] tracking-[0.3em] mt-8 mb-2
+text-xs uppercase text-[var(--color-drac-green)] tracking-[0.3em] mb-6 border-b border-[var(--color-drac-curr)] pb-2
+text-xs uppercase text-[var(--color-drac-pink)] tracking-[0.3em] mb-6 border-b border-[var(--color-drac-curr)] pb-2
+text-xs uppercase text-[var(--color-drac-purple)] tracking-[0.3em] mb-6 border-b border-[var(--color-drac-curr)] pb-2
+user/_delete_form.html.twig
+user/_form.html.twig
+view
+viewport
+w-32 h-32 mx-auto bg-[var(--color-drac-curr)] rounded-full flex items-center justify-center border-2 border-[var(--color-drac-cyan)]/20
+w-4 h-4 text-[var(--color-drac-purple)] bg-[var(--color-drac-bg)] border-[var(--color-drac-curr)] rounded focus:ring-[var(--color-drac-purple)]
+w-full max-w-2xl bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] p-10 rounded-2xl shadow-2xl relative neon-border-cyan
+w-full max-w-2xl bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] p-10 rounded-2xl shadow-2xl relative neon-border-green
+w-full max-w-2xl bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] p-10 rounded-2xl shadow-2xl relative neon-border-purple
+w-full max-w-2xl bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] p-10 rounded-2xl shadow-2xl relative neon-border-yellow
+w-full max-w-lg bg-[var(--color-drac-surface)]/60 border border-[var(--color-drac-curr)] rounded-2xl p-8 sm:p-10 shadow-2xl backdrop-blur-xl relative z-10 neon-border-cyan
+w-full max-w-md p-8 pt-10 space-y-8 bg-[var(--color-drac-surface)]/60 border border-[var(--color-drac-curr)] rounded-2xl shadow-2xl backdrop-blur-xl relative z-10 neon-border-purple
+w-full max-w-xl bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] p-10 rounded-2xl shadow-2xl relative neon-border-cyan
+w-full max-w-xl bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] p-10 rounded-2xl shadow-2xl relative neon-border-green
+w-full max-w-xl bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] p-10 rounded-2xl shadow-2xl relative neon-border-pink
+w-full max-w-xl bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] p-10 rounded-2xl shadow-2xl relative neon-border-purple
+w-full max-w-xl bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] p-10 rounded-2xl shadow-2xl relative neon-border-yellow
+w-full py-2 border border-[var(--color-drac-red)]/30 text-[var(--color-drac-red)] text-xs font-mono rounded hover:bg-[var(--color-drac-red)] hover:text-[var(--color-drac-bg)] transition-all uppercase tracking-widest
+w-full py-2 border border-[var(--color-drac-red)]/40 text-[var(--color-drac-red)] text-xs font-mono rounded hover:bg-[var(--color-drac-red)] hover:text-[var(--color-drac-bg)] transition-all uppercase tracking-widest
+w-full rounded-lg bg-[var(--color-drac-cyan)] px-6 py-4 mt-8 font-bold text-[var(--color-drac-bg)] shadow-lg hover:bg-[var(--color-drac-green)] hover:shadow-[var(--color-drac-green)]/30 focus:outline-none transition-all font-mono uppercase tracking-widest
+w-full rounded-lg border border-[var(--color-drac-curr)] bg-[var(--color-drac-bg)]/80 px-4 py-3 text-[var(--color-drac-fg)] font-mono focus:outline-none focus:ring-2 focus:ring-[var(--color-drac-cyan)] focus:border-[var(--color-drac-cyan)] transition-all placeholder-[var(--color-drac-comment)]
+w-full text-left border-collapse font-mono text-sm
+w-full text-left border-collapse text-sm
+width=device-width, initial-scale=1.0
+{# Deconaçoes Cyberpunk #}
+{# Decorações de fundo Cyberpunk #}
+{# Detailed Info #}
+{# Financial Totals Card #}
+{# Main Details Card #}
+{# Main Info Block #}
+{# Main Table Container #}
+{# Metadata Sidebar #}
+{# Photo/Primary Info #}
+{# {% if is_granted('ROLE_ADMIN') %}
+}}
+                                </span>
+                            </div>
+                            <div class="flex items-center justify-between text-xs">
+                                <span>Needs Revalidation</span>
+                                <span class="{{ mission.needsRevalidation ?
+}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-4 border border-[var(--color-drac-red)]/20 rounded-2xl bg-[var(--color-drac-red)]/5">
+                    <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocolo_De_Exclusao</h4>
+                    {{ include(
+}} font-bold">
+                                    {{ mission.isValidatedByAdmin ?
+}}">
+                                    {{ mission.needsRevalidation ?
+}}</p>
+                    </div>
+
+                    <div class="pt-6 border-t border-[var(--color-drac-curr)]">
+                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase tracking-wider mb-2 font-bold">Status_Seguranca</p>
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between text-xs">
+                                <span>Validated by Admin</span>
+                                <span class="{{ mission.isValidatedByAdmin ?
+© {{ "now"|date("Y") }} FreelanceConnect. Tous droits réservés.
+⚫️

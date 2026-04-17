@@ -1,0 +1,25 @@
+templates/address/_delete_form.html.twig:1:<form method="post" action="{{ path('app_address_delete', {'id': address.id}) }}" onsubmit="return confirm('ALERTA: Remocao de GeoNode solicitada. Confirmar purga de coordenadas?');">
+templates/application/_delete_form.html.twig:1:<form method="post" action="{{ path('app_application_delete', {'id': application.id}) }}" onsubmit="return confirm('ALERTA: A remoção da candidatura é permanente. Confirmar purga de arquivos?');">
+templates/application_status/_delete_form.html.twig:1:<form method="post" action="{{ path('app_application_status_delete', {'id': application_status.id}) }}" onsubmit="return confirm('ALERTA: Remocao de estado de fluxo detectada. Confirmar purga do nodo?');">
+templates/application_status/index.html.twig:3:{% block title %}Status de Candidatura - Terminal{% endblock %}
+templates/application_status/show.html.twig:3:{% block title %}Detalhes do Status #{{ application_status.id }}{% endblock %}
+templates/category/_delete_form.html.twig:1:<form method="post" action="{{ path('app_category_delete', {'id': category.id}) }}" onsubmit="return confirm('ALERTA: Remocao de categoria solicitada. Confirmar purga de nodo do sistema?');">
+templates/invoice/_delete_form.html.twig:1:<form method="post" action="{{ path('app_invoice_delete', {'id': invoice.id}) }}" onsubmit="return confirm('ALERTA FINANCEIRO: A exclusão da fatura é irreversível. Confirmar estorno permanente?');">
+templates/invoice/index.html.twig:12:                    <span class="text-[var(--color-drac-green)]">$</span> financial_ledger
+templates/language/_delete_form.html.twig:1:<form method="post" action="{{ path('app_language_delete', {'id': language.id}) }}" onsubmit="return confirm('ALERTA: Remocao de biblioteca solicitada. Confirmar purga de arquivos binarios?');">
+templates/mission/_delete_form.html.twig:1:<form method="post" action="{{ path('app_mission_delete', {'id': mission.id}) }}" onsubmit="return confirm('ATENÇÃO: Operação de exclusão de dados é irreversível. Confirmar protocolo?');" class="inline-block w-full">
+templates/mission/index.html.twig:32:                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Status</th>
+templates/mission/index.html.twig:57:                                <a href="{{ path('app_mission_show', {'id': mission.id}) }}" class="text-[var(--color-drac-cyan)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-cyan)]/20">view</a>
+templates/mission/index.html.twig:58:                                <a href="{{ path('app_mission_edit', {'id': mission.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-purple)] transition-colors underline decoration-[var(--color-drac-comment)]/20">edit</a>
+templates/mission/index.html.twig:61:                                    <a href="{{ path('app_mission_status', {'id': mission.id}) }}" class="text-[var(--color-drac-green)] hover:text-[var(--color-drac-green)]/80 transition-colors underline decoration-[var(--color-drac-green)]/20">status</a>
+templates/mission_status/_delete_form.html.twig:1:<form method="post" action="{{ path('app_mission_status_delete', {'id': mission_status.id}) }}" onsubmit="return confirm('ALERTA: Remocao de nodo de ciclo de vida detectada. Confirmar purga definitiva?');">
+templates/mission_status/edit.html.twig:3:{% block title %}Editar Status de Missão - Terminal{% endblock %}
+templates/mission_status/index.html.twig:3:{% block title %}Status de Missão - Terminal{% endblock %}
+templates/mission_status/new.html.twig:3:{% block title %}Novo Status de Missão - Terminal{% endblock %}
+templates/mission_status/show.html.twig:3:{% block title %}Detalhes do Status de Missão #{{ mission_status.id }}{% endblock %}
+templates/security/login.html.twig:14:                <span class="text-[var(--color-drac-pink)]">&gt;</span> Login
+templates/security/login.html.twig:28:                    STATUS: Logado como <span class="font-bold">{{ app.user.userIdentifier }}</span>. <a href="{{ logout_path() }}" class="text-[var(--color-drac-pink)] underline hover:text-[var(--color-drac-purple)] transition-colors">Abortar sessao</a>
+templates/security/login.html.twig:56:                Executar Login
+templates/user/_delete_form.html.twig:1:<form method="post" action="{{ path('app_user_delete', {'id': user.id}) }}" onsubmit="return confirm('ALERTA: A purga de identidade removerá todos os registros associados. Prosseguir?');">
+templates/user/index.html.twig:31:                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Status</th>
+templates/user/show.html.twig:18:                <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="px-4 py-2 border border-[var(--color-drac-cyan)]/30 text-[var(--color-drac-cyan)] rounded hover:bg-[var(--color-drac-cyan)]/10 transition-all uppercase">Mod_Identity</a>

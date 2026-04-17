@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Editar Fatura - Terminal{% endblock %}
+{% block title %}Modifierifier facture - Console{% endblock %}
 
 {% block body %}
 <main class="flex-grow flex items-center justify-center p-6 bg-[var(--color-drac-bg)] font-mono">
@@ -9,7 +9,7 @@
             <h1 class="text-2xl font-bold text-[var(--color-drac-purple)] uppercase tracking-tighter">
                 <span class="text-[var(--color-drac-comment)]">CMD:</span> Patch_Financial_Node
             </h1>
-            <a href="{{ path('app_invoice_index') }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-fg)] text-xs uppercase tracking-widest">Abort_Command</a>
+            <a href="{{ path('app_invoice_index') }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-fg)] text-xs uppercase tracking-widest">Annuler_Commande</a>
         </div>
 
         {{ include('invoice/_form.html.twig', {'button_label': 'Sync_Financial_Buffer'}) }}

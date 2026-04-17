@@ -1,5 +1,5 @@
-<form method="post" action="{{ path('app_application_status_delete', {'id': application_status.id}) }}" onsubmit="return confirm('ALERTA: Remocao de estado de fluxo detectada. Confirmar purga do nodo?');">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ application_status.id) }}">
+<form method="post" action="{{ path('app_application_statut_delete', {'id': application_statut.id}) }}" onsubmit="return confirm('ALERTE : suppression d'état de flux détectée. Confirmer la purge du nœud ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ application_statut.id) }}">
     <button class="w-full py-2 border border-[var(--color-drac-red)]/40 text-[var(--color-drac-red)] text-xs font-mono rounded hover:bg-[var(--color-drac-red)] hover:text-[var(--color-drac-bg)] transition-all uppercase tracking-widest">
         Purge_Flow_Node
     </button>

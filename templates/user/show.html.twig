@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Perfil de Identidade #{{ user.id }}{% endblock %}
+{% block title %}Profil d'identité #{{ user.id }}{% endblock %}
 
 {% block body %}
 <main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono text-[var(--color-drac-fg)]">
@@ -11,11 +11,11 @@
                 <h1 class="text-3xl font-bold text-[var(--color-drac-cyan)] tracking-tighter uppercase">
                     <span class="text-[var(--color-drac-comment)]">IDENTITY_ID:</span> #{{ user.id }}
                 </h1>
-                <p class="text-[var(--color-drac-purple)] uppercase tracking-widest text-xs mt-1">Status: {{ user.isVerified ? 'VERIFIED_ENTRY' : 'UNVERIFIED_PENDING' }}</p>
+                <p class="text-[var(--color-drac-purple)] uppercase tracking-widest text-xs mt-1">Statut : {{ user.isVerified ? 'VERIFIED_ENTRY' : 'UNVERIFIED_PENDING' }}</p>
             </div>
             
             <div class="flex gap-4 text-xs">
-                <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="px-4 py-2 border border-[var(--color-drac-cyan)]/30 text-[var(--color-drac-cyan)] rounded hover:bg-[var(--color-drac-cyan)]/10 transition-all uppercase">Mod_Identity</a>
+                <a href="{{ path('app_user_modifier', {'id': user.id}) }}" class="px-4 py-2 border border-[var(--color-drac-cyan)]/30 text-[var(--color-drac-cyan)] rounded hover:bg-[var(--color-drac-cyan)]/10 transition-all uppercase">Modifierifier_Identité</a>
                 <a href="{{ path('app_user_index') }}" class="px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] rounded hover:bg-[var(--color-drac-comment)]/10 transition-all uppercase">Back_To_Registry</a>
             </div>
         </div>

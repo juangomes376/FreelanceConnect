@@ -11,7 +11,7 @@
                 <h1 class="text-3xl font-bold text-[var(--color-drac-purple)] tracking-tight uppercase">
                     <span class="text-[var(--color-drac-cyan)]">@</span> geo_coordinates
                 </h1>
-                <p class="text-sm text-[var(--color-drac-comment)] mt-1">Sincronizando banco de dados de localizações físicas...</p>
+                <p class="text-sm text-[var(--color-drac-comment)] mt-1">Synchronisation de la base de données des emplacements physiques...</p>
             </div>
             
             <a href="{{ path('app_address_new') }}" class="inline-flex items-center px-6 py-3 bg-[var(--color-drac-purple)]/10 border border-[var(--color-drac-purple)]/30 text-[var(--color-drac-purple)] rounded-xl text-sm hover:bg-[var(--color-drac-purple)] hover:text-[var(--color-drac-bg)] transition-all shadow-lg hover:shadow-[var(--color-drac-purple)]/20 uppercase tracking-widest">
@@ -50,13 +50,13 @@
                             </td>
                             <td class="px-6 py-4 text-right space-x-3">
                                 <a href="{{ path('app_address_show', {'id': address.id}) }}" class="text-[var(--color-drac-purple)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-purple)]/20 uppercase text-xs">gps</a>
-                                <a href="{{ path('app_address_edit', {'id': address.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">mod</a>
+                                <a href="{{ path('app_address_modifier', {'id': address.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">mod</a>
                             </td>
                         </tr>
                     {% else %}
                         <tr>
                             <td colspan="6" class="px-6 py-20 text-center text-[var(--color-drac-comment)] italic">
-                                <p class="text-lg">OFF_GRID: No registered addresses found.</p>
+                                <p class="text-lg">HORS_RÉSEAU : aucune adresse enregistrée trouvée.</p>
                             </td>
                         </tr>
                     {% endfor %}

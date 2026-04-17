@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Detalhes do Status #{{ application_status.id }}{% endblock %}
+{% block title %}Détails du statut #{{ application_statut.id }}{% endblock %}
 
 {% block body %}
 <main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono text-[var(--color-drac-fg)]">
@@ -9,14 +9,14 @@
         <div class="flex items-center justify-between border-b border-[var(--color-drac-curr)] pb-6">
             <div>
                 <h1 class="text-3xl font-bold text-[var(--color-drac-pink)] tracking-tighter uppercase">
-                    <span class="text-[var(--color-drac-comment)]">STATE_ID:</span> #{{ application_status.id }}
+                    <span class="text-[var(--color-drac-comment)]">STATE_ID:</span> #{{ application_statut.id }}
                 </h1>
-                <p class="text-[var(--color-drac-cyan)] uppercase tracking-widest text-xs mt-1">Status: Registrado_No_Sistema</p>
+                <p class="text-[var(--color-drac-cyan)] uppercase tracking-widest text-xs mt-1">Statut : Enregistré_Dans_Le_Système</p>
             </div>
             
             <div class="flex gap-4">
-                <a href="{{ path('app_application_status_edit', {'id': application_status.id}) }}" class="px-4 py-2 border border-[var(--color-drac-pink)]/30 text-[var(--color-drac-pink)] text-xs rounded hover:bg-[var(--color-drac-pink)]/10 transition-colors uppercase">Mod_State</a>
-                <a href="{{ path('app_application_status_index') }}" class="px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-colors uppercase">Return_Index</a>
+                <a href="{{ path('app_application_statut_modifier', {'id': application_statut.id}) }}" class="px-4 py-2 border border-[var(--color-drac-pink)]/30 text-[var(--color-drac-pink)] text-xs rounded hover:bg-[var(--color-drac-pink)]/10 transition-colors uppercase">Modifierifier_État</a>
+                <a href="{{ path('app_application_statut_index') }}" class="px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-colors uppercase">Retour_Index</a>
             </div>
         </div>
 
@@ -30,13 +30,13 @@
             <div class="space-y-6 text-center py-10">
                 <div>
                     <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-4">Rotulo_Display</p>
-                    <p class="text-4xl font-black text-[var(--color-drac-fg)] uppercase tracking-tighter glow-purple">{{ application_status.name }}</p>
+                    <p class="text-4xl font-black text-[var(--color-drac-fg)] uppercase tracking-tighter glow-purple">{{ application_statut.name }}</p>
                 </div>
             </div>
 
             <div class="mt-10 pt-6 border-t border-[var(--color-drac-red)]/20">
                 <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocolo_De_Purga_Estado</h4>
-                {{ include('application_status/_delete_form.html.twig') }}
+                {{ include('application_statut/_delete_form.html.twig') }}
             </div>
         </div>
 

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Terminal de Categorias{% endblock %}
+{% block title %}Console des catégories{% endblock %}
 
 {% block body %}
 <main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono text-[var(--color-drac-fg)]">
@@ -11,7 +11,7 @@
                 <h1 class="text-3xl font-bold text-[var(--color-drac-cyan)] tracking-tight uppercase">
                     <span class="text-[var(--color-drac-purple)]">#</span> category_buffer
                 </h1>
-                <p class="text-sm text-[var(--color-drac-comment)] mt-1">Sincronizando índices de classificação de missões...</p>
+                <p class="text-sm text-[var(--color-drac-comment)] mt-1">Synchronisation des index de classification des missions...</p>
             </div>
             
             <a href="{{ path('app_category_new') }}" class="inline-flex items-center px-6 py-3 bg-[var(--color-drac-cyan)]/10 border border-[var(--color-drac-cyan)]/30 text-[var(--color-drac-cyan)] rounded-xl text-sm hover:bg-[var(--color-drac-cyan)] hover:text-[var(--color-drac-bg)] transition-all shadow-lg hover:shadow-[var(--color-drac-cyan)]/20 uppercase tracking-widest">
@@ -38,13 +38,13 @@
                             </td>
                             <td class="px-6 py-4 text-right space-x-3">
                                 <a href="{{ path('app_category_show', {'id': category.id}) }}" class="text-[var(--color-drac-cyan)] hover:text-[var(--color-drac-green)] transition-colors underline decoration-[var(--color-drac-cyan)]/20 uppercase text-xs">read</a>
-                                <a href="{{ path('app_category_edit', {'id': category.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">mod</a>
+                                <a href="{{ path('app_category_modifier', {'id': category.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">mod</a>
                             </td>
                         </tr>
                     {% else %}
                         <tr>
                             <td colspan="3" class="px-6 py-20 text-center text-[var(--color-drac-comment)] italic">
-                                <p class="text-lg">NULL_INDEX: No categories defined in registry.</p>
+                                <p class="text-lg">INDEX_NULL : aucune catégorie définie dans le registre.</p>
                             </td>
                         </tr>
                     {% endfor %}

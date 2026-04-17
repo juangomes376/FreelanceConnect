@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Editar Estado de Candidatura - Terminal{% endblock %}
+{% block title %}Modifierifier statut de candidature - Console{% endblock %}
 
 {% block body %}
 <main class="flex-grow flex items-center justify-center p-6 bg-[var(--color-drac-bg)] font-mono text-[var(--color-drac-fg)]">
@@ -9,13 +9,13 @@
             <h1 class="text-2xl font-bold text-[var(--color-drac-pink)] uppercase tracking-tighter">
                 <span class="text-[var(--color-drac-comment)]">CMD:</span> Patch_State_Node
             </h1>
-            <a href="{{ path('app_application_status_index') }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-fg)] text-xs uppercase tracking-widest">Abort_Command</a>
+            <a href="{{ path('app_application_statut_index') }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-fg)] text-xs uppercase tracking-widest">Annuler_Commande</a>
         </div>
 
-        {{ include('application_status/_form.html.twig', {'button_label': 'Rebase_State_Flow'}) }}
+        {{ include('application_statut/_form.html.twig', {'button_label': 'Réinitialiser_Flux_État'}) }}
 
         <div class="mt-10 pt-8 border-t border-[var(--color-drac-curr)]">
-            {{ include('application_status/_delete_form.html.twig') }}
+            {{ include('application_statut/_delete_form.html.twig') }}
         </div>
     </div>
 </main>

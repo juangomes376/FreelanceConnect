@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -41,6 +42,16 @@ class RegistrationFormType extends AbstractType
             ->add('siret', null, [
                 'label' => 'SIRET',
                 'required' => false,
+            ])
+            // select role between freelancer and client
+            ->add('roles', ChoiceType::class, [
+                'label' => 'Rôle',
+                'choices' => [
+                    'Freelancer' => 'ROLE_FREELANCER',
+                    'Client' => 'ROLE_CLIENT',
+                ],
+                'expanded' => true,
+                'multiple' => true,
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,

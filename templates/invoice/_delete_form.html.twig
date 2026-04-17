@@ -1,4 +1,4 @@
-<form method="post" action="{{ path('app_invoice_delete', {'id': invoice.id}) }}" onsubmit="return confirm('ALERTA FINANCEIRO: A exclusão da fatura é irreversível. Confirmar estorno permanente?');">
+<form method="post" action="{{ path('app_invoice_delete', {'id': invoice.id}) }}" onsubmit="return confirm('ALERTE FINANCIÈRE : la suppression de la facture est irréversible. Confirmer l'annulation permanente ?');">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ invoice.id) }}">
     <button class="w-full py-2 border border-[var(--color-drac-red)]/40 text-[var(--color-drac-red)] text-xs font-mono rounded hover:bg-[var(--color-drac-red)] hover:text-[var(--color-drac-bg)] transition-all uppercase tracking-widest">
         Void_Transaction

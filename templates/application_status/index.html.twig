@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Status de Candidatura - Terminal{% endblock %}
+{% block title %}Statut de candidature - Console{% endblock %}
 
 {% block body %}
 <main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono text-[var(--color-drac-fg)]">
@@ -11,10 +11,10 @@
                 <h1 class="text-3xl font-bold text-[var(--color-drac-pink)] tracking-tight uppercase">
                     <span class="text-[var(--color-drac-comment)]">[[</span> application_state_matrix <span class="text-[var(--color-drac-comment)]">]]</span>
                 </h1>
-                <p class="text-sm text-[var(--color-drac-comment)] mt-1">Gerenciando estados de fluxo de candidaturas...</p>
+                <p class="text-sm text-[var(--color-drac-comment)] mt-1">Gestion des états du flux de candidatures...</p>
             </div>
             
-            <a href="{{ path('app_application_status_new') }}" class="inline-flex items-center px-6 py-3 bg-[var(--color-drac-pink)]/10 border border-[var(--color-drac-pink)]/30 text-[var(--color-drac-pink)] rounded-xl text-sm hover:bg-[var(--color-drac-pink)] hover:text-[var(--color-drac-bg)] transition-all uppercase tracking-widest">
+            <a href="{{ path('app_application_statut_new') }}" class="inline-flex items-center px-6 py-3 bg-[var(--color-drac-pink)]/10 border border-[var(--color-drac-pink)]/30 text-[var(--color-drac-pink)] rounded-xl text-sm hover:bg-[var(--color-drac-pink)] hover:text-[var(--color-drac-bg)] transition-all uppercase tracking-widest">
                 <span class="mr-2">+</span> Push_New_State
             </a>
         </div>
@@ -30,15 +30,15 @@
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-[var(--color-drac-curr)]">
-                    {% for application_status in application_statuses %}
+                    {% for application_statut in application_statutes %}
                         <tr class="hover:bg-[var(--color-drac-pink)]/5 transition-colors group">
-                            <td class="px-6 py-4 text-[var(--color-drac-comment)] font-bold">#{{ application_status.id }}</td>
+                            <td class="px-6 py-4 text-[var(--color-drac-comment)] font-bold">#{{ application_statut.id }}</td>
                             <td class="px-6 py-4">
-                                <span class="px-3 py-1 rounded bg-[var(--color-drac-fg)]/5 text-[var(--color-drac-fg)] border border-[var(--color-drac-comment)]/30 text-[10px] font-bold uppercase tracking-widest">{{ application_status.name }}</span>
+                                <span class="px-3 py-1 rounded bg-[var(--color-drac-fg)]/5 text-[var(--color-drac-fg)] border border-[var(--color-drac-comment)]/30 text-[10px] font-bold uppercase tracking-widest">{{ application_statut.name }}</span>
                             </td>
                             <td class="px-6 py-4 text-right space-x-3">
-                                <a href="{{ path('app_application_status_show', {'id': application_status.id}) }}" class="text-[var(--color-drac-pink)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-pink)]/20 uppercase text-xs">read</a>
-                                <a href="{{ path('app_application_status_edit', {'id': application_status.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-yellow)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">mod</a>
+                                <a href="{{ path('app_application_statut_show', {'id': application_statut.id}) }}" class="text-[var(--color-drac-pink)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-pink)]/20 uppercase text-xs">read</a>
+                                <a href="{{ path('app_application_statut_modifier', {'id': application_statut.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-yellow)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">mod</a>
                             </td>
                         </tr>
                     {% else %}

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Categoria SPEC #{{ category.id }}{% endblock %}
+{% block title %}Catégorie SPEC #{{ category.id }}{% endblock %}
 
 {% block body %}
 <main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono text-[var(--color-drac-fg)]">
@@ -11,12 +11,12 @@
                 <h1 class="text-3xl font-bold text-[var(--color-drac-cyan)] tracking-tighter uppercase">
                     <span class="text-[var(--color-drac-comment)]">CAT_ID:</span> #{{ category.id }}
                 </h1>
-                <p class="text-[var(--color-drac-purple)] uppercase tracking-widest text-xs mt-1">Status: Nodo_Ativo_No_Sistema</p>
+                <p class="text-[var(--color-drac-purple)] uppercase tracking-widest text-xs mt-1">Statut : Nœud_Actif_Dans_Le_Système</p>
             </div>
             
             <div class="flex gap-4">
-                <a href="{{ path('app_category_edit', {'id': category.id}) }}" class="px-4 py-2 border border-[var(--color-drac-cyan)]/30 text-[var(--color-drac-cyan)] text-xs rounded hover:bg-[var(--color-drac-cyan)]/10 transition-colors uppercase">Mod_Category</a>
-                <a href="{{ path('app_category_index') }}" class="px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-colors uppercase">Return_Index</a>
+                <a href="{{ path('app_category_modifier', {'id': category.id}) }}" class="px-4 py-2 border border-[var(--color-drac-cyan)]/30 text-[var(--color-drac-cyan)] text-xs rounded hover:bg-[var(--color-drac-cyan)]/10 transition-colors uppercase">Modifier_Category</a>
+                <a href="{{ path('app_category_index') }}" class="px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-colors uppercase">Retour_Index</a>
             </div>
         </div>
 
@@ -29,13 +29,13 @@
             
             <div class="space-y-6">
                 <div>
-                    <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Nome_Da_Categoria</p>
+                    <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Nom_De_Catégorie</p>
                     <p class="text-2xl font-bold text-[var(--color-drac-fg)] uppercase tracking-tight">{{ category.name }}</p>
                 </div>
             </div>
 
             <div class="mt-10 pt-6 border-t border-[var(--color-drac-red)]/20">
-                <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocolo_De_Delecao_Indice</h4>
+                <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocole_De_Suppression_Indice</h4>
                 {{ include('category/_delete_form.html.twig') }}
             </div>
         </div>

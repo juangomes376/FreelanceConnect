@@ -29,7 +29,8 @@
                             <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] hidden lg:table-cell">Portfolio</th>
                             <th class="px-6 py-4 border-b border(--color-drac-curr) hidden md:table-cell text-center">Horas</th>
                             <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-center">Adiantamento</th>
-                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-right">Acoes</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-center">Detail</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-center">Acoes</th>
                         </tr>
                     </thead>
                     <tbody class="text-[var(--color-drac-fg)] divide-y divide-[var(--color-drac-curr)]">
@@ -50,10 +51,13 @@
                                     {{ application.advanceRequestedPercent }}%
                                 </span>
                             </td>
-                            <td class="px-6 py-4 text-right space-x-3">
-                                <a href="{{ path('app_application_show', {'id': application.id}) }}" class="text-[var(--color-drac-green)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-green)]/20 uppercase text-xs">spec</a>
-                                <a href="{{ path('app_application_edit', {'id': application.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">modifier</a>
+                            <td class="px-6 py-4 text-center">
+                                <a href="" class="text-[var(--color-drac-green)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-green)]/20 uppercase text-xs">show</a>
                             </td>
+                            <td class="px-6 py-4 text-center">
+                                <a href="" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">Accept</a>
+                            </td>
+
                         </tr>
                     {% else %}
                         <tr>

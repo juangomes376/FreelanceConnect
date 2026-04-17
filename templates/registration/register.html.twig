@@ -11,9 +11,9 @@
     <div class="w-full max-w-lg bg-[var(--color-drac-surface)]/60 border border-[var(--color-drac-curr)] rounded-2xl p-8 sm:p-10 shadow-2xl backdrop-blur-xl relative z-10 neon-border-cyan">
         <div class="mb-10 text-center">
             <h1 class="text-3xl font-bold text-[var(--color-drac-cyan)] font-mono uppercase tracking-tighter">
-                <span class="text-[var(--color-drac-pink)]">#</span> Criar_Identidade
+                <span class="text-[var(--color-drac-pink)]">#</span> Créer_Compte
             </h1>
-            <p class="text-xs text-[var(--color-drac-comment)] font-mono mt-2">Initialize registration protocol...</p>
+            <p class="text-xs text-[var(--color-drac-comment)] font-mono mt-2">Initialiser le protocole d'inscription...</p>
         </div>
 
         {{ form_start(registrationForm, {'attr': {'class': 'space-y-6'}}) }}
@@ -32,14 +32,14 @@
 
         <button type="submit" 
             class="w-full rounded-lg bg-[var(--color-drac-cyan)] px-6 py-4 mt-8 font-bold text-[var(--color-drac-bg)] shadow-lg hover:bg-[var(--color-drac-green)] hover:shadow-[var(--color-drac-green)]/30 focus:outline-none transition-all font-mono uppercase tracking-widest">
-            Confirmar Registro
+            Confirmer l'inscription
         </button>
 
         {{ form_end(registrationForm) }}
 
         <p class="text-xs text-center text-[var(--color-drac-comment)] mt-8 pt-6 border-t border-[var(--color-drac-curr)] font-mono">
-            Já possui autorização? 
-            <a href="{{ path('app_login') }}" class="text-[var(--color-drac-purple)] hover:text-[var(--color-drac-pink)] transition-colors">Acessar Terminal</a>
+            Déjà autorisé ? 
+            <a href="{{ path('app_login') }}" class="text-[var(--color-drac-purple)] hover:text-[var(--color-drac-pink)] transition-colors">Accéder au tableau de bord</a>
         </p>
     </div>
 
