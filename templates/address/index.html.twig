@@ -29,7 +29,7 @@
                             <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Street_Data</th>
                             <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] hidden md:table-cell">Zip_Code</th>
                             <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">City_Node</th>
-                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-right">Acoes</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-right">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-[var(--color-drac-curr)]">
@@ -50,7 +50,7 @@
                             </td>
                             <td class="px-6 py-4 text-right space-x-3">
                                 <a href="{{ path('app_address_show', {'id': address.id}) }}" class="text-[var(--color-drac-purple)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-purple)]/20 uppercase text-xs">gps</a>
-                                <a href="{{ path('app_address_modifier', {'id': address.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">mod</a>
+                                <a href="{{ path('app_address_edit', {'id': address.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">mod</a>
                             </td>
                         </tr>
                     {% else %}

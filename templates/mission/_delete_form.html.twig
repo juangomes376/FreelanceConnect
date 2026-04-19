@@ -1,6 +1,6 @@
 <form method="post" action="{{ path('app_mission_delete', {'id': mission.id}) }}" onsubmit="return confirm('ATTENTION : l'opération de suppression des données est irréversible. Confirmer le protocole ?');" class="inline-block w-full">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ mission.id) }}">
     <button class="w-full py-2 border border-[var(--color-drac-red)]/30 text-[var(--color-drac-red)] text-xs font-mono rounded hover:bg-[var(--color-drac-red)] hover:text-[var(--color-drac-bg)] transition-all uppercase tracking-widest">
-        Purge_Record
+        Purge_Enregistrement
     </button>
 </form>
