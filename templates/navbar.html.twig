@@ -8,12 +8,20 @@
 
             <nav class="hidden md:flex gap-6 font-mono">
                 <a href="{{ path('app_home') }}" class="text-sm font-medium text-[var(--color-drac-fg)] hover:text-[var(--color-drac-pink)] transition-colors">Accueil</a>
-                {% if is_granted('ROLE_USER') %}
+                {% if is_granted('ROLE_CLIENT') %}
+                    <a href="{{ path('app_mission_index') }}" class="text-sm font-medium text-[var(--color-drac-fg)] hover:text-[var(--color-drac-pink)] transition-colors">Mes_Missions</a>
+                    <a href="{{ path('app_invoice_index') }}" class="text-sm font-medium text-[var(--color-drac-fg)] hover:text-[var(--color-drac-pink)] transition-colors">Factures</a>
+                {% elseif is_granted('ROLE_FREELANCE') %}
+                    <a href="{{ path('app_mission_index') }}" class="text-sm font-medium text-[var(--color-drac-fg)] hover:text-[var(--color-drac-pink)] transition-colors">Missions</a>
+                    <a href="{{ path('app_application_index') }}" class="text-sm font-medium text-[var(--color-drac-fg)] hover:text-[var(--color-drac-pink)] transition-colors">Mes_Candidatures</a>
+                    <a href="{{ path('app_invoice_index') }}" class="text-sm font-medium text-[var(--color-drac-fg)] hover:text-[var(--color-drac-pink)] transition-colors">Factures</a>
+                {% elseif is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('app_user_index') }}" class="text-sm font-medium text-[var(--color-drac-fg)] hover:text-[var(--color-drac-pink)] transition-colors">Utilisateurs</a>
                     <a href="{{ path('app_mission_index') }}" class="text-sm font-medium text-[var(--color-drac-fg)] hover:text-[var(--color-drac-pink)] transition-colors">Missions</a>
                     <a href="{{ path('app_application_index') }}" class="text-sm font-medium text-[var(--color-drac-fg)] hover:text-[var(--color-drac-pink)] transition-colors">Candidatures</a>
-                    <a href="{{ path('app_invoice_index') }}" class="text-sm font-medium text-[var(--color-drac-fg)] hover:text-[var(--color-drac-pink)] transition-colors">Factures</a>
+                    <a href="{{ path('app_category_index') }}" class="text-sm font-medium text-[var(--color-drac-fg)] hover:text-[var(--color-drac-pink)] transition-colors">Catégories</a>
+                    <a href="{{ path('app_language_index') }}" class="text-sm font-medium text-[var(--color-drac-fg)] hover:text-[var(--color-drac-pink)] transition-colors">Langues</a>
                 {% endif %}
-
             </nav>
         </div>
         <div class="flex items-center gap-4">

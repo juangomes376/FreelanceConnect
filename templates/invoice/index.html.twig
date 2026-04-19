@@ -14,9 +14,11 @@
                 <p class="text-sm text-[var(--color-drac-comment)] mt-1">Audit des factures et des transactions...</p>
             </div>
             
+            {% if is_granted('ROLE_CLIENT') or is_granted('ROLE_ADMIN') %}
             <a href="{{ path('app_invoice_new') }}" class="inline-flex items-center px-6 py-3 bg-[var(--color-drac-yellow)]/10 border border-[var(--color-drac-yellow)]/30 text-[var(--color-drac-yellow)] rounded-xl text-sm hover:bg-[var(--color-drac-yellow)] hover:text-[var(--color-drac-bg)] transition-all shadow-lg hover:shadow-[var(--color-drac-yellow)]/20 uppercase tracking-widest">
                 <span class="mr-2">+</span> Générer_Facture
             </a>
+            {% endif %}
         </div>
 
         <div class="bg-[var(--color-drac-surface)]/40 border border-[var(--color-drac-curr)] rounded-2xl overflow-hidden backdrop-blur-sm shadow-2xl">

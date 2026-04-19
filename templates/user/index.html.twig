@@ -14,9 +14,11 @@
                 <p class="text-sm text-[var(--color-drac-comment)] mt-1">Consultation de la base d'utilisateurs authentifies...</p>
             </div>
             
+            {% if is_granted('ROLE_ADMIN') %}
             <a href="{{ path('app_user_new') }}" class="inline-flex items-center px-6 py-3 bg-[var(--color-drac-cyan)]/10 border border-[var(--color-drac-cyan)]/30 text-[var(--color-drac-cyan)] rounded-xl text-sm hover:bg-[var(--color-drac-cyan)] hover:text-[var(--color-drac-bg)] transition-all shadow-lg hover:shadow-[var(--color-drac-cyan)]/20 uppercase tracking-widest">
                 <span class="mr-2">+</span> Inserer_Noeud
             </a>
+            {% endif %}
         </div>
 
         <div class="bg-[var(--color-drac-surface)]/40 border border-[var(--color-drac-curr)] rounded-2xl overflow-hidden backdrop-blur-sm shadow-2xl">
@@ -57,7 +59,9 @@
                             </td>
                             <td class="px-6 py-4 text-right space-x-3">
                                 <a href="{{ path('app_user_show', {'id': user.id}) }}" class="text-[var(--color-drac-cyan)] hover:text-[var(--color-drac-purple)] transition-colors underline decoration-[var(--color-drac-cyan)]/20 uppercase text-xs">Access</a>
+                                {% if is_granted('ROLE_ADMIN') %}
                                 <a href="{{ path('app_user_modifier', {'id': user.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">Modifier</a>
+                                {% endif %}
                             </td>
                         </tr>
                     {% else %}

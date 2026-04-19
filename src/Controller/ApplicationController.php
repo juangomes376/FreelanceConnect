@@ -3,42 +3,38 @@
 namespace App\Controller;
 
 use App\Entity\Application;
-use App\Entity\Mission;
 use App\Form\ApplicationType;
-use App\Repository\ApplicationRepository;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\MissionRepository;
+use App\Service\ApplicationService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
-#[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
+
+#[IsGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
 #[Route('/application')]
 final class ApplicationController extends AbstractController
 {
-    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
+    public function __construct(private ApplicationService $applicationService) {}
+
     #[Route(name: 'app_application_index', methods: ['GET'])]
-    public function index(ApplicationRepository $applicationRepository): Response
+    public function index(): Response
     {
-        
-        $applications = $applicationRepository->findAll();
-
         return $this->render('application/index.html.twig', [
-            'applications' => $applications,
+            'applications' => $this->applicationService->findAll(),
         ]);
     }
 
-    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/new', name: 'app_application_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request): Response
     {
         $application = new Application();
         $form = $this->createForm(ApplicationType::class, $application);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($application);
-            $entityManager->flush();
+            $this->applicationService->create($application);
 
             return $this->redirectToRoute('app_application_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -49,57 +45,33 @@ final class ApplicationController extends AbstractController
         ]);
     }
 
-    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/new/{id}', name: 'app_application_new_mission', methods: ['GET', 'POST'])]
-    public function new_mission(Request $request, EntityManagerInterface $entityManager): Response
+    public function newForMission(int $id, Request $request, MissionRepository $missionRepository): Response
     {
-        $missionId = $request->attributes->get('id');
-        $mission = $entityManager->getRepository(Mission::class)->find($missionId);
-        $missionName = $mission ? $mission->getTitle() : 'Mission inconnue';
+        $mission = $missionRepository->find($id);
 
+        if (!$mission) {
+            throw $this->createNotFoundException('Mission introuvable.');
+        }
 
         $application = new Application();
-
         $form = $this->createForm(ApplicationType::class, $application);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $cvFile = $form->get('cvFilename')->getData();
+            $this->applicationService->createForMission($application, $mission, $this->getUser(), $cvFile);
 
-            $fichierCv = $form->get('cvFilename')->getData();
-            if ($fichierCv) {
-                $originalFilename = pathinfo($fichierCv->getClientOriginalName(), PATHINFO_FILENAME);
-                $newFilename = uniqid().'.'.$fichierCv->guessExtension();
-                // Move the file to the directory where brochures are stored
-                try {
-                    $fichierCv->move(
-                        $this->getParameter('kernel.project_dir').'/public/uploads/cvs',
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
-                }
-                $application->setCvFilename($newFilename);
-            }else{
-
-                $application->setCvFilename(null);
-            }
-            $application->setMission($mission);
-            $application->setFreelancer($this->getUser());
-            $application->setHoursWorked(0);
-            $application->setIsAdvanceAccepted(false);
-            $entityManager->persist($application);
-            $entityManager->flush();
             return $this->redirectToRoute('app_application_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('application/new.html.twig', [
-            'missionName' => $missionName,
+            'missionName' => $mission->getTitle(),
             'application' => $application,
             'form' => $form,
         ]);
     }
 
-    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/{id}', name: 'app_application_show', methods: ['GET'])]
     public function show(Application $application): Response
     {
@@ -108,15 +80,14 @@ final class ApplicationController extends AbstractController
         ]);
     }
 
-    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/{id}/edit', name: 'app_application_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Application $application, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Application $application): Response
     {
         $form = $this->createForm(ApplicationType::class, $application);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+            $this->applicationService->save($application);
 
             return $this->redirectToRoute('app_application_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -127,13 +98,11 @@ final class ApplicationController extends AbstractController
         ]);
     }
 
-    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/{id}', name: 'app_application_delete', methods: ['POST'])]
-    public function delete(Request $request, Application $application, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, Application $application): Response
     {
         if ($this->isCsrfTokenValid('delete'.$application->getId(), $request->getPayload()->getString('_token'))) {
-            $entityManager->remove($application);
-            $entityManager->flush();
+            $this->applicationService->delete($application);
         }
 
         return $this->redirectToRoute('app_application_index', [], Response::HTTP_SEE_OTHER);

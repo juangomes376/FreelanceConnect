@@ -19,5 +19,9 @@ services:
     App\:
         resource: '../src/'
 
+    App\Service\ApplicationService:
+        arguments:
+            $cvUploadDir: '%kernel.project_dir%/public/uploads/cvs'
+
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

@@ -15,7 +15,9 @@
             </div>
             
             <div class="flex gap-4">
+                {% if is_granted('ROLE_CLIENT') or is_granted('ROLE_ADMIN') %}
                 <a href="{{ path('app_mission_edit', {'id': mission.id}) }}" class="px-4 py-2 border border-[var(--color-drac-purple)]/30 text-[var(--color-drac-purple)] text-xs rounded hover:bg-[var(--color-drac-purple)]/10 transition-colors uppercase">Edit_Entry</a>
+                {% endif %}
                 <a href="{{ path('app_mission_index') }}" class="px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-colors uppercase">Fermer_Console</a>
             </div>
         </div>
@@ -73,10 +75,12 @@
                     </div>
                 </div>
 
+                {% if is_granted('ROLE_CLIENT') or is_granted('ROLE_ADMIN') %}
                 <div class="p-4 border border-[var(--color-drac-red)]/20 rounded-2xl bg-[var(--color-drac-red)]/5">
                     <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocole_De_Suppression</h4>
                     {{ include('mission/_delete_form.html.twig') }}
                 </div>
+                {% endif %}
             </div>
         </div>
 

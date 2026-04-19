@@ -3,20 +3,41 @@
 namespace App\Service;
 
 use App\Entity\Mission;
+use App\Entity\User;
 use App\Repository\MissionRepository;
+use Doctrine\ORM\EntityManagerInterface;
 
 
 class MissionService
 {
-    private MissionRepository $missionRepository;
+    public function __construct(
+        private MissionRepository $missionRepository,
+        private EntityManagerInterface $entityManager,
+    ) {}
 
-    public function __construct(MissionRepository $missionRepository)
+    public function findAll(): array
     {
-        $this->missionRepository = $missionRepository;
+        return $this->missionRepository->findAll();
     }
 
-    // public function getAllMissions()
-    // {
-    //     return $this->missionRepository->findAll();
-    // }
+    public function create(Mission $mission, User $client): void
+    {
+        $mission->setIsValidatedByAdmin(false);
+        $mission->setNeedsRevalidation(false);
+        $mission->setClient($client);
+
+        $this->entityManager->persist($mission);
+        $this->entityManager->flush();
+    }
+
+    public function save(Mission $mission): void
+    {
+        $this->entityManager->flush();
+    }
+
+    public function delete(Mission $mission): void
+    {
+        $this->entityManager->remove($mission);
+        $this->entityManager->flush();
+    }
 }

@@ -4,38 +4,36 @@ namespace App\Controller;
 
 use App\Entity\Language;
 use App\Form\LanguageType;
-use App\Repository\LanguageRepository;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Service\LanguageService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-#[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
+#[IsGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
 #[Route('/language')]
 final class LanguageController extends AbstractController
 {
-    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
+    public function __construct(private LanguageService $languageService) {}
+
     #[Route(name: 'app_language_index', methods: ['GET'])]
-    public function index(LanguageRepository $languageRepository): Response
+    public function index(): Response
     {
         return $this->render('language/index.html.twig', [
-            'languages' => $languageRepository->findAll(),
+            'languages' => $this->languageService->findAll(),
         ]);
     }
 
-    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/new', name: 'app_language_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request): Response
     {
         $language = new Language();
         $form = $this->createForm(LanguageType::class, $language);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($language);
-            $entityManager->flush();
+            $this->languageService->create($language);
 
             return $this->redirectToRoute('app_language_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -46,7 +44,6 @@ final class LanguageController extends AbstractController
         ]);
     }
 
-    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/{id}', name: 'app_language_show', methods: ['GET'])]
     public function show(Language $language): Response
     {
@@ -55,15 +52,14 @@ final class LanguageController extends AbstractController
         ]);
     }
 
-    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/{id}/edit', name: 'app_language_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Language $language, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Language $language): Response
     {
         $form = $this->createForm(LanguageType::class, $language);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+            $this->languageService->save($language);
 
             return $this->redirectToRoute('app_language_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -74,13 +70,11 @@ final class LanguageController extends AbstractController
         ]);
     }
 
-    #[isGranted('ROLE_USER', message: 'Vous devez être connecté pour accéder à cette page.')]
     #[Route('/{id}', name: 'app_language_delete', methods: ['POST'])]
-    public function delete(Request $request, Language $language, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, Language $language): Response
     {
         if ($this->isCsrfTokenValid('delete'.$language->getId(), $request->getPayload()->getString('_token'))) {
-            $entityManager->remove($language);
-            $entityManager->flush();
+            $this->languageService->delete($language);
         }
 
         return $this->redirectToRoute('app_language_index', [], Response::HTTP_SEE_OTHER);

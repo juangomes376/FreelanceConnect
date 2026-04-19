@@ -47,7 +47,7 @@ class RegistrationFormType extends AbstractType
             ->add('roles', ChoiceType::class, [
                 'label' => 'Rôle',
                 'choices' => [
-                    'Freelancer' => 'ROLE_FREELANCER',
+                    'Freelancer' => 'ROLE_FREELANCE',
                     'Client' => 'ROLE_CLIENT',
                 ],
                 'expanded' => true,
