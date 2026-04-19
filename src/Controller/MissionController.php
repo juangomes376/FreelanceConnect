@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Mission;
 use App\Form\MissionType;
+use App\Service\ApplicationService;
 use App\Service\MissionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -45,10 +46,16 @@ final class MissionController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_mission_show', methods: ['GET'])]
-    public function show(Mission $mission): Response
+    public function show(Mission $mission, ApplicationService $applicationService): Response
     {
+        $alreadyApplied = false;
+        if ($this->isGranted('ROLE_FREELANCE') && $this->getUser()) {
+            $alreadyApplied = $applicationService->hasAlreadyApplied($mission, $this->getUser());
+        }
+
         return $this->render('mission/show.html.twig', [
             'mission' => $mission,
+            'alreadyApplied' => $alreadyApplied,
         ]);
     }
 
@@ -84,8 +91,8 @@ final class MissionController extends AbstractController
     public function applications(Mission $mission): Response
     {
         return $this->render('mission/show_application.html.twig', [
+            'mission'      => $mission,
             'applications' => $mission->getApplications(),
-            'missionName'  => $mission->getTitle(),
         ]);
     }
 }

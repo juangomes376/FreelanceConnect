@@ -16,7 +16,7 @@
             
             {% if is_granted('ROLE_CLIENT') %}
             <a href="{{ path('app_mission_new') }}" class="inline-flex items-center px-6 py-3 bg-[var(--color-drac-green)]/10 border border-[var(--color-drac-green)]/30 text-[var(--color-drac-green)] rounded-xl font-mono text-sm hover:bg-[var(--color-drac-green)] hover:text-[var(--color-drac-bg)] transition-all shadow-lg hover:shadow-[var(--color-drac-green)]/20 uppercase tracking-widest">
-                <span class="mr-2">+</span> Nouvelle_Mission
+                <span class="mr-2">+</span> Nouvelle mission
             </a>
             {% endif %}
         </div>
@@ -32,8 +32,8 @@
                             <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] hidden lg:table-cell">Budget</th>
                             <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] hidden md:table-cell">Delai</th>
                             <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Statut</th>
-                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-right">Actions</th>
-                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-right">Candidatures</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-center">Actions</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-center">Candidatures</th>
                         </tr>
                     </thead>
                     <tbody class="text-[var(--color-drac-fg)] divide-y divide-[var(--color-drac-curr)]">
@@ -41,7 +41,7 @@
                         <tr class="hover:bg-[var(--color-drac-purple)]/5 transition-colors group">
                             <td class="px-6 py-4 text-[var(--color-drac-comment)]">#{{ mission.id }}</td>
                             <td class="px-6 py-4">
-                                <span class="font-bold text-[var(--color-drac-purple)] underline decoration-[var(--color-drac-purple)]/30 hover:decoration-[var(--color-drac-purple)] transition-all">{{ mission.title }}</span>
+                                <a href="{{ path('app_mission_show', {'id': mission.id}) }}" class="font-bold text-[var(--color-drac-purple)] underline decoration-[var(--color-drac-purple)]/30 hover:decoration-[var(--color-drac-purple)] transition-all">{{ mission.title }}</a>
                             </td>
                             <td class="px-6 py-4 hidden lg:table-cell text-[var(--color-drac-green)] font-bold">
                                 ${{ mission.budget }}
@@ -56,30 +56,22 @@
                                     <span class="inline-flex items-center px-2 py-1 rounded bg-[var(--color-drac-orange)]/10 text-[var(--color-drac-orange)] text-xs border border-[var(--color-drac-orange)]/20">PENDING</span>
                                 {% endif %}
                             </td>
-                            <td class="px-6 py-4 text-right space-x-3">
-                                <a href="{{ path('app_mission_show', {'id': mission.id}) }}" class="text-[var(--color-drac-cyan)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-cyan)]/20">voir</a>
+                            <td class="px-6 py-4 text-center space-x-3">
                                 {% if is_granted('ROLE_CLIENT') or is_granted('ROLE_ADMIN') %}
                                 <a href="{{ path('app_mission_edit', {'id': mission.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-purple)] transition-colors underline decoration-[var(--color-drac-comment)]/20">modifier</a>
                                 {% endif %}
                                 {% if is_granted('ROLE_FREELANCE') %}
                                 <a href="{{ path('app_application_new_mission', {'id': mission.id}) }}" class="text-[var(--color-drac-green)] hover:text-[var(--color-drac-green)]/80 transition-colors underline decoration-[var(--color-drac-green)]/20">postuler</a>
                                 {% endif %}
-                                {% if is_granted('ROLE_CLIENT') %}
-                                    <a href="{{ path('app_mission_show', {'id': mission.id}) }}" class="text-[var(--color-drac-yellow)] hover:text-[var(--color-drac-yellow)]/80 transition-colors underline decoration-[var(--color-drac-yellow)]/20">statut</a>
-                                {% endif %}
-                                
                             </td>
-                            <td class="px-6 py-4 text-right">
-                                {% if is_granted('ROLE_CLIENT') or is_granted('ROLE_ADMIN') %}
-                                <a href="{{ path('app_mission_applications', {'id': mission.id}) }}" class="text-[var(--color-drac-cyan)] hover:text-[var(--color-drac-cyan)]/80 transition-colors underline decoration-[var(--color-drac-cyan)]/20">voir</a>
-                                {% endif %}
+                            <td class="px-6 py-4 text-center">
+                                <span class="text-[var(--color-drac-comment)] italic text-xs">{{mission.applicationCount}}</span>
                             </td>
                         </tr>
                     {% else %}
                         <tr>
                             <td colspan="6" class="px-6 py-20 text-center text-[var(--color-drac-comment)] italic font-mono">
-                                <p class="text-lg">NULL_POINTER_EXCEPTION : aucune mission trouvée.</p>
-                                <p class="text-xs mt-2 uppercase tracking-widest">La requête de base de données n'a retourné aucun résultat.</p>
+                                <p class="text-lg">Aucune mission trouvée.</p>
                             </td>
                         </tr>
                     {% endfor %}

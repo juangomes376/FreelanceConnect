@@ -17,7 +17,13 @@ class MissionService
 
     public function findAll(): array
     {
-        return $this->missionRepository->findAll();
+        $missions = $this->missionRepository->findAll();
+
+        // pour chaque mission on ajoute une variable pour recuperer le nombre de candidatures
+        foreach ($missions as $mission) {
+            $mission->applicationCount = count($mission->getApplications());
+        }
+        return $missions;
     }
 
     public function create(Mission $mission, User $client): void

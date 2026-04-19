@@ -6,6 +6,7 @@ use App\Entity\Application;
 use App\Entity\Mission;
 use App\Entity\User;
 use App\Repository\ApplicationRepository;
+use App\Repository\ApplicationStatusRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -13,6 +14,7 @@ class ApplicationService
 {
     public function __construct(
         private ApplicationRepository $applicationRepository,
+        private ApplicationStatusRepository $applicationStatusRepository,
         private EntityManagerInterface $entityManager,
         private string $cvUploadDir,
     ) {}
@@ -20,6 +22,34 @@ class ApplicationService
     public function findAll(): array
     {
         return $this->applicationRepository->findAll();
+    }
+
+    public function findByFreelancer(User $user): array
+    {
+        return $this->applicationRepository->findByFreelancer($user);
+    }
+
+    public function hasAlreadyApplied(Mission $mission, User $freelancer): bool
+    {
+        return $this->applicationRepository->findOneByFreelancerAndMission($freelancer, $mission) !== null;
+    }
+
+    public function accept(Application $application): void
+    {
+        $status = $this->applicationStatusRepository->findOneBy(['name' => 'Acceptée']);
+        if ($status) {
+            $application->setStatus($status);
+        }
+        $this->entityManager->flush();
+    }
+
+    public function refuse(Application $application): void
+    {
+        $status = $this->applicationStatusRepository->findOneBy(['name' => 'Refusée']);
+        if ($status) {
+            $application->setStatus($status);
+        }
+        $this->entityManager->flush();
     }
 
     /**

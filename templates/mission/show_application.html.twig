@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Console des candidatures{% endblock %}
+{% block title %}Candidatures — {{ mission.title }}{% endblock %}
 
 {% block body %}
 <main class="flex-grow p-6 lg:p-10 bg-[var(--color-drac-bg)] font-mono">
     <div class="max-w-7xl mx-auto space-y-8">
-        
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[var(--color-drac-curr)] pb-6">
             <div>
-                <h1 class="text-3xl font-bold text-[var(--color-drac-green)] tracking-tight uppercase">
-                    <span class="text-[var(--color-drac-pink)]">&gt;</span> list_applications
+                <h1 class="text-3xl font-bold text-[var(--color-drac-green)] tracking-tight">
+                    Candidatures reçues
                 </h1>
-                <p class="text-sm text-[var(--color-drac-comment)] mt-1">Synchronisation des candidatures envoyées...</p>
+                <p class="text-sm text-[var(--color-drac-comment)] mt-1">Mission : <span class="text-[var(--color-drac-fg)]">{{ mission.title }}</span></p>
             </div>
-            
-            <a href="{{ path('app_application_new') }}" class="inline-flex items-center px-6 py-3 bg-[var(--color-drac-green)]/10 border border-[var(--color-drac-green)]/30 text-[var(--color-drac-green)] rounded-xl text-sm hover:bg-[var(--color-drac-green)] hover:text-[var(--color-drac-bg)] transition-all shadow-lg hover:shadow-[var(--color-drac-green)]/20 uppercase tracking-widest">
-                <span class="mr-2">+</span> Nouvelle_Candidature
+            <a href="{{ path('app_mission_show', {'id': mission.id}) }}"
+               class="inline-flex items-center px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-colors uppercase">
+                ← Retour à la mission
             </a>
         </div>
 
@@ -24,45 +24,102 @@
                 <table class="w-full text-left border-collapse text-sm">
                     <thead>
                         <tr class="bg-[var(--color-drac-curr)]/50 text-[var(--color-drac-cyan)] uppercase tracking-wider">
-                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">ID</th>
-                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Lettre_Motivation</th>
-                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] hidden lg:table-cell">Portfolio</th>
-                            <th class="px-6 py-4 border-b border(--color-drac-curr) hidden md:table-cell text-center">Heures</th>
-                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-center">Avance</th>
-                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-center">Detail</th>
-                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-center">Actions</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Candidat</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Motivation</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] hidden lg:table-cell">CV</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] hidden md:table-cell text-center">Avance demandée</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-center">Statut</th>
+                            {% if is_granted('ROLE_CLIENT') or is_granted('ROLE_ADMIN') %}
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-right">Actions</th>
+                            {% endif %}
                         </tr>
                     </thead>
                     <tbody class="text-[var(--color-drac-fg)] divide-y divide-[var(--color-drac-curr)]">
                     {% for application in applications %}
-                        <tr class="hover:bg-[var(--color-drac-green)]/5 transition-colors group">
-                            <td class="px-6 py-4 text-[var(--color-drac-comment)] font-bold">#{{ application.id }}</td>
+                        <tr class="hover:bg-[var(--color-drac-green)]/5 transition-colors">
                             <td class="px-6 py-4">
-                                <div class="max-w-xs truncate text-[var(--color-drac-fg)] opacity-80 italic">"{{ application.coverLetter|slice(0, 50) }}..."</div>
+                                <div class="flex flex-col">
+                                    <span class="font-bold text-[var(--color-drac-fg)]">
+                                        {{ application.freelancer ? application.freelancer.firstName ~ ' ' ~ application.freelancer.lastName : 'Inconnu' }}
+                                    </span>
+                                    <span class="text-xs text-[var(--color-drac-comment)]">
+                                        {{ application.freelancer ? application.freelancer.email : '' }}
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 max-w-xs">
+                                <div class="truncate text-[var(--color-drac-fg)] opacity-80 italic text-xs">
+                                    "{{ application.coverLetter|slice(0, 80) }}..."
+                                </div>
+                                <a href="{{ path('app_application_show', {'id': application.id}) }}"
+                                   class="text-xs text-[var(--color-drac-cyan)] hover:underline mt-1 inline-block">Voir le détail →</a>
                             </td>
                             <td class="px-6 py-4 hidden lg:table-cell">
-                                <span class="text-[var(--color-drac-purple)] underline decoration-[var(--color-drac-purple)]/20 text-xs">{{ application.portfolioLinks|slice(0, 30) }}...</span>
+                                {% if application.cvFilename %}
+                                    <a href="/uploads/cvs/{{ application.cvFilename }}" target="_blank"
+                                       class="text-[var(--color-drac-purple)] underline text-xs hover:text-[var(--color-drac-pink)]">
+                                        Télécharger le CV
+                                    </a>
+                                {% else %}
+                                    <span class="text-[var(--color-drac-comment)] text-xs">Non fourni</span>
+                                {% endif %}
                             </td>
-                            <td class="px-6 py-4 hidden md:table-cell text-center font-bold text-[var(--color-drac-yellow)]">
-                                {{ application.hoursWorked }}h
-                            </td>
-                            <td class="px-6 py-4 text-center">
+                            <td class="px-6 py-4 hidden md:table-cell text-center">
                                 <span class="px-2 py-1 rounded bg-[var(--color-drac-orange)]/10 text-[var(--color-drac-orange)] text-[10px] border border-[var(--color-drac-orange)]/20 font-bold">
                                     {{ application.advanceRequestedPercent }}%
                                 </span>
                             </td>
                             <td class="px-6 py-4 text-center">
-                                <a href="" class="text-[var(--color-drac-green)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-green)]/20 uppercase text-xs">show</a>
+                                {% if application.status %}
+                                    {% set statusColor = 'text-[var(--color-drac-comment)]' %}
+                                    {% if application.status.name == 'Acceptée' %}
+                                        {% set statusColor = 'text-[var(--color-drac-green)]' %}
+                                    {% elseif application.status.name == 'Refusée' %}
+                                        {% set statusColor = 'text-[var(--color-drac-red)]' %}
+                                    {% endif %}
+                                    <span class="px-2 py-1 rounded text-[10px] font-bold {{ statusColor }} bg-current/10 border border-current/20">
+                                        {{ application.status.name }}
+                                    </span>
+                                {% else %}
+                                    <span class="px-2 py-1 rounded bg-[var(--color-drac-yellow)]/10 text-[var(--color-drac-yellow)] text-[10px] border border-[var(--color-drac-yellow)]/20 font-bold">
+                                        En attente
+                                    </span>
+                                {% endif %}
                             </td>
-                            <td class="px-6 py-4 text-center">
-                                <a href="" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">Accepter</a>
+                            {% if is_granted('ROLE_CLIENT') %}
+                            <td class="px-6 py-4 text-right space-x-2">
+                                {% if application.status is null or application.status.name == 'En attente' %}
+                                <form method="post" action="{{ path('app_application_accept', {'id': application.id}) }}" class="inline">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('status' ~ application.id) }}">
+                                    <button type="submit"
+                                        class="px-3 py-1 bg-[var(--color-drac-green)]/10 border border-[var(--color-drac-green)]/30 text-[var(--color-drac-green)] text-xs rounded hover:bg-[var(--color-drac-green)] hover:text-[var(--color-drac-bg)] transition-all uppercase">
+                                        Accepter
+                                    </button>
+                                </form>
+                                <form method="post" action="{{ path('app_application_refuse', {'id': application.id}) }}" class="inline">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('status' ~ application.id) }}">
+                                    <button type="submit"
+                                        class="px-3 py-1 bg-[var(--color-drac-red)]/10 border border-[var(--color-drac-red)]/30 text-[var(--color-drac-red)] text-xs rounded hover:bg-[var(--color-drac-red)] hover:text-[var(--color-drac-bg)] transition-all uppercase">
+                                        Refuser
+                                    </button>
+                                </form>
+                                {% else %}
+                                    <span class="text-[var(--color-drac-comment)] text-xs italic">Décision prise</span>
+                                {% endif %}
                             </td>
-
+                            {% elseif is_granted('ROLE_ADMIN') %}
+                            <td class="px-6 py-4 text-right">
+                                <a href="{{ path('app_application_show', {'id': application.id}) }}"
+                                   class="text-[var(--color-drac-cyan)] hover:text-[var(--color-drac-pink)] transition-colors underline text-xs">
+                                    Voir
+                                </a>
+                            </td>
+                            {% endif %}
                         </tr>
                     {% else %}
                         <tr>
                             <td colspan="6" class="px-6 py-20 text-center text-[var(--color-drac-comment)] italic">
-                                <p class="text-lg">ENTREE_NON_TROUVEE : aucune candidature en file d'attente.</p>
+                                <p class="text-lg">Aucune candidature reçue pour cette mission.</p>
                             </td>
                         </tr>
                     {% endfor %}

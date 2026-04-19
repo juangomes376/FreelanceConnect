@@ -9,14 +9,14 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
                 <h1 class="text-3xl font-bold text-[var(--color-drac-green)] tracking-tight uppercase">
-                    <span class="text-[var(--color-drac-pink)]">&gt;</span> list_applications
+                    Candidatures
                 </h1>
-                <p class="text-sm text-[var(--color-drac-comment)] mt-1">Synchronisation des candidatures envoyées...</p>
+                <p class="text-sm text-[var(--color-drac-comment)] mt-1">Vos candidatures aux missions.</p>
             </div>
             
             {% if is_granted('ROLE_FREELANCE') %}
             <a href="{{ path('app_application_new') }}" class="inline-flex items-center px-6 py-3 bg-[var(--color-drac-green)]/10 border border-[var(--color-drac-green)]/30 text-[var(--color-drac-green)] rounded-xl text-sm hover:bg-[var(--color-drac-green)] hover:text-[var(--color-drac-bg)] transition-all shadow-lg hover:shadow-[var(--color-drac-green)]/20 uppercase tracking-widest">
-                <span class="mr-2">+</span> Nouvelle_Candidature
+                <span class="mr-2">+</span> Nouvelle candidature
             </a>
             {% endif %}
         </div>
@@ -27,7 +27,7 @@
                     <thead>
                         <tr class="bg-[var(--color-drac-curr)]/50 text-[var(--color-drac-cyan)] uppercase tracking-wider">
                             <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">ID</th>
-                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Lettre_Motivation</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Lettre de motivation</th>
                             <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] hidden lg:table-cell">Portfolio</th>
                             <th class="px-6 py-4 border-b border(--color-drac-curr) hidden md:table-cell text-center">Heures</th>
                             <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-center">Avance</th>
@@ -53,7 +53,7 @@
                                 </span>
                             </td>
                             <td class="px-6 py-4 text-right space-x-3">
-                                <a href="{{ path('app_application_show', {'id': application.id}) }}" class="text-[var(--color-drac-green)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-green)]/20 uppercase text-xs">spec</a>
+                                <a href="{{ path('app_application_show', {'id': application.id}) }}" class="text-[var(--color-drac-green)] hover:text-[var(--color-drac-cyan)] transition-colors underline decoration-[var(--color-drac-green)]/20 uppercase text-xs">voir</a>
                                 {% if is_granted('ROLE_FREELANCE') %}
                                 <a href="{{ path('app_application_edit', {'id': application.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-comment)]/20 uppercase text-xs">modifier</a>
                                 {% endif %}
@@ -62,7 +62,7 @@
                     {% else %}
                         <tr>
                             <td colspan="6" class="px-6 py-20 text-center text-[var(--color-drac-comment)] italic">
-                                <p class="text-lg">ENTREE_NON_TROUVEE : aucune candidature en file d'attente.</p>
+                                <p class="text-lg">Aucune candidature trouvée.</p>
                             </td>
                         </tr>
                     {% endfor %}

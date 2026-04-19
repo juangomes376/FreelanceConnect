@@ -8,17 +8,16 @@
         
         <div class="flex items-center justify-between border-b border-[var(--color-drac-curr)] pb-6">
             <div>
-                <h1 class="text-3xl font-bold text-[var(--color-drac-green)] tracking-tighter uppercase">
-                    <span class="text-[var(--color-drac-comment)]">SPEC_ID:</span> #{{ application.id }}
+                <h1 class="text-3xl font-bold text-[var(--color-drac-green)] tracking-tighter">
+                    Candidature #{{ application.id }}
                 </h1>
-                <p class="text-[var(--color-drac-pink)] uppercase tracking-widest text-xs mt-1">Statut : Analyse_Candidat</p>
             </div>
             
             <div class="flex gap-4">
                 {% if is_granted('ROLE_FREELANCE') %}
-                <a href="{{ path('app_application_edit', {'id': application.id}) }}" class="px-4 py-2 border border-[var(--color-drac-purple)]/30 text-[var(--color-drac-purple)] text-xs rounded hover:bg-[var(--color-drac-purple)]/10 transition-colors uppercase">Edit_Spec</a>
+                <a href="{{ path('app_application_edit', {'id': application.id}) }}" class="px-4 py-2 border border-[var(--color-drac-purple)]/30 text-[var(--color-drac-purple)] text-xs rounded hover:bg-[var(--color-drac-purple)]/10 transition-colors uppercase">Modifier</a>
                 {% endif %}
-                <a href="{{ path('app_application_index') }}" class="px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-colors uppercase">Exit_Buffer</a>
+                <a href="{{ path('app_application_index') }}" class="px-4 py-2 border border-[var(--color-drac-comment)]/30 text-[var(--color-drac-comment)] text-xs rounded hover:bg-[var(--color-drac-comment)]/10 transition-colors uppercase">Retour</a>
             </div>
         </div>
 
@@ -29,20 +28,20 @@
                         <span class="text-[var(--color-drac-green)] text-[10px]">CANDIDACY_DATA_STREAM</span>
                     </div>
                     
-                    <h2 class="text-xs uppercase text-[var(--color-drac-cyan)] tracking-[0.3em] mb-6">Lettre_De_Motivation</h2>
+                    <h2 class="text-xs uppercase text-[var(--color-drac-cyan)] tracking-[0.3em] mb-6">Lettre de motivation</h2>
                     <div class="bg-[var(--color-drac-bg)]/50 p-6 border-l-2 border-[var(--color-drac-green)] rounded-r-lg text-sm leading-relaxed opacity-90 italic">
                         "{{ application.coverLetter }}"
                     </div>
 
-                    <h2 class="text-xs uppercase text-[var(--color-drac-cyan)] tracking-[0.3em] mt-10 mb-6">Ressources_Additionnelles</h2>
+                    <h2 class="text-xs uppercase text-[var(--color-drac-cyan)] tracking-[0.3em] mt-10 mb-6">Ressources</h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div class="p-4 bg-[var(--color-drac-curr)]/30 rounded-xl border border-[var(--color-drac-curr)]">
-                            <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold mb-1">CV_Source</p>
-                            <p class="text-xs text-[var(--color-drac-purple)] truncate">{{ application.cvFilename|default('binary_not_found') }}</p>
+                            <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold mb-1">CV</p>
+                            <p class="text-xs text-[var(--color-drac-purple)] truncate">{{ application.cvFilename|default('Non fourni') }}</p>
                         </div>
                         <div class="p-4 bg-[var(--color-drac-curr)]/30 rounded-xl border border-[var(--color-drac-curr)]">
-                            <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold mb-1">Liens_Portfolio</p>
-                            <p class="text-xs text-[var(--color-drac-cyan)] truncate">{{ application.portfolioLinks|default('no_links_provided') }}</p>
+                            <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold mb-1">Portfolio</p>
+                            <p class="text-xs text-[var(--color-drac-cyan)] truncate">{{ application.portfolioLinks|default('Non fourni') }}</p>
                         </div>
                     </div>
                 </div>
@@ -51,21 +50,21 @@
             <div class="space-y-6">
                 <div class="bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] rounded-2xl p-6 space-y-6">
                     <div>
-                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase tracking-wider mb-1 font-bold">Heures_Estimées</p>
+                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase tracking-wider mb-1 font-bold">Heures estimées</p>
                         <p class="text-2xl text-[var(--color-drac-yellow)] font-bold">{{ application.hoursWorked }}h</p>
                     </div>
                     
                     <div>
-                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase tracking-wider mb-1 font-bold">Demande_Avance</p>
+                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase tracking-wider mb-1 font-bold">Avance demandée</p>
                         <p class="text-xl text-[var(--color-drac-orange)]">{{ application.advanceRequestedPercent }}%</p>
                     </div>
 
                     <div class="pt-6 border-t border-[var(--color-drac-curr)]">
-                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase tracking-wider mb-2 font-bold">Statut_Financier</p>
+                        <p class="text-[10px] text-[var(--color-drac-comment)] uppercase tracking-wider mb-2 font-bold">Statut financier</p>
                         <div class="flex items-center justify-between text-xs">
-                            <span>Avance Acceptee</span>
+                            <span>Avance acceptée</span>
                             <span class="{{ application.isAdvanceAccepted ? 'text-[var(--color-drac-green)]' : 'text-[var(--color-drac-red)]' }} font-bold">
-                                {{ application.isAdvanceAccepted ? 'TRUE' : 'FALSE' }}
+                                {{ application.isAdvanceAccepted ? 'Oui' : 'Non' }}
                             </span>
                         </div>
                     </div>
@@ -73,7 +72,7 @@
 
                 {% if is_granted('ROLE_FREELANCE') %}
                 <div class="p-4 border border-[var(--color-drac-red)]/20 rounded-2xl bg-[var(--color-drac-red)]/5">
-                    <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocole_De_Suppression</h4>
+                    <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Supprimer la candidature</h4>
                     {{ include('application/_delete_form.html.twig') }}
                 </div>
                 {% endif %}

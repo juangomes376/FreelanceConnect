@@ -21,8 +21,14 @@ final class ApplicationController extends AbstractController
     #[Route(name: 'app_application_index', methods: ['GET'])]
     public function index(): Response
     {
+        if ($this->isGranted('ROLE_FREELANCE')) {
+            $applications = $this->applicationService->findByFreelancer($this->getUser());
+        } else {
+            $applications = $this->applicationService->findAll();
+        }
+
         return $this->render('application/index.html.twig', [
-            'applications' => $this->applicationService->findAll(),
+            'applications' => $applications,
         ]);
     }
 
@@ -52,6 +58,11 @@ final class ApplicationController extends AbstractController
 
         if (!$mission) {
             throw $this->createNotFoundException('Mission introuvable.');
+        }
+
+        if ($this->applicationService->hasAlreadyApplied($mission, $this->getUser())) {
+            $this->addFlash('warning', 'Vous avez déjà postulé à cette mission.');
+            return $this->redirectToRoute('app_mission_show', ['id' => $id]);
         }
 
         $application = new Application();
@@ -106,5 +117,27 @@ final class ApplicationController extends AbstractController
         }
 
         return $this->redirectToRoute('app_application_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/{id}/accept', name: 'app_application_accept', methods: ['POST'])]
+    #[IsGranted('ROLE_CLIENT')]
+    public function accept(Request $request, Application $application): Response
+    {
+        if ($this->isCsrfTokenValid('status'.$application->getId(), $request->getPayload()->getString('_token'))) {
+            $this->applicationService->accept($application);
+        }
+
+        return $this->redirectToRoute('app_mission_applications', ['id' => $application->getMission()->getId()]);
+    }
+
+    #[Route('/{id}/refuse', name: 'app_application_refuse', methods: ['POST'])]
+    #[IsGranted('ROLE_CLIENT')]
+    public function refuse(Request $request, Application $application): Response
+    {
+        if ($this->isCsrfTokenValid('status'.$application->getId(), $request->getPayload()->getString('_token'))) {
+            $this->applicationService->refuse($application);
+        }
+
+        return $this->redirectToRoute('app_mission_applications', ['id' => $application->getMission()->getId()]);
     }
 }

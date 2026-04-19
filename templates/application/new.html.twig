@@ -1,18 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouvelle Candidature - Console{% endblock %}
+{% block title %}Postuler — {{ missionName|default('Mission') }}{% endblock %}
 
 {% block body %}
 <main class="flex-grow flex items-center justify-center p-6 bg-[var(--color-drac-bg)] font-mono">
     <div class="w-full max-w-2xl bg-[var(--color-drac-surface)] border border-[var(--color-drac-curr)] p-10 rounded-2xl shadow-2xl relative neon-border-green">
         <div class="mb-10 flex items-center justify-between border-b border-[var(--color-drac-curr)] pb-6">
-            <h1 class="text-2xl font-bold text-[var(--color-drac-green)] uppercase tracking-tighter">
-                <span class="text-[var(--color-drac-comment)]">Application</span> {{ missionName|default('Unknown_Mission') }}
-            </h1>
-            <a href="{{ path('app_application_index') }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-fg)] text-xs uppercase tracking-widest">Annuler_Commande</a>
+            <div>
+                <h1 class="text-2xl font-bold text-[var(--color-drac-green)] tracking-tighter">
+                    Postuler à une mission
+                </h1>
+                {% if missionName is defined %}
+                    <p class="text-sm text-[var(--color-drac-comment)] mt-1">Mission : <span class="text-[var(--color-drac-fg)]">{{ missionName }}</span></p>
+                {% endif %}
+            </div>
+            <a href="{{ path('app_application_index') }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-fg)] text-xs uppercase tracking-widest">Annuler</a>
         </div>
 
-        {{ include('application/_form.html.twig', {'button_label': 'Initialize_Candidacy'}) }}
+        {{ include('application/_form.html.twig', {'button_label': 'Envoyer ma candidature'}) }}
     </div>
 </main>
 {% endblock %}
