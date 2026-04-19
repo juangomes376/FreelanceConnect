@@ -34,8 +34,14 @@ class Mission
     #[ORM\Column]
     private ?bool $needsRevalidation = null;
 
+    #[ORM\Column]
+    private ?\DateTimeImmutable $createdAt = null;
+
     #[ORM\ManyToOne(inversedBy: 'missions')]
     private ?Category $category = null;
+
+    #[ORM\ManyToOne(inversedBy: 'missions')]
+    private ?Language $language = null;
 
     #[ORM\ManyToOne(inversedBy: 'missions')]
     private ?User $client = null;
@@ -55,6 +61,7 @@ class Mission
     public function __construct()
     {
         $this->applications = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -134,6 +141,18 @@ class Mission
         return $this;
     }
 
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
     public function getCategory(): ?Category
     {
         return $this->category;
@@ -142,6 +161,18 @@ class Mission
     public function setCategory(?Category $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getLanguage(): ?Language
+    {
+        return $this->language;
+    }
+
+    public function setLanguage(?Language $language): static
+    {
+        $this->language = $language;
 
         return $this;
     }

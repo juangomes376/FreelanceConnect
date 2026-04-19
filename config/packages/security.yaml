@@ -52,6 +52,8 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/api/missions/recent$, roles: PUBLIC_ACCESS }
+        - { path: ^/api/missions$, roles: PUBLIC_ACCESS }
         - { path: ^/api, roles: ROLE_USER }
         - { path: ^/mission/status, roles: ROLE_ADMIN }
         # - { path: ^/mission, roles: ROLE_USER }

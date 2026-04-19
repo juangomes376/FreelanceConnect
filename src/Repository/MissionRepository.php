@@ -16,28 +16,30 @@ class MissionRepository extends ServiceEntityRepository
         parent::__construct($registry, Mission::class);
     }
 
-//    /**
-//     * @return Mission[] Returns an array of Mission objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('m')
-//            ->andWhere('m.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('m.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Mission[]
+     */
+    public function findRecentPublished(int $limit = 5): array
+    {
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.isValidatedByAdmin = :validated')
+            ->setParameter('validated', true)
+            ->orderBy('m.createdAt', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
 
-//    public function findOneBySomeField($value): ?Mission
-//    {
-//        return $this->createQueryBuilder('m')
-//            ->andWhere('m.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    /**
+     * @return Mission[]
+     */
+    public function findAllPublished(): array
+    {
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.isValidatedByAdmin = :validated')
+            ->setParameter('validated', true)
+            ->orderBy('m.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }
