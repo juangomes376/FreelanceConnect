@@ -36,7 +36,7 @@
                                 <p class="text-sm font-medium text-white">{{ app.user.firstName|default('Utilisateur') }} {% if app.user.lastName is defined %}{{ app.user.lastName }}{% endif %}</p>
                                 <p class="text-xs text-slate-400 truncate mt-0.5">{{ app.user.userIdentifier }}</p>
                             </div>
-                            {# <a href="{{ path('app_profile') }}" class="flex px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">Mon profil</a> #}
+                            <a href="{{ path('app_address_index') }}" class="flex px-4 py-2.5 text-sm text-slate-300 hover:bg-slate-800 hover:text-white transition-colors">Adresses</a>
                             <a href="{{ path('app_logout') }}" class="flex px-4 py-2.5 text-sm font-medium text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-colors border-t border-slate-800/60">Déconnexion</a>
                         </div>
                     </div>

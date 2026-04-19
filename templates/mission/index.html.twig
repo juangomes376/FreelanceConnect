@@ -26,12 +26,12 @@
                     <thead>
                         <tr class="bg-[var(--color-drac-curr)]/50 text-[var(--color-drac-cyan)] uppercase tracking-wider">
                             <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">ID</th>
-                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Titulo</th>
-                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] hidden lg:table-cell">Orcamento</th>
-                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] hidden md:table-cell">Prazo</th>
-                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Status</th>
-                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-right">Action</th>
-                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-right">Applications</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Titre</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] hidden lg:table-cell">Budget</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] hidden md:table-cell">Delai</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)]">Statut</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-right">Actions</th>
+                            <th class="px-6 py-4 border-b border-[var(--color-drac-curr)] text-right">Candidatures</th>
                         </tr>
                     </thead>
                     <tbody class="text-[var(--color-drac-fg)] divide-y divide-[var(--color-drac-curr)]">
@@ -57,14 +57,14 @@
                             <td class="px-6 py-4 text-right space-x-3">
                                 <a href="{{ path('app_mission_show', {'id': mission.id}) }}" class="text-[var(--color-drac-cyan)] hover:text-[var(--color-drac-pink)] transition-colors underline decoration-[var(--color-drac-cyan)]/20">voir</a>
                                 <a href="{{ path('app_mission_edit', {'id': mission.id}) }}" class="text-[var(--color-drac-comment)] hover:text-[var(--color-drac-purple)] transition-colors underline decoration-[var(--color-drac-comment)]/20">modifier</a>
-                                <a href="{{ path('app_application_new_mission', {'id': mission.id}) }}" class="text-[var(--color-drac-green)] hover:text-[var(--color-drac-green)]/80 transition-colors underline decoration-[var(--color-drac-green)]/20">acepte</a>
+                                <a href="{{ path('app_application_new_mission', {'id': mission.id}) }}" class="text-[var(--color-drac-green)] hover:text-[var(--color-drac-green)]/80 transition-colors underline decoration-[var(--color-drac-green)]/20">postuler</a>
                                 {% if is_granted('ROLE_FREELANCE') %}
                                     <a href="{{ path('app_mission_statut', {'id': mission.id}) }}" class="text-[var(--color-drac-green)] hover:text-[var(--color-drac-green)]/80 transition-colors underline decoration-[var(--color-drac-green)]/20">statut</a>
                                 {% endif %}
                                 
                             </td>
                             <td class="px-6 py-4 text-right">
-                                <a href="{{ path('app_mission_applications', {'id': mission.id}) }}" class="text-[var(--color-drac-cyan)] hover:text-[var(--color-drac-cyan)]/80 transition-colors underline decoration-[var(--color-drac-cyan)]/20">Show</a>
+                                <a href="{{ path('app_mission_applications', {'id': mission.id}) }}" class="text-[var(--color-drac-cyan)] hover:text-[var(--color-drac-cyan)]/80 transition-colors underline decoration-[var(--color-drac-cyan)]/20">voir</a>
                             </td>
                         </tr>
                     {% else %}

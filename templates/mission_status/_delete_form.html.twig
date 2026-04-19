@@ -1,6 +1,6 @@
 <form method="post" action="{{ path('app_mission_statut_delete', {'id': mission_statut.id}) }}" onsubmit="return confirm('ALERTE : suppression de nœud de cycle de vie détectée. Confirmer la purge définitive ?');">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ mission_statut.id) }}">
     <button class="w-full py-2 border border-[var(--color-drac-red)]/40 text-[var(--color-drac-red)] text-xs font-mono rounded hover:bg-[var(--color-drac-red)] hover:text-[var(--color-drac-bg)] transition-all uppercase tracking-widest">
-        Purge_Lifecycle_Node
+        Purge_Noeud_Cycle_Vie
     </button>
 </form>

@@ -27,7 +27,7 @@
                     <span class="text-[var(--color-drac-yellow)] text-[10px]">FIN_ENTRY_V3</span>
                 </div>
                 
-                <h2 class="text-xs uppercase text-[var(--color-drac-cyan)] tracking-[0.3em] mb-6 border-b border-[var(--color-drac-curr)] pb-2">Informacoes_Gerais</h2>
+                <h2 class="text-xs uppercase text-[var(--color-drac-cyan)] tracking-[0.3em] mb-6 border-b border-[var(--color-drac-curr)] pb-2">Informations_Generales</h2>
                 
                 <div class="space-y-6">
                     <div>
@@ -44,11 +44,11 @@
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Tipo</p>
+                            <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Type</p>
                             <span class="px-2 py-0.5 rounded bg-[var(--color-drac-purple)]/20 text-[var(--color-drac-purple)] text-[10px] font-bold uppercase">{{ invoice.type }}</span>
                         </div>
                         <div>
-                            <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Siret_Emissor</p>
+                            <p class="text-[10px] text-[var(--color-drac-comment)] uppercase font-bold tracking-widest mb-1">Siret_Emetteur</p>
                             <p class="text-xs opacity-70">{{ invoice.senderSiret }}</p>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
             {# Financial Totals Card #}
             <div class="space-y-6">
                 <div class="bg-[var(--color-drac-curr)]/30 border border-[var(--color-drac-curr)] rounded-2xl p-8 space-y-6 shadow-lg">
-                    <h2 class="text-xs uppercase text-[var(--color-drac-green)] tracking-[0.3em] mb-6 border-b border-[var(--color-drac-curr)] pb-2">Calculo_Financeiro</h2>
+                    <h2 class="text-xs uppercase text-[var(--color-drac-green)] tracking-[0.3em] mb-6 border-b border-[var(--color-drac-curr)] pb-2">Calcul_Financier</h2>
                     
                     <div class="flex justify-between items-center">
                         <span class="text-xs text-[var(--color-drac-comment)] uppercase">Base HT</span>
@@ -77,7 +77,7 @@
                 </div>
 
                 <div class="p-4 border border-[var(--color-drac-red)]/20 rounded-2xl bg-[var(--color-drac-red)]/5">
-                    <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocolo_De_Estorno</h4>
+                    <h4 class="text-[10px] text-[var(--color-drac-red)] uppercase font-bold mb-4 tracking-widest">Protocole_D_Annulation</h4>
                     {{ include('invoice/_delete_form.html.twig') }}
                 </div>
             </div>
